@@ -1,16 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Profile from "./Pages/Profile";
+import Mainride from "./Pages/Mainride";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-        App
-    </div>
-  )
+    <Router>
+      <nav>
+        <Link to="/mainride"> Mainride </Link>
+        <Link to="/profile"> Profile </Link>
+        </nav>
+      <Routes>
+        <Route path="/mainride" element={<Mainride />} />
+        <Route path="/profile/:username" element={<Profile />} />
+      </Routes>
+    </Router>
+  );
 }
-
-export default App
+export default App;
