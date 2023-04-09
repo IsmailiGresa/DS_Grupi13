@@ -20,12 +20,12 @@ nav{
     border-style: groove;
     color: rgb(0 0 0 / 5%);
     transition: 0.3s;
-    background-color: white;
 }
 nav.visible{
+    z-index:999;
     top: 0;
     translate: 0;
-    z-index: 999;
+    background-color: white;
 }
 nav > img{
     width: 50px;
@@ -53,14 +53,14 @@ nav > img{
 }
 .nav-items1 button{
     border-radius: 30px;
-    border-color: #c5c2c2;
+    border-color: #dedbdb;
     height: 35px;
     width: 105px;
     max-width: max-content;
     flex: fit-content;
     display: flex;
     flex-direction: row;
-    row-gap: 1px;
+    row-gap: 2px;
 }
 .nav-items1 button img{
     height: 20px;
@@ -101,7 +101,7 @@ nav > img{
     display: flex;
     gap: 40px;
     align-items: center;
-    height: 47.5px;
+    height: 43.5px;
     width: 100%;
     line-height: 1.5;
     padding: 0 16px 0 25px;
@@ -118,7 +118,7 @@ button:hover {
 .prf{
     position: relative;
     width: 265px;
-    height: 171px;
+    height: 155px;
     border-style: groove;
     border-top-color: transparent;
     border-right-color: transparent;
@@ -139,12 +139,19 @@ img{
 }
 .body {
     position: relative;
-    padding-top: 50px;
-    width:700px;
-    height: 1000px;
+    width:590px;
+    height: 1028px;
     right: 0;
-    padding-left: 66px;
-    
+
+}
+div.body{
+    padding-right: 400px;
+    margin-left: 233px;
+    margin-top: 19px;
 }
 
+#root{
+    padding-right: 300px;
+
+}
 

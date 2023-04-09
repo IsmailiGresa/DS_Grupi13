@@ -68,6 +68,12 @@ export default function Profile () {
                     <a>Gift cards</a>
                 </button>
                 <button onClick={() => {
+                    navigate("/promos");
+                }}>
+                    <img src="/icons/promos.png" alt=""/>
+                    <a>Promos</a>
+                </button>
+                <button onClick={() => {
                     navigate("/invite");
                 }}>
                     <img src="/icons/invite.png" alt=""/>
@@ -94,7 +100,75 @@ export default function Profile () {
                 </div>
             </aside>
             <div className="body">
-                Main
+                <div className="inside"></div>
+                <h1>Profile</h1>
+                <div className="content">
+                    <div className="profile">
+                        <button>
+                        <img src="/icons/profile.png"></img>
+                        <img src="/icons/photo-camera.png"></img>
+                        </button>
+                        <div>Gresa Ismaili</div>
+                    </div>
+                <div className="history">
+                    <span> 0</span>
+                    <span>Rides</span>
+                    <img src="/icons/favorite.png"></img>
+                    <span> New</span>
+                    <span>Rating</span>
+                    <span> 24</span>
+                    <span>Days</span>
+                </div>
+                <div className="badge">
+                    <h2>Badges</h2>
+
+                    <button><img src="/icons/lock.png"></img>Marathoner</button>
+                    <button><img src="/icons/lock.png"></img>Five-Star Rider</button>
+                    <button><img src="/icons/lock.png"></img>Top Tipper</button>
+                </div>
+                <div className="acc">
+                <h2>Account settings</h2>
+                <button><img src="/icons/pen.png"></img></button>
+                </div>
+                <div className="info"></div>
+                    <div className="ident">
+                        
+                        <div className="ident1">
+                            <img src="/icons/profile.png"></img>
+                            <span> Gresa Ismaili</span>
+                            <span>Pronouns not selected</span>
+                        </div>
+                        <div className="email">
+                            <img src="/icons/email.png"></img>
+                            <span>gi@gmail.com</span>
+                        </div>
+                        <div className="phone">
+                            <img src="/icons/phone.png"></img>
+                            <span>+1 (202) 000-0000</span>
+                        </div>
+                    </div>
+                    <div className="shortcut">
+                        <div className="home">
+                            <img src="/icons/home.png"></img>
+                            <span>Add home</span>
+                            <button><img src="/icons/three-dots.png"></img></button>
+                        </div>
+                        <div className="work">
+                            <img src="/icons/briefcase.png"></img>
+                            <span>Add work</span>
+                            <button><img src="/icons/three-dots.png"></img></button>
+                        </div>
+                    </div>
+                    <div className="mode">
+                        <h2>Dark Mode</h2>
+                    <form>
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
+                        <label for="vehicle1">Light</label><br></br>
+                        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car"></input>
+                        <label for="vehicle2">Dark</label><br></br>
+                    </form>
+                    </div>
+                </div>
             </div>
         </>
     );
