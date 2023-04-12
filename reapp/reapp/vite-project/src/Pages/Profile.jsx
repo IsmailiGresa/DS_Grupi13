@@ -106,7 +106,7 @@ export default function Profile () {
                 <div className="profile">
                         <img src="/icons/profile.png"></img>
                         <button>
-                        <img src="/icons/photo-camera.png"></img>
+                            <img src="/icons/photo-camera.png"></img>
                         </button>
                         <div>Gresa Ismaili</div>
                     </div>
@@ -134,36 +134,47 @@ export default function Profile () {
                     <button>
                         <img src="/icons/lock.png"></img>
                     </button>
+                    <div className="ubadge1">
                         <span>Marathoner</span>
+                    </div>
                     </div>
                     <div className="badge2">
                     <button>
                         <img src="/icons/lock.png"></img>
                     </button>
+                    <div className="ubadge2">
                         <span>Five-Star Rider</span>
+                    </div>
                     </div>
                     <div className="badge3">
                     <button>
                         <img src="/icons/lock.png"></img>
                     </button>
+                    <div className="ubadge3">
                         <span>Top Tipper</span>
+                    </div>
                     </div>
                     </div>
                 </div>
                 <div className="acc">
-                <h2>Account settings</h2>
+                <div className="pen">
+                <h3>Account settings</h3>
                 <button>
                     <img src="/icons/pen.png"></img>
                 </button>
                 </div>
+                </div>
                 <div className="info"></div>
                     <div className="ident">
-                        
                         <div className="ident1">
                             <img src="/icons/profile.png"></img>
-                            <div className="ident11">
-                            <span> Gresa Ismaili</span>
-                            <span>Pronouns not selected</span>
+                            <div className="idn">
+                                <div className="ident11">
+                                    <span> Gresa Ismaili</span>
+                                </div>
+                                <div className="ident12">
+                                    <div>Pronouns not selected</div>
+                                </div>
                             </div>
                         </div>
                         <div className="email">
@@ -178,14 +189,20 @@ export default function Profile () {
                     <div className="shortcut">
                         <div className="home">
                             <h2>Shortcuts</h2>
+                            <div className="home1">
                             <img src="/icons/home.png"></img>
                             <span>Add home</span>
-                            <button><img src="/icons/three-dots.png"></img></button>
+                            <button>
+                                <img src="/icons/three-dots.png"></img>
+                            </button>
+                            </div>
                         </div>
                         <div className="work">
                             <img src="/icons/briefcase.png"></img>
                             <span>Add work</span>
-                            <button><img src="/icons/three-dots.png"></img></button>
+                            <button>
+                                <img src="/icons/three-dots.png"></img>
+                            </button>
                         </div>
                     </div>
                     <div className="mode">
