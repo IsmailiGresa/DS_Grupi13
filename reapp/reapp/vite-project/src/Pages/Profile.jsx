@@ -103,40 +103,68 @@ export default function Profile () {
                 <div className="inside"></div>
                 <h1>Profile</h1>
                 <div className="content">
-                    <div className="profile">
-                        <button>
+                <div className="profile">
                         <img src="/icons/profile.png"></img>
+                        <button>
                         <img src="/icons/photo-camera.png"></img>
                         </button>
                         <div>Gresa Ismaili</div>
                     </div>
-                <div className="history">
+                    <div className="history">
+                    <div className="history1">
                     <span> 0</span>
                     <span>Rides</span>
-                    <img src="/icons/favorite.png"></img>
-                    <span> New</span>
+                    </div>
+                    <div className="history2">
+                        <div className="hist22">
+                        <img src="/icons/favorite.png"></img>
+                        <span> New</span>
+                        </div>
                     <span>Rating</span>
+                    </div>
+                    <div className="history3">
                     <span> 24</span>
                     <span>Days</span>
+                    </div>
                 </div>
                 <div className="badge">
                     <h2>Badges</h2>
-
-                    <button><img src="/icons/lock.png"></img>Marathoner</button>
-                    <button><img src="/icons/lock.png"></img>Five-Star Rider</button>
-                    <button><img src="/icons/lock.png"></img>Top Tipper</button>
+                    <div className="badgbtn">
+                    <div className="badge1">
+                    <button>
+                        <img src="/icons/lock.png"></img>
+                    </button>
+                        <span>Marathoner</span>
+                    </div>
+                    <div className="badge2">
+                    <button>
+                        <img src="/icons/lock.png"></img>
+                    </button>
+                        <span>Five-Star Rider</span>
+                    </div>
+                    <div className="badge3">
+                    <button>
+                        <img src="/icons/lock.png"></img>
+                    </button>
+                        <span>Top Tipper</span>
+                    </div>
+                    </div>
                 </div>
                 <div className="acc">
                 <h2>Account settings</h2>
-                <button><img src="/icons/pen.png"></img></button>
+                <button>
+                    <img src="/icons/pen.png"></img>
+                </button>
                 </div>
                 <div className="info"></div>
                     <div className="ident">
                         
                         <div className="ident1">
                             <img src="/icons/profile.png"></img>
+                            <div className="ident11">
                             <span> Gresa Ismaili</span>
                             <span>Pronouns not selected</span>
+                            </div>
                         </div>
                         <div className="email">
                             <img src="/icons/email.png"></img>
@@ -149,6 +177,7 @@ export default function Profile () {
                     </div>
                     <div className="shortcut">
                         <div className="home">
+                            <h2>Shortcuts</h2>
                             <img src="/icons/home.png"></img>
                             <span>Add home</span>
                             <button><img src="/icons/three-dots.png"></img></button>
@@ -161,11 +190,11 @@ export default function Profile () {
                     </div>
                     <div className="mode">
                         <h2>Dark Mode</h2>
-                    <form>
-                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></input>
-                        <label for="vehicle1">Light</label><br></br>
-                        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car"></input>
-                        <label for="vehicle2">Dark</label><br></br>
+                        <form>
+                            <input type="radio"name="mode" value="light" checked></input>
+                            <label for="mode">Light</label><br></br>
+                            <input type="radio" name="mode" value="dark"></input>
+                            <label for="mode">Dark</label><br></br>
                     </form>
                     </div>
                 </div>
