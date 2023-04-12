@@ -67,7 +67,12 @@ export default function Giftcards () {
                     <img src="/icons/gift_card.png" alt=""/>
                     <a>Gift cards</a>
                 </button>
-                
+                <button onClick={() => {
+                    navigate("/promos");
+                }}>
+                    <img src="/icons/promos.png" alt=""/>
+                    <a>Promos</a>
+                </button>
                 <button onClick={() => {
                     navigate("/invite");
                 }}>
