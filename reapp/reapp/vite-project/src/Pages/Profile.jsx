@@ -1,7 +1,23 @@
 import "./styles.css";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+
 export default function Profile () {
+
+  const [display, setDisplay] = useState('none');
+
+  const handleOn = () => {
+    setDisplay('block');
+  };
+
+  const handleOff = () => {
+    setDisplay('none');
+  };
+    const [mode, setMode] = useState('light');
+    const handleModeChange = (event) => {
+        setMode(event.target.value);
+        document.body.setAttribute('data-mode', event.target.value);
+    }
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -208,12 +224,23 @@ export default function Profile () {
                     <div className="mode">
                         <h2>Dark Mode</h2>
                         <form>
-                            <input type="radio"name="mode" value="light" checked></input>
+                            <input type="radio"name="mode" value="light" checked={mode === 'light'} onChange={handleModeChange} />
                             <label for="mode">Light</label><br></br>
-                            <input type="radio" name="mode" value="dark"></input>
+                            <input type="radio" name="mode" value="dark" checked={mode === 'dark'} onChange={handleModeChange} />
                             <label for="mode">Dark</label><br></br>
                     </form>
                     </div>
+                    <div>
+      <div className="overlay" onClick={handleOff}/>
+      <div>
+        <h2>Overlay</h2>
+        <p>
+          Add an overlay effect to the page content (100% width and height with
+          a black background color with 50% opacity).
+        </p>
+        <button onClick={handleOn}>Turn on overlay effect</button>
+      </div>
+    </div>
                 </div>
             </div>
         </>
