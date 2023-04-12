@@ -68,6 +68,12 @@ export default function Donate () {
                     <a>Gift cards</a>
                 </button>
                 <button onClick={() => {
+                    navigate("/promos");
+                }}>
+                    <img src="/icons/promos.png" alt=""/>
+                    <a>Promos</a>
+                </button>
+                <button onClick={() => {
                     navigate("/invite");
                 }}>
                     <img src="/icons/invite.png" alt=""/>

@@ -139,19 +139,232 @@ img{
 }
 .body {
     position: relative;
-    width:590px;
+    width: 900px;
     height: 1028px;
-    right: 0;
-
+    margin-left: 0px;
+    left: 0;
+    padding-left: 235px;
 }
-div.body{
-    padding-right: 400px;
-    margin-left: 233px;
-    margin-top: 19px;
+.body div{
+    margin: 0;
 }
-
-#root{
+.inside{
+justify-items: start;
+margin-top: 70px;
+margin-bottom: 70px;
+}
+h1{
+    font-size:25px;
+    margin-bottom: 40px;
+    top: 75px;
+    padding-left: 100px;
+    margin-left: 0;
+    margin-top: 80px;
+    padding-right: 860px;
+}
+.content{
+    padding-left: 80px;
+}
+.profile{
+    justify-content: center;
+    padding-right: 180px;
+    padding-bottom: 60px;
+}
+.profile img{
+    position: absolute;
+    width: 120px;
     padding-right: 300px;
+}
+.profile button{
+    position: absolute;
+    border-color: transparent;
+    width: 46px;
+    background-color:rgb(224, 229, 230);
+    border-radius: 50px;
+    height: 46px;
+    margin-top: 80px;
+    margin-left: 80px;
+}
+.profile button img{
+    width: 30px;
 
 }
+.profile div{
+    padding-top: 170px;
+    font-size: 20px;
+    justify-content: center;
+    padding-left: 120px;
+}
+.history{
+    margin-top: 480px;
+    border-style: groove;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: transparent;
+    box-shadow: 0px 8px 0px 0px rgb(242, 240, 240);  
+    padding-top: 20px; 
+    padding-bottom: 20px; 
+    display: flex;
+    flex-direction: row;
+}
+.history1{
+    display: flex;
+    flex-direction: column;
+    padding-left: 120px;
+    gap: 10px
+}
+.history2{
+    display: flex;
+    flex-direction: column;
+    padding-left: 220px;
+    gap: 10px
+}
+.hist22 img{
+    width: 18px;
+}
+.history3{
+    display: flex;
+    flex-direction: column;
+    padding-left: 220px;
+    gap: 10px
+}
+.badgbtn{
+    display: flex;
+    flex-direction: row;
+}
+.badge1 button{
+    margin-left: 120px;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    border-color: transparent;
+    background-color: rgb(224, 229, 230);
+    border-radius: 50px;
+}
+.badge1{
+    margin-left: 120px;
+}
+.badge2 button{
+    margin-left: 150px;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    border-color: transparent;
+    background-color: rgb(224, 229, 230);
+    border-radius: 50px;
+}
+.badge3 button{
+    margin-left: 150px;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    border-color: transparent;
+    background-color: rgb(224, 229, 230);
+    border-radius: 50px;
+}
+h2{
+    margin-bottom: 70px;
+    top: 75px;
+    padding-right: 800px;
+    margin-top: 80px;
+    font-size: 22px;
+}
+.acc{
+    display: flex;
+    gap: 300px;
+}
+.acc button{
+    border-color: transparent;
+    background-color: white; 
+    padding-right: 300px;
+}
+.acc button img{
+    width: 20px;
+}
+.info{
 
+}
+.ident{
+padding-left: 40px
+}
+.ident1{
+    display: flex;
+    flex-direction: row;
+    
+}
+.ident11{
+    display: flex;
+    flex-direction: column;
+}
+.ident1 img{
+    width: 30px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+}
+.email{
+    display: flex;
+}
+.email img{
+    width: 30px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+}
+.phone{
+    display: flex;
+}
+.phone img{
+    width: 30px;
+    padding-right: 100px;
+}
+.shortcut{
+    display: flex;
+    flex-direction: column;
+    padding-right: 600px;
+
+}
+.home img{
+    width: 30px;
+}
+.home button{
+    border-color: transparent;
+    background-color: white;
+    padding-bottom: 23px;
+}
+.home button img{
+    width: 20px
+}
+.work img{
+    width: 30px;
+}
+.work button{
+    border-color: transparent;
+    background-color: white;
+}
+.work button img{
+    width: 20px
+}
+.mode {
+    padding-right: 300px;
+}
+input{
+    appearance: none;
+    border-radius: 50px;
+    width: 2.5vw;
+    height: 2.5vw;
+    box-shadow: 0px 0px 5px #AAC5C6;
+    border: 0.2vw solid rgb(128, 232, 234);
+    background-color: #dedbdb;
+    transition: 0.2s all linear;
+    margin-right: 10px;
+    position: relative;
+    top: 4px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+input:checked{
+    border: 0.7vw solid#cdd5e3;
+    background-color: rgb(56, 86, 92);
+}
