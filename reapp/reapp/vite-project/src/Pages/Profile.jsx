@@ -1,18 +1,13 @@
 import "./styles.css";
+import Modal from "./Modal.jsx";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
 
+
 export default function Profile () {
 
-  const [display, setDisplay] = useState('none');
+    const [modalOpen, setModalOpen] = useState(false);
 
-  const handleOn = () => {
-    setDisplay('block');
-  };
-
-  const handleOff = () => {
-    setDisplay('none');
-  };
     const [mode, setMode] = useState('light');
     const handleModeChange = (event) => {
         setMode(event.target.value);
@@ -39,7 +34,10 @@ export default function Profile () {
         return window.removeEventListener("scroll", handleScroll)
         }, []);
     return(
+        
         <>
+        {modalOpen && <Modal setOpenModal={setModalOpen}></Modal>}
+        <div className="contain">
             <nav className={`${ isNavbarVisible ? "visible" : ""}`}>
                 <div className = "nav-items">
                     <a>Ulyft</a>
@@ -115,15 +113,16 @@ export default function Profile () {
                 </button>
                 </div>
             </aside>
-            <div className="body">
+            <div className="main">
                 <div className="inside"></div>
-                <h1>Profile</h1>
-                <div className="content">
-                <div className="profile">
-                        <img src="/icons/profile.png"></img>
-                        <button>
-                            <img src="/icons/photo-camera.png"></img>
-                        </button>
+                    <h1>Profile</h1>
+                    <div className="content">
+                        <div className="profile">
+                            <img src="/icons/profile.png"></img>
+                            <button onClick={() => {setModalOpen(true);}}>
+                                <img src="/icons/photo-camera.png"></img>
+                            </button>
+                            
                         <div>Gresa Ismaili</div>
                     </div>
                     <div className="history">
@@ -147,25 +146,31 @@ export default function Profile () {
                     <h2>Badges</h2>
                     <div className="badgbtn">
                     <div className="badge1">
-                    <button>
-                        <img src="/icons/lock.png"></img>
-                    </button>
-                    <div className="ubadge1">
-                        <span>Marathoner</span>
-                    </div>
+                        <button >
+                        {/* onClick={() => {setModalOpen(true);}}> */}
+                            <img src="/icons/lock.png"></img>
+                        </button>
+                        {/* {modalOpen && <Modal setOpenModal={setModalOpen}></Modal>} */}
+                        <div className="ubadge1">
+                            <span>Marathoner</span>
+                        </div>
                     </div>
                     <div className="badge2">
-                    <button>
+                    <button >
+                    {/* // onClick={() => {setModalOpen(true);}}> */}
                         <img src="/icons/lock.png"></img>
                     </button>
+                    {/* {modalOpen && <Modal setOpenModal={setModalOpen}></Modal>} */}
                     <div className="ubadge2">
                         <span>Five-Star Rider</span>
                     </div>
                     </div>
                     <div className="badge3">
-                    <button>
+                    <button >
+                    {/* // onClick={() => {setModalOpen(true);}}> */}
                         <img src="/icons/lock.png"></img>
                     </button>
+                   
                     <div className="ubadge3">
                         <span>Top Tipper</span>
                     </div>
@@ -175,9 +180,11 @@ export default function Profile () {
                 <div className="acc">
                 <div className="pen">
                 <h3>Account settings</h3>
-                <button>
-                    <img src="/icons/pen.png"></img>
+                <button >
+                {/* // onClick={() => {setModalOpen(true);}}> */}
+                        <img src="/icons/pen.png"></img>
                 </button>
+
                 </div>
                 </div>
                 <div className="info"></div>
@@ -208,17 +215,21 @@ export default function Profile () {
                             <div className="home1">
                             <img src="/icons/home.png"></img>
                             <span>Add home</span>
-                            <button>
+                            <button >
+                            {/* // onClick={() => {setModalOpen(true);}}> */}
                                 <img src="/icons/three-dots.png"></img>
                             </button>
+                            
                             </div>
                         </div>
                         <div className="work">
                             <img src="/icons/briefcase.png"></img>
                             <span>Add work</span>
-                            <button>
+                            <button >
+                            {/* // onClick={() => {setModalOpen(true);}}> */}
                                 <img src="/icons/three-dots.png"></img>
                             </button>
+                            
                         </div>
                     </div>
                     <div className="mode">
@@ -231,18 +242,11 @@ export default function Profile () {
                     </form>
                     </div>
                     <div>
-      <div className="overlay" onClick={handleOff}/>
-      <div>
-        <h2>Overlay</h2>
-        <p>
-          Add an overlay effect to the page content (100% width and height with
-          a black background color with 50% opacity).
-        </p>
-        <button onClick={handleOn}>Turn on overlay effect</button>
-      </div>
-    </div>
+                    </div>
                 </div>
             </div>
+           
+        </div>
         </>
     );
 };

@@ -3,6 +3,16 @@
     font-size: medium;
     font-style: normal;
     color: rgb(90, 90, 90);
+    padding: 0rem;
+}
+#root{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0rem;
+    text-align: center;
+}
+html body{
+    gap:0;
 }
 nav{
     position: fixed;
@@ -20,6 +30,7 @@ nav{
     border-style: groove;
     color: rgb(0 0 0 / 5%);
     transition: 0.3s;
+    z-index:999;
 }
 nav.visible{
     z-index:999;
@@ -136,7 +147,7 @@ img{
     padding-left: 100px;
     padding-top: 25px;
 }
-.body {
+.main {
     position: relative;
     width: 900px;
     height: 1028px;
@@ -144,7 +155,7 @@ img{
     left: 0;
     margin-left: 235px;
 }
-.body div{
+.main div{
     margin: 0;
 }
 .inside{
@@ -155,14 +166,12 @@ margin-bottom: 70px;
 h1{
     font-size:25px;
     margin-bottom: 40px;
-    top: 75px;
-    padding-left: 100px;
-    margin-left: 0;
-    margin-top: 80px;
+    padding-left: 130px;
+    margin-top: 130px;
     padding-right: 860px;
 }
 .content{
-    padding-left: 80px;
+    padding-left: 150px;
 }
 .profile{
     justify-content: center;
@@ -236,7 +245,7 @@ h1{
     flex-direction: row;
 }
 .badge1 button{
-    margin-left: 120px;
+    margin-left: 80px;
     height: 100px;
     width: 100px;
     display: flex;
@@ -249,11 +258,11 @@ h1{
     background-color: rgb(235, 231, 231);
   }
 .badge1 img{
-    margin-left: 15px;
+    margin-left: 22px;
     margin-top: 15px;
 }
 .ubadge1{
-    padding-left: 120px;
+    padding-left: 70px;
     padding-top: 20px;
 }
 .ubadge2{
@@ -278,7 +287,7 @@ h1{
     background-color: rgb(235, 231, 231);
   }
 .badge2 img{
-    margin-left: 15px;
+    margin-left: 22px;
     margin-top: 15px;
 }
 .badge3 button{
@@ -295,7 +304,7 @@ h1{
     background-color: rgb(235, 231, 231);
   }
 .badge3 img{
-    margin-left: 15px;
+    margin-left: 22px;
     margin-top: 15px;
 }
 h2{
@@ -501,16 +510,91 @@ input[value="dark"] {
     background-color: #230b4d;
     color: #FFFFFF;
 }
-.overlay {
-    position: 'fixed';
-          display: display;
-          width: '100%';
-          height: '100%';
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: 'rgba(0,0,0,0.5)';
-          z-index: 2;
-          cursor: 'pointer';
+  .modalBackground{
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: rgba(128, 128, 128, 0.5);
+    z-index: 1234567890;
+    will-change: opacity;
+    content-visibility: auto;
+    opacity: 1;
+    transition: opacity 300ms cubic-bezier(0, 0, 0.15, 1) 0s;
+    pointer-events: all;
+}
+  .modalContainer {
+    width: 450px;
+    height: 350px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 145px;
+    margin-left: 430px;
+  }
+  .modalContainer .title {
+    display: inline-block;
+    text-align: center;
+    margin: 10px 0px 0px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: larger;
+    margin-right: 190px;
+  }
+  .close{
+    margin-right: 20px;
+    margin-top: 10px;
+  }
+  .titleCloseBtn {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .titleCloseBtn button {
+    background-color: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+
+  }
+  .modalContainer .upload {
+    flex: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+  .upload button{
+    border-style: dashed;
+    color:rgb(145, 142, 142);
+    height: 170px;
+    margin-bottom: 15px;
+  }
+  
+  .modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalContainer .footer button {
+    width: 150px;
+    height: 45px;
+    margin: 10px;
+    border: none;
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 70px;
+  }
+  
+  #cancelBtn {
+    color: rgb(90, 89, 89);
+    background-color: rgb(224, 229, 230);
   }
