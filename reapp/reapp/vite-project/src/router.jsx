@@ -6,14 +6,15 @@ import NotFound from "./Pages/NotFound.jsx";
 import Profile from "./Pages/Profile.jsx";
 import Donate from "./Pages/Donate.jsx";
 import Giftcards from "./Pages/Giftcards";
-import Invite from "./Pages/Invite.jsx";
+import InviteFriends from "./Pages/inviteFriends.jsx";
 import Payment from "./Pages/Payment.jsx";
 import Promos from "./Pages/Promos.jsx";
 import Rides from "./Pages/Rides.jsx";
 import Logout from "./Pages/Logout.jsx";
 import ClientLayout from "./Components/ClientLayout";
 import GuestLayout from "./Components/GuestLayout.jsx";
-
+import RedeemGiftCard from "./Pages/RedeemGiftCard.jsx";
+import RedeemGift from "./Pages/RedeemGift.jsx";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -40,8 +41,16 @@ const router = createBrowserRouter([
                 element: <Giftcards/>
             },
             {
+                path: '/RedeemGiftCard',
+                element: <RedeemGiftCard/>
+            },
+            {
+                path: '/RedeemGift',
+                element: <RedeemGift/>
+            },
+            {
                 path: '/invite',
-                element: <Invite/>
+                element: <InviteFriends/>
             },
             {
                 path: '/payment',

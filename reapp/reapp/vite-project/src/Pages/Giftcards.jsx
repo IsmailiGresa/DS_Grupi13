@@ -1,6 +1,7 @@
 import "./styles.css";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import GiftCardsPage from "./GiftCardsPage";
 export default function Giftcards () {
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
@@ -68,12 +69,6 @@ export default function Giftcards () {
                     <a>Gift cards</a>
                 </button>
                 <button onClick={() => {
-                    navigate("/promos");
-                }}>
-                    <img src="/icons/promos.png" alt=""/>
-                    <a>Promos</a>
-                </button>
-                <button onClick={() => {
                     navigate("/invite");
                 }}>
                     <img src="/icons/invite.png" alt=""/>
@@ -100,7 +95,7 @@ export default function Giftcards () {
                 </div>
             </aside>
             <div className="body">
-                Main
+                    <GiftCardsPage/>
             </div>
         </>
     );
