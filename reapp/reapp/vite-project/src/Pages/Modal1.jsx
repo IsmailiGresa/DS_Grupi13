@@ -18,20 +18,8 @@ function Modal1({ setOpenModal1 }) {
           Marathoner
         </div>
         <div className="upload">
-            <button>
-                <div>Marathoner</div>
-            </button>
-        </div>
-        <div className="footer">
-          <button
-            onClick={() => {
-              setOpenModal1(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
-          <button>Confirm</button>
+            <img src="/icons/runner.png"></img>
+            <span>Are you there yet? We know you want to hit the open road. Keep racking up in-car miles to unlock this bagde!</span>
         </div>
       </div>
     </div>

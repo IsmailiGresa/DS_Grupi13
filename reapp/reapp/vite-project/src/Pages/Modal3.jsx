@@ -18,20 +18,8 @@ function Modal3({ setOpenModal3 }) {
           Top Tiper
         </div>
         <div className="upload">
-            <button>
-                <div>Top Tiper</div>
-            </button>
-        </div>
-        <div className="footer">
-          <button
-            onClick={() => {
-              setOpenModal3(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
-          <button>Confirm</button>
+        <img src="/icons/tip.png"></img>
+        <span>Had a good ride? Say thanks to your driver with a tip. The more you tip, the closer you’ll be to unlocking this badge.</span>
         </div>
       </div>
     </div>

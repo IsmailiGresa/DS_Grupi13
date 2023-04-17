@@ -55,34 +55,18 @@
   font-size: 1.6rem;
   text-align: center;
 }
-.upload button{
-  border-style: dashed;
+.upload img{
   color:rgb(145, 142, 142);
-  height: 170px;
-  margin-bottom: 15px;
+  width: 80px;
+  height: 100px;
+  margin-bottom: 50px;
 }
-
-.modalContainer .footer {
-  flex: 20%;
+.upload{
+  flex: 1 1 0%;
+  margin-bottom: 40px;
+  margin-left: 40px;
+  margin-right: 40px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  flex-direction: column;
 
-.modalContainer .footer button {
-  width: 150px;
-  height: 45px;
-  margin: 10px;
-  border: none;
-  background-color: cornflowerblue;
-  color: white;
-  border-radius: 40px;
-  font-size: 20px;
-  cursor: pointer;
-  margin-bottom: 70px;
-}
-
-#cancelBtn {
-  color: rgb(90, 89, 89);
-  background-color: rgb(224, 229, 230);
 }
