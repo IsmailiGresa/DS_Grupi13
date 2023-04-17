@@ -18,21 +18,8 @@ function Modal2({ setOpenModal2 }) {
           Five - Star Rides
         </div>
         <div className="upload">
-            <button>
-                <img src="/icons/image-.png"></img>
-                <div>5 Star Rider</div>
-            </button>
-        </div>
-        <div className="footer">
-          <button
-            onClick={() => {
-              setOpenModal2(false);
-            }}
-            id="cancelBtn"
-          >
-            Cancel
-          </button>
-          <button>Confirm</button>
+                <img src="/icons/rating.png"></img>
+                <span>Shine on, you beautiful diamond. Earn a five-star rating to unlock this badge!</span>
         </div>
       </div>
     </div>

@@ -47,7 +47,11 @@ function ModalPen({ setOpenModal4 }) {
             </div>
             <div className="otherpro">
             <input type="radio" name="pronoun" value="other" id="other" /> 
-            <label htmlFor="other">Other</label>
+            <label htmlFor="other">My pronouns aren't listed</label>
+            </div>
+            <div className="introv">
+            <input type="radio" name="pronoun" value="other" id="other" /> 
+            <label htmlFor="other">Prefer not to say</label>
             </div>
           </div>
         </div>

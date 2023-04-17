@@ -487,29 +487,27 @@ label{
     margin-right: 360px;
 }
 
-*[data-mode="dark"] {
-    background-color: #230b4d;
+html [data-mode="dark"] {
+    background-color: #322656;
     color: #FFFFFF;
-    
-}
-.sidebar button[data-mode="dark"] {
-    background-color: #230b4d;
-    color: white;
-}
-.nav[data-mode="dark"] {
-    background-color: #230b4d;
-    color: white;
 
 }
-input[value="light"] {
-    background-color: #FFFFFF;
-    color: #230b4d;
+[data-mode="dark"] button {
+    background-color: #413270;
+    color: #FFFFFF;
+}
+[data-mode="dark"] nav {
+    background-color: #322656;
+}
+[value="light"] input {
+    background-color: #413270;
 }
 
 input[value="dark"] {
     background-color: #230b4d;
     color: #FFFFFF;
 }
+
   .modalBackground{
     position: fixed;
     top: 0px;
@@ -533,7 +531,7 @@ input[value="dark"] {
     display: flex;
     flex-direction: column;
     margin-top: 145px;
-    margin-left: 430px;
+    margin-left: 500px;
   }
   .modalContainer .title {
     display: inline-block;
