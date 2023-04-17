@@ -1,7 +1,30 @@
 import "./styles.css";
+import Modal from "./Modal.jsx";
+import Modal1 from "./Modal1.jsx"
+import Modal2 from "./Modal2.jsx";
+import Modal3 from "./Modal3.jsx";
+import ModalPen from "./ModalPen.jsx";
+import ModalHome from "./ModalHome.jsx";
+import ModalWork from "./ModalWork.jsx";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+
+
 export default function Profile () {
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen1, setModalOpen1] = useState(false);
+    const [modalOpen2, setModalOpen2] = useState(false);
+    const [modalOpen3, setModalOpen3] = useState(false);
+    const [modalOpen4, setModalOpen4] = useState(false);
+    const [modalOpen5, setModalOpen5] = useState(false);
+    const [modalOpen6, setModalOpen6] = useState(false);
+
+    const [mode, setMode] = useState('light');
+    const handleModeChange = (event) => {
+        setMode(event.target.value);
+        document.body.setAttribute('data-mode', event.target.value);
+    }
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -24,6 +47,15 @@ export default function Profile () {
         }, []);
     return(
         <>
+        {modalOpen && <Modal setOpenModal={setModalOpen}></Modal>}
+        {modalOpen1 && <Modal1 setOpenModal1={setModalOpen1}></Modal1>}
+        {modalOpen2 && <Modal2 setOpenModal2={setModalOpen2}></Modal2>}
+        {modalOpen3 && <Modal3 setOpenModal3={setModalOpen3}></Modal3>}
+        {modalOpen4 && <ModalPen setOpenModal4={setModalOpen4}></ModalPen>}
+        {modalOpen5 && <ModalHome setOpenModal5={setModalOpen5}></ModalHome>}
+        {modalOpen6 && <ModalWork setOpenModal6={setModalOpen6}></ModalWork>}
+   
+        <div className="contain">
             <nav className={`${ isNavbarVisible ? "visible" : ""}`}>
                 <div className = "nav-items">
                     <a>Ulyft</a>
@@ -99,15 +131,16 @@ export default function Profile () {
                 </button>
                 </div>
             </aside>
-            <div className="body">
+            <div className="main">
                 <div className="inside"></div>
-                <h1>Profile</h1>
-                <div className="content">
-                <div className="profile">
-                        <img src="/icons/profile.png"></img>
-                        <button>
-                        <img src="/icons/photo-camera.png"></img>
-                        </button>
+                    <h1>Profile</h1>
+                    <div className="content">
+                        <div className="profile">
+                            <img src="/icons/profile.png"></img>
+                            <button onClick={() => {setModalOpen(true);}}>
+                                <img src="/icons/photo-camera.png"></img>
+                            </button>
+                            
                         <div>Gresa Ismaili</div>
                     </div>
                     <div className="history">
@@ -131,39 +164,51 @@ export default function Profile () {
                     <h2>Badges</h2>
                     <div className="badgbtn">
                     <div className="badge1">
-                    <button>
-                        <img src="/icons/lock.png"></img>
-                    </button>
-                        <span>Marathoner</span>
+                        <button onClick={() => {setModalOpen1(true);}}>
+                            <img src="/icons/lock.png"></img>
+                        </button>
+                        <div className="ubadge1">
+                            <span>Marathoner</span>
+                        </div>
                     </div>
                     <div className="badge2">
-                    <button>
+                    <button onClick={() => {setModalOpen2(true);}}>
                         <img src="/icons/lock.png"></img>
                     </button>
+                    <div className="ubadge2">
                         <span>Five-Star Rider</span>
                     </div>
+                    </div>
                     <div className="badge3">
-                    <button>
+                    <button onClick={() => {setModalOpen3(true);}}>
                         <img src="/icons/lock.png"></img>
                     </button>
+                   
+                    <div className="ubadge3">
                         <span>Top Tipper</span>
+                    </div>
                     </div>
                     </div>
                 </div>
                 <div className="acc">
-                <h2>Account settings</h2>
-                <button>
-                    <img src="/icons/pen.png"></img>
+                <div className="pen">
+                <h3>Account settings</h3>
+                <button onClick={() => {setModalOpen4(true);}}>
+                        <img src="/icons/pen.png"></img>
                 </button>
+                </div>
                 </div>
                 <div className="info"></div>
                     <div className="ident">
-                        
                         <div className="ident1">
                             <img src="/icons/profile.png"></img>
-                            <div className="ident11">
-                            <span> Gresa Ismaili</span>
-                            <span>Pronouns not selected</span>
+                            <div className="idn">
+                                <div className="ident11">
+                                    <span> Gresa Ismaili</span>
+                                </div>
+                                <div className="ident12">
+                                    <div>Pronouns not selected</div>
+                                </div>
                             </div>
                         </div>
                         <div className="email">
@@ -178,27 +223,39 @@ export default function Profile () {
                     <div className="shortcut">
                         <div className="home">
                             <h2>Shortcuts</h2>
+                            <div className="home1">
                             <img src="/icons/home.png"></img>
                             <span>Add home</span>
-                            <button><img src="/icons/three-dots.png"></img></button>
+                            <button onClick={() => {setModalOpen5(true);}}>
+                                <img src="/icons/three-dots.png"></img>
+                            </button>
+                            
+                            </div>
                         </div>
                         <div className="work">
                             <img src="/icons/briefcase.png"></img>
                             <span>Add work</span>
-                            <button><img src="/icons/three-dots.png"></img></button>
+                            <button onClick={() => {setModalOpen6(true);}}>
+                                <img src="/icons/three-dots.png"></img>
+                            </button>
+                            
                         </div>
                     </div>
                     <div className="mode">
                         <h2>Dark Mode</h2>
                         <form>
-                            <input type="radio"name="mode" value="light" checked></input>
+                            <input type="radio"name="mode" value="light" checked={mode === 'light'} onChange={handleModeChange} />
                             <label for="mode">Light</label><br></br>
-                            <input type="radio" name="mode" value="dark"></input>
+                            <input type="radio" name="mode" value="dark" checked={mode === 'dark'} onChange={handleModeChange} />
                             <label for="mode">Dark</label><br></br>
                     </form>
                     </div>
+                    <div>
+                    </div>
                 </div>
             </div>
+           
+        </div>
         </>
     );
 };
