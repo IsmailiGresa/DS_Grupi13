@@ -1,4 +1,5 @@
 import "./styles.css";
+import "./profile.css"
 import Modal from "./Modal.jsx";
 import Modal1 from "./Modal1.jsx"
 import Modal2 from "./Modal2.jsx";
@@ -248,7 +249,7 @@ export default function Profile () {
                             <label for="mode">Light</label><br></br>
                             <input type="radio" name="mode" value="dark" checked={mode === 'dark'} onChange={handleModeChange} />
                             <label for="mode">Dark</label><br></br>
-                    </form>
+                        </form>
                     </div>
                     <div>
                     </div>
