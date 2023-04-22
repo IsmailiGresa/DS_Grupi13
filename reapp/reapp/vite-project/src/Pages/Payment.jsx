@@ -1,3 +1,4 @@
+import './Payment.css';
 import "./styles.css";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
@@ -5,6 +6,18 @@ export default function Payment () {
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+    const [info, setInfo] = useState({
+        cardNumber: '',
+        fullName: '',
+        month: '',
+        year: ''
+    });
+
+    const handleChange = (e) => {
+        setInfo({
+            ...info, [e.target.name]: e.target.value})
+    }
     const handleScroll = () => {
         const {pageOffset} = window;
         if(
@@ -100,7 +113,49 @@ export default function Payment () {
                 </div>
             </aside>
             <div className="body">
-                Main
+                <div className="container-card">
+                    <h2 className="h-card">Card</h2>
+                    <form className="card-form">
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="cardNumber"
+                            placeholder="cardNumber"
+                            maxlength="16"
+                            onChange={handleChange} />
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="fullName"
+                            placeholder="fullName"
+                            onChange={handleChange} />
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="month"
+                            placeholder="month"
+                            maxlength="2"
+                            onChange={handleChange} />
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="year"
+                            placeholder="year"
+                            maxlength="4"
+                            onChange={handleChange} />
+                        <button className="card-button">Confirm</button>
+                    </form>
+
+
+                    <div className="cardCredit">
+                        <div className="elements-card">
+                            <h1 className="h-card">{info.fullName}</h1>
+                            <p className="card-all">{info.cardNumber}</p>
+                            <span className="span-card">{info.year}/{info.month}</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     );
