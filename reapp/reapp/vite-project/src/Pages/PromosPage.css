@@ -1,0 +1,88 @@
+/* Apply styles to the container */
+.promos-container {
+    margin-top: 55px;
+    margin-left: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Style the heading */
+.promos-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Style the form */
+.promos-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Style the form label */
+.promos-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the form input */
+.promos-input {
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Style the form button */
+.promos-button {
+    background-color: deeppink;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Apply hover effect to the form button */
+.promos-button:hover {
+    background-color: dodgerblue;
+}
+
+/* Style the promo info container */
+.promo-info-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style the promo info label */
+.promo-info-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the promo info value */
+.promo-info-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: dodgerblue;
+    margin-bottom: 20px;
+}
