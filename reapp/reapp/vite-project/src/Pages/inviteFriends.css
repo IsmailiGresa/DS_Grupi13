@@ -1,0 +1,235 @@
+
+.invite-friends-page1{
+    margin-left:3px;
+    margin-top: 100px;
+}
+.invite-container1{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.invite-heading1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.invite-subheading1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.invite-code1-label {
+    font-size: 24px;
+    margin-bottom: 3px;
+}
+
+.invite-code1 {
+    display: block;
+    width: 1100px;
+    height: 90px;
+    font-size: 28px;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    border: 0.7px solid #000000;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #9a9191;
+
+}
+
+
+
+.invite-history1-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.invite-history1-heading {
+    font-size: 32px;
+    margin-top: 300px;
+
+}
+.invite-history1{
+    margin-top: 200px;
+}
+.invite-history1-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+.invite-history1-table {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.invite-history1-table th {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 10px;
+}
+
+.invite-history1-table td {
+    font-size: 20px;
+    padding: 10px 0;
+    border-bottom: 1px solid #000000;
+}
+
+.invite-history1-table td:first-child {
+    width: 25%;
+}
+
+.invite-history1-table td:nth-child(2) {
+    width: 25%;
+}
+
+.invite-history1-table td:nth-child(3) {
+    width: 25%;
+}
+
+.invite-history1-table td:last-child {
+    width: 25%;
+    text-align: right;
+}
+
+.button1  {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: deeppink;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 29px;
+    padding: 10px 20px;
+    margin: 10px;
+    margin-bottom: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 200px;
+    height: 50px;
+}
+
+.invite-friends-page1-button1 {
+    background-color: deeppink;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 4px;
+    cursor: pointer;
+}
+
+.invite-friends-page1-button1 :hover {
+    background-color: #dc6bc9;
+}
+
+
+.button1 :hover {
+    background-color: deeppink;
+}
+
+.button1:active {
+    background-color: deeppink;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #ffffff;
+}
+.data-row1{
+    display: inline-flex;
+}
+.data-cell1{
+    padding-right: 90px;
+    margin-top: 50px;
+    font-size: 30px;
+    color: #726d6d;
+}
+.LastWeekContent1{
+    margin-top: 40px;
+}
+.Last30Days1{
+    margin-top: 40px;
+}
+input[type="text"],
+textarea {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+
+.registered-symbol1:hover:after {
+    content: "Number of people who entered your code";
+    position: absolute;
+    bottom: 7em;
+    left: 45%;
+    transform: translateX(-50%);
+    padding: 0.2em 0.4em;
+    background-color: #6c6565;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #333;
+}
+.registered-symbol11:hover:after {
+    content: "Number of people who entered your code";
+    position: absolute;
+    bottom: 7em;
+    left: 67%;
+    transform: translateX(-50%);
+    padding: 0.2em 0.4em;
+    background-color: #6c6565;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #333;
+}
+.time-range-switch1 button{
+    display: inline-block;
+    border-radius: 4px;
+    background-color: deeppink;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 29px;
+    padding: 10px 20px;
+    margin: 10px;
+    margin-bottom: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    width: 240px;
+    height: 50px;
+}
+.time-range-switch1 button.active {
+    background-color: #9a9191;
+    color: #FFFFFF;
+}
+.time-range-switch1 button:hover {
+    background-color:deeppink;
+    color: #FFFFFF;
+}
