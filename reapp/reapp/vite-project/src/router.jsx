@@ -6,7 +6,7 @@ import NotFound from "./Pages/NotFound.jsx";
 import Profile from "./Pages/Profile.jsx";
 import Donate from "./Pages/Donate.jsx";
 import Giftcards from "./Pages/Giftcards";
-import InviteFriends from "./Pages/inviteFriends.jsx";
+import Invite from "./Pages/inviteFriends.jsx";
 import Payment from "./Pages/Payment.jsx";
 import Promos from "./Pages/Promos.jsx";
 import Rides from "./Pages/Rides.jsx";
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/invite',
-                element: <InviteFriends/>
+                element: <Invite/>
             },
             {
                 path: '/payment',
