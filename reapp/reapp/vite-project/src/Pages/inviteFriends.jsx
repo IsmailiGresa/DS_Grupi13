@@ -69,7 +69,13 @@ export default function inviteFriends () {
                         <a>Gift cards</a>
                     </button>
                     <button onClick={() => {
-                        navigate("/invite");
+                        navigate("/promos");
+                    }}>
+                        <img src="/icons/promos.png" alt=""/>
+                        <a>Promos</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/Invite");
                     }}>
                         <img src="/icons/invite.png" alt=""/>
                         <a>Invite friends</a>
