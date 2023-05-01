@@ -23,10 +23,10 @@ function InviteFriendsPage() {
 
     return (
         <div className="invite-friends-page1">
-            <h1>Refer a friend to Lyft and get ride credit</h1>
-            <h3>Earn Lyft ride credit when you refer a friend in your area.</h3>
+            <h1 className="HE11">Refer a friend to Lyft and get ride credit</h1>
+            <h3 className="HE33">Earn Lyft ride credit when you refer a friend in your area.</h3>
             <div className="invite-code1">
-                <label htmlFor="invite-code1">Your invite code</label>
+                <label id="invite-code11" htmlFor="invite-code1">Your invite code</label>
                 <input type="text" id="invite-code1" value={inviteCode} readOnly />
                 <button className="button1" onClick={() => navigator.clipboard.writeText(inviteCode)}>
                     Copy invite
