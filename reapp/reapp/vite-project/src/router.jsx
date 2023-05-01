@@ -1,6 +1,6 @@
 import {createBrowserRouter, Navigate} from "react-router-dom";
-import {Login} from "./Pages/Login.jsx";
-import {Signup} from "./Pages/Signup.jsx";
+import Login from "./Pages/Login.jsx";
+import Signup from "./Pages/Signup.jsx";
 import Mainride from "./Pages/Mainride.jsx";
 import NotFound from "./Pages/NotFound.jsx";
 import Profile from "./Pages/Profile.jsx";
