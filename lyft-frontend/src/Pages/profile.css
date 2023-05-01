@@ -336,7 +336,7 @@ padding-left: 40px
     font-weight: 200;
     padding-bottom: 50px;
 }
-input[type="radio"]{
+.mode input[type="radio"]{
     appearance: none;
     border-radius: 50px;
     width: 2vw;
@@ -351,7 +351,7 @@ input[type="radio"]{
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
-input[type="radio"]:checked{
+.mode input[type="radio"]:checked{
     border: 0.7vw solid#cdd5e3;
     background-color: rgb(56, 86, 92);
 }
