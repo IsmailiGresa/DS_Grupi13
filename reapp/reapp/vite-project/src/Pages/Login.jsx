@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import './applog.css';
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
