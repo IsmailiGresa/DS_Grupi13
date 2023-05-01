@@ -147,3 +147,128 @@ img{
     padding-left: 100px;
     padding-top: 25px;
 }
+.containerlejla {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: center;
+    height: 100%;
+    flex-direction: row;
+    width: 600px;
+    column-gap: 90px;
+
+}
+
+.h2rides {
+    font-size: 30px;
+    margin-top: 4rem;
+    margin-right: 23em;
+}
+
+.rides_slogan {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: -431px;
+}
+
+.history {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+
+.bloc-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: flex-end;
+    align-content: flex-start;
+}
+
+.tabs {
+
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    background: white;
+    cursor: pointer;
+    border-bottom: 1px solid #F082AC;
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+    margin-top: 30px;
+    border-radius: 0;
+}
+
+
+
+.active-tabs {
+    background: white;
+    border-bottom: 1px solid transparent;
+    position: relative;
+}
+
+.active-tabs::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 2px);
+    height: 3px;
+    background: #F082AC;
+}
+
+
+
+button {
+    border: none;
+
+}
+
+.rides-content-tabs {
+    flex-grow: 1;
+}
+
+.rides-content {
+    background: white;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.rides-content h2 {
+    padding: 0px 0 5px 0px;
+}
+
+.rides-content p {
+    width: 100%;
+    height: 100%;
+}
+
+.active-rides-content {
+    display: block;
+}
+
+
+.tabs:hover {
+    background-color: white;
+    border-bottom: #FFFFFF;
+}
+
+.tabs:focus {
+    background-color: white;
+
+}
+
+/* button:focus,
+button:focus-visible {
+    outline: none
+} */
