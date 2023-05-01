@@ -132,9 +132,9 @@ export default function Profile () {
                 </button>
                 </div>
             </aside>
-            <div className="main">
+            <div className="mainProfile">
                 <div className="inside"></div>
-                    <h1>Profile</h1>
+                    <h5>Profile</h5>
                     <div className="content">
                         <div className="profile">
                             <img src="/icons/profile.png"></img>
