@@ -1,15 +1,20 @@
-.gift-cards-page1 {
-    margin: 0 auto;
-    max-width: 100%;
-    background-color: #ffffff;
+/*.gift-cards-page1 {*/
+/*    margin-left:200px;*/
+/*    margin-top: 100px;*/
+/*    background-color: #ffffff;*/
+/*}*/
+.main{
+    margin-left:200px;
+    margin-top: 100px;
 }
-
 h1 {
     font-size: 48px;
     margin-top: 50px;
     margin-bottom: 70px;
+    margin-left: -130px;
     text-align: left;
-    color: #000000;
+    color: #6c6565;
+    white-space: nowrap;
 }
 
 
@@ -21,15 +26,17 @@ h1 {
 h2 {
     font-size: 32px;
     margin-bottom: 5px;
-    color: #000000;
+    color: #6c6565;
     text-align: left;
-    margin-top: 5px;
+    margin-top: -30px;
+    white-space: nowrap;
 }
 h3 {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #000000;
+    color: #6c6565;
     text-align: left;
+    margin-top: -10px;
 
 }
 
@@ -43,10 +50,10 @@ ul {
 }
 
 li {
-    font-size: 24px;
+    font-size: 20px;
     margin-right: 50px;
     text-transform: uppercase;
-    color: #000000;
+    color: #6c6565;
     text-align: left;
     margin-bottom: 50px;
 }
@@ -63,7 +70,7 @@ textarea {
     border: 2px solid #ccc;
     border-radius: 4px;
     resize: vertical;
-    background-color: #dec0c0;
+    background-color: #efe1e1;
     color: white;
 }
 
@@ -86,12 +93,14 @@ textarea {
     transition: all 0.3s ease-in-out;
     width: 250px;
     height: 60px;
+    margin-bottom: 60px;
 
 }
 .gift-card-buttons2 button {
     background-color: #9a9191;
     color: white;
     border: none;
+    margin-bottom: 60px;
     border-radius: 20px;
     font-size: 1.2rem;
     padding: 10px 20px;
