@@ -14,12 +14,11 @@
 
 .body-log {
     min-height: 100vh;
-    background-color: #0c4d60;
 }
 
 .hone-h1 {
     font-family: Georgia, serif;
-    color: #467db9;
+    color: #ff4081;
 
 }
 
@@ -40,7 +39,7 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.1);
 }
 
 .form-ls {
@@ -53,7 +52,7 @@
 
 .sign-link,
 .sign-link:visited {
-    color: #467db9;
+    color: #ff4081;
 
 }
 
@@ -67,13 +66,13 @@
 .inp-label{
     font-family: Georgia, serif;
     margin-top: 1rem;
-    color: #9ca3af;
+    color: #0c0d10;
 }
 .validbtn {
     font-family: Georgia, serif;
     margin-top: 1rem;
     color: #0c0d10;
-    background: #1e639b;
+    background: #ff4081;
 }
 
 .validbtn {
