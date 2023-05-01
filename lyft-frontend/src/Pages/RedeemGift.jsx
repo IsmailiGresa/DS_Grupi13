@@ -94,7 +94,7 @@ export default function RedeemGift () {
                     </button>
                 </div>
             </aside>
-            <div className="body">
+            <div className="main">
                 <RedeemGiftCard />
             </div>
         </>
