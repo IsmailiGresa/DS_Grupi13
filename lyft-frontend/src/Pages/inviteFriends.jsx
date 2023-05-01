@@ -100,7 +100,7 @@ export default function inviteFriends () {
                     </button>
                 </div>
             </aside>
-            <div className="body">
+            <div className="main">
                 <InviteFriendsPage />
             </div>
         </>
