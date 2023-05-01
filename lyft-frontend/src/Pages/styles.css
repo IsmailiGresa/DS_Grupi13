@@ -3,6 +3,16 @@
     font-size: medium;
     font-style: normal;
     color: rgb(90, 90, 90);
+    padding: 0rem;
+}
+#root{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0rem;
+    text-align: center;
+}
+html body{
+    gap:0;
 }
 nav{
     position: fixed;
@@ -20,6 +30,7 @@ nav{
     border-style: groove;
     color: rgb(0 0 0 / 5%);
     transition: 0.3s;
+    z-index:999;
 }
 nav.visible{
     z-index:999;
@@ -104,13 +115,12 @@ nav > img{
     height: 43.5px;
     width: 100%;
     line-height: 1.5;
-    padding: 0 16px 0 25px;
+    padding: 0 75px 0 25px;
     transition: 0.25s;
     background-color: white;
 }
 button:hover {
     background-color: rgb(235, 231, 231);
-
   }
 .sidebar button img{
     width: 25px;
@@ -137,21 +147,3 @@ img{
     padding-left: 100px;
     padding-top: 25px;
 }
-.body {
-    position: relative;
-    width:590px;
-    height: 1028px;
-    right: 0;
-
-}
-div.body{
-    padding-right: 400px;
-    margin-left: 233px;
-    margin-top: 19px;
-}
-
-#root{
-    padding-right: 300px;
-
-}
-

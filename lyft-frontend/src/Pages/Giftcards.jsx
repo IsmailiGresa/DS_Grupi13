@@ -1,6 +1,7 @@
 import "./styles.css";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import GiftCardsPage from "./GiftCardsPage";
 export default function Giftcards () {
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
@@ -94,7 +95,7 @@ export default function Giftcards () {
                 </div>
             </aside>
             <div className="body">
-                Main
+                    <GiftCardsPage/>
             </div>
         </>
     );

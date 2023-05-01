@@ -1,26 +1,109 @@
-import React, { useState } from "react";
-import './signup.css';
+import { useRef, useState, useEffect, useContext } from 'react';
+//import AuthContext from "./context/AuthProvider";
+//import axios from './api/axios';
+const LOGIN_URL = '/auth';
+import "./signuplogin.css";
 
-export const Login = (props) => {
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+const Login = () => {
+    //const { setAuth } = useContext(AuthContext);
+    const userRef = useRef();
+    const errRef = useRef();
 
-    const handleSubmit = (e) => {
+    const [user, setUser] = useState('');
+    const [pwd, setPwd] = useState('');
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, [])
+
+    useEffect(() => {
+        setErrMsg('');
+    }, [user, pwd])
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(email);
+
+        try {
+            const response = await axios.post(LOGIN_URL,
+                JSON.stringify({user, pwd}),
+                {
+                    headers: { 'Content-Type': 'application/json' },
+                    withCredentials: true
+                }
+            );
+            console.log(JSON.stringify(response?.data));
+            //console.log(JSON.stringify(response));
+            const accessToken = response?.data?.accessToken;
+            const roles = response?.data?.roles;
+            setAuth({ user, pwd, roles, accessToken });
+            setUser('');
+            setPwd('');
+            setSuccess(true);
+        } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Missing Username or Password');
+            } else if (err.response?.status === 401) {
+                setErrMsg('Unauthorized');
+            } else {
+                setErrMsg('Login Failed');
+            }
+            errRef.current.focus();
+        }
     }
 
     return (
-        <div className="auth-form-container">
-            <h2>Login</h2>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <label htmlFor="email">email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)}type="email" placeholder="email@gmail.com" id="email" name="email" />
-                <label htmlFor="password">password</label>
-                <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" />
-                <button type="submit">Log In</button>
-            </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+        <div className="main-container my-selector body-log">
+            {success ? (
+                <section className="section-info">
+                    <h1 className="hone-h1">You are logged in!</h1>
+                    <br />
+                    <p className="html-tags">
+                        <a className="sign-link" href="#">Go to Home</a>
+                    </p>
+                </section>
+            ) : (
+
+                <section className="section-info ">
+                    <p ref={errRef} className={errMsg ? "error-message" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h1 className="hone-h1">Log In</h1>
+                    <form className="form-ls" onSubmit={handleSubmit}>
+                        <label className="inp-label" htmlFor="username">Username:</label>
+                        <input
+                            className="textarea-text"
+                            type="text"
+                            id="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setUser(e.target.value)}
+                            value={user}
+                            required
+                        />
+
+                        <label className="inp-label" htmlFor="password">Password:</label>
+                        <input
+                            className="textarea-text"
+                            type="password"
+                            id="password"
+                            onChange={(e) => setPwd(e.target.value)}
+                            value={pwd}
+                            required
+                        />
+                        <button className="validbtn">Log In</button>
+                    </form>
+                    <p className="html-tags">
+                        Need an Account?<br />
+                        <span className="inline-element">
+                            {/*put router link here*/}
+                            <a className="sign-link" href="#">Sign Up</a>
+                        </span>
+                    </p>
+                </section>
+            )}
         </div>
     )
 }
+export default Login;

@@ -1,31 +1,119 @@
 import React, { useState } from 'react';
 import './mainride.css';
-import './styles.css';
-import { FaMapMarkerAlt } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-
+import './sidebarBtn.css';
+import { useRef as myUseRef } from 'react';
+// import Rides from './Rides';
+// import Payment from "./Payment.jsx";
+// import Giftcards from "./Giftcards.jsx";
+// import Promos from "./Promos.jsx";
+// import Invite from "./Invite.jsx";
+// import Donate from "./Donate";
+// // import Settings
+// import Logout from "./Logout.jsx";
 
 function Mainride() {
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+    const [open, setOpen]=useState(false);
+    const [showRedeemWindow, setShowRedeemWindow] = useState(false);
+    const navigate = useNavigate();
+    const lastScrollTop =myUseRef(0);
+
 
     return (
         <div>
             <nav className={`${isNavbarVisible ? "visible" : ""}`}>
                 <div className="nav-items">
-                    <button>
-                        Sidebar
-                    </button>
                     <a>Ulyft</a>
                 </div>
                 <div className="nav-items1">
-                    <button
-                        onClick={() => {
-                            navigate('/mainride');
-                        }}
-                    >
-                        <a>Gresa</a>
-                        <img src="/icons/profile.png" alt="" />
-                    </button>
+                    <div className="menu-container">
+                        <div className="menu-trigger" onClick={()=>{setOpen(!open)}}>
+                            <img src="/icons/profile.png" alt="" />
+                        </div>
+                        <div className={`dropdown-menu ${open ? 'active' : 'inactive'}`}>
+
+                         <img src="/icons/profile.png" alt=""></img>
+                                      <a>Gresa Ismaili </a>
+                            <ul>
+                                {/*<li>*/}
+                                {/*    <button className="dropdown-btn" onClick={() => {*/}
+                                {/*        navigate("/mainride");*/}
+                                {/*    }}>*/}
+                                {/*        <img src="/icons/ride.png" alt=""/>*/}
+                                {/*        <a>Get a ride</a>*/}
+                                {/*    </button>*/}
+                                {/*</li>*/}
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/rides");
+                                    }}>
+                                        <img src="/icons/clock.png" alt=""/>
+                                        <a>Rides</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/payment");
+                                    }}>
+                                        <img src="/icons/payment.png" alt=""/>
+                                        <a>Payment</a>
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/giftcards");
+                                    }}>
+                                        <img src="/icons/gift_card.png" alt=""/>
+                                        <a>Gift cards</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/promos");
+                                    }}>
+                                        <img src="/icons/gift_card.png" alt=""/>
+                                        <a>Promos</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/invite");
+                                    }}>
+                                        <img src="/icons/invite.png" alt=""/>
+                                        <a>Invite friends</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/donate");
+                                    }}>
+                                        <img src="/icons/donation.png" alt=""/>
+                                        <a>Donate</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/profile");
+                                    }}>
+                                        <img src="/icons/settings.png" alt=""/>
+                                        <a>Settings</a>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button className="dropdown-btn" onClick={() => {
+                                        navigate("/logout");
+                                    }}>
+                                        <img src="/icons/profile.png" alt=""/>
+                                        <a>Log out</a>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
                 </div>
             </nav>
             <div className="container">
@@ -36,7 +124,7 @@ function Mainride() {
                             PICKUP LOCATION
                         </label>
                         <div className="input-wrapper">
-                            <FaMapMarkerAlt className="input-icon" />
+                            <img src="/icons/location-pin.png" alt="map marker" className="input-icon" />
                             <input
                                 type="text"
                                 id="pickup"
@@ -51,7 +139,7 @@ function Mainride() {
                             DESTINATION
                         </label>
                         <div className="input-wrapper">
-                            <FaMapMarkerAlt className="input-icon" />
+                            <img src="/icons/location-pin.png" alt="map marker" className="input-icon" />
                             <input
                                 type="text"
                                 id="destination"
@@ -67,6 +155,8 @@ function Mainride() {
         </div>
     );
 }
+
+
 
 export default Mainride;
 
