@@ -1,142 +1,102 @@
+.modal-overlay5 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
 
 .modal5 {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgb(236, 233, 233);
-    border-radius: 10px;
-    border-color: #000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    width: 30%;
-    max-height: 90%;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    z-index: 10000; /* make sure it's on top of the overlay */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    width: 300px;
+    height: 400px;
 }
-
-
 
 .modal-header5 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    border-bottom: 1px solid #ccc;
-    height: 130px;
-    margin-top: 1px;
-    white-space: nowrap;
-}
-
-.modal-header5 h2 {
-    margin: 0;
-    color: #6c6565;
-    text-align: center;
-    white-space: nowrap;
+    margin-bottom: 20px;
 }
 
 .close-button5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-}
-
-.close-button5  {
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    height: 40px;
-    width: 40px;
     background-color: transparent;
-    color: #6c6565;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }
-
-.close-button5:hover {
-    color:deeppink;
-}
-
 
 .modal-body5 {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.LA55 {
-    margin-top: 1px;
-    white-space: nowrap;
-    margin-left: 80px;
-    margin-bottom: 3px;
+    margin-bottom: 20px;
 }
 
 #text5 {
-    width: 80%;
-    padding: 0.5rem;
-    margin-top: 0.5rem;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    border: 1px solid #000;
-}
-
-.modal-body5 label {
-    color: #6c6565;
-    font-size: 20px;
 }
 
 .redeem-button5 {
-    margin-top: 2rem;
-    padding: 0.5rem 1rem;
-    border-radius: 40px;
+    display: block;
     background-color: deeppink;
-    color: white;
+    color: #fff;
     border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    height: 60px;
-    width: 150px;
-}
-
-.modal-footer5.scrollbar.payment {
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    color: #f44336;
+    margin-left: 97px;
 }
 
 .modal-footer5 {
-    margin-top: auto;
-    padding: 1rem;
-    border-top: 1px solid #000;
-    background-color: darkgrey;
-    border-radius: 80px;
-    width: auto;
-    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
 }
 
-.scrollbar5 {
-    height: 200px;
-    color: #ff8ef5;
-    font-size: large;
-}
 
-.modal-footer5 h3 {
-    color: #6c6565;
-    white-space: nowrap;
-}
-
-.modal-footer5 h4 {
-    color: dimgrey;
-    white-space: nowrap;
-    margin-top: 2px;
-}
-.HE55{
-    white-space: nowrap;
-    margin-top: 2px;
-}
 .Payment5 {
-    margin-top: 1px;
-    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    white-space: nowrap;
+    margin-left: 10px;
+}
+
+.Payment5 h3::before {
+    content: "\26A0";
+    color: deeppink;
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 22px;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.HE5 {
+    font-size: 12px;
+    color: #777;
+margin-top: 1px;
+}
+.scrollbar5 {
+    max-height: 190px;
+    overflow-y: auto;
+    padding-right: 5px;
+    background-color: #cccccc;
 }

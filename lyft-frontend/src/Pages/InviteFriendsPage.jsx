@@ -32,9 +32,9 @@ function InviteFriendsPage() {
                     Copy invite
                 </button>
             </div>
-            <div className="invite-history1">
-                <h1>Your invite history</h1>
-            </div>
+
+                <h1 className="invite-historyy">Your invite history</h1>
+
             <div className="time-range-switch1">
                 <button
                     onClick={() => {

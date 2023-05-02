@@ -21,18 +21,28 @@
     font-size: 24px;
     margin-bottom: 20px;
     text-align: left;
+    margin-left: 10px;
 }
 
 .invite-code1 label {
     font-size: 18px;
     margin-bottom: 3px;
-    margin-left: 350px;
+    margin-left: 20px;
+}
+.invite-historyy{
+    margin-top: 170px;
+    text-align: center;
+    margin-right: 650px;
+}
+.HE11{
+    margin-right: 330px;
 }
 
 .HE33{
-    margin-left: -150px;
+    margin-left: 10px;
     margin-top:-20px;
     margin-bottom: 20px;
+    white-space: nowrap;
 }
 
 .invite-code1 {
@@ -183,8 +193,7 @@
 .Last30Days1{
     margin-top: 1px;
 }
-#invite-code1,
-textarea {
+#invite-code1{
     display: inline-block;
     width: 100%;
     padding: 10px;
@@ -199,7 +208,7 @@ textarea {
 .registered-symbol1:hover:after {
     content: "Number of people who entered your code";
     position: absolute;
-    bottom: 27em;
+    bottom: 1em;
     left: 50%;
     transform: translateX(-50%);
     padding: 0.2em 0.4em;
@@ -213,7 +222,7 @@ textarea {
 .registered-symbol11:hover:after {
     content: "Number of people who entered your code";
     position: absolute;
-    bottom: 27em;
+    bottom: 1em;
     left: 67%;
     transform: translateX(-50%);
     padding: 0.2em 0.4em;
@@ -235,7 +244,7 @@ textarea {
     padding: 10px 20px;
     margin: 10px;
     margin-bottom: 90px;
-    margin-left: 150px;
+    margin-left: 20px;
     transition: all 0.5s;
     cursor: pointer;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -250,13 +259,15 @@ textarea {
     background-color:deeppink;
     color: #FFFFFF;
 }
-.LastWeekContent1 h2{
+.LastWeekContent1 {
     font-size: 30px;
     white-space: nowrap;
     margin-top: 4px;
+    margin-right: 800px;
 }
-.Last30Days1 h2 {
+.Last30Days1  {
     font-size: 30px;
     white-space: nowrap;
     margin-top: 4px;
+    margin-right: 800px;
 }
