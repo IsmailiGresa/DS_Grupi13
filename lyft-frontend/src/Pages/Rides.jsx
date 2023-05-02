@@ -113,7 +113,7 @@ export default function Rides() {
             </aside>
             <div className="rides_slogan">
                 <h2 className="h2rides">Rides</h2>
-                <span className="history-rides"><strong>Ride History</strong></span>
+                <span className="ride-history"><strong>Ride History</strong></span>
 
 
             </div>
