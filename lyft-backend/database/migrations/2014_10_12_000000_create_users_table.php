@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('phone_number');
             $table->date('birthday');
+            $table->boolean('is_driver')->default(false);
             $table->string('home_address')->nullable();
             $table->string('work_address')->nullable();
             $table->integer('rides')->default(0);

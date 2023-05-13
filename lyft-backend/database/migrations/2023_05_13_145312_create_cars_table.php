@@ -13,17 +13,13 @@ return new class extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('brand');
             $table->string('model');
             $table->string('color');
             $table->string('license_plate');
             $table->timestamps();
 
-            $table->foreign('user_id')
-            ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
         });
     }
 
