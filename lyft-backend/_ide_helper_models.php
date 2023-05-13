@@ -12,6 +12,24 @@
 
 namespace App\Models{
 /**
+ * App\Models\City
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Database\Factories\CityFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereUpdatedAt($value)
+ */
+	class City extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\User
  *
  * @property int $id
