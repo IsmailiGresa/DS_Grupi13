@@ -6,7 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Ability;
 use App\Models\Car;
-use App\Models\Charity;
+use App\Models\Donation;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -29,34 +29,11 @@ class DatabaseSeeder extends Seeder
             'action' => 'create-driver',
             'model_name' => User::class,
         ]);
-        Charity::create([
-            'name'=> 'Komuniteti Mbështetës i Kancerit në Kosovë'
-        ]);
-        Charity::create([
-            'name' => 'Kryqi i Kuq i Kosovës'
-        ]);
-        Charity::create([
-            'name' => 'Shoqata e të Verbërve të Kosovës'
-        ]);
-        Charity::create([
-            'name' => 'YMCA Kosovo'
-        ]);
-        Charity::create([
-            'name' => 'Save the Children Kosovo'
-        ]);
-        Charity::create([
-            'name' => 'UNICEF Kosovo'
-        ]);
-        Charity::create([
-            'name' => 'Fondacioni për të Drejtat e Kafshëve'
-        ]);
-        Charity::create([
-            'name' => 'Qendra për Promovimin e Drejtave të Grave'
-        ]);
-        Charity::create([
-            'name' => 'HANDIKOS'
-        ]);
+
+        $this->call(CharitySeeder::class);
 
         $role->abilities()->attach($ability);
+
+        Donation::factory(10)->create();
     }
 }
