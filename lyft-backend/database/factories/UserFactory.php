@@ -23,7 +23,6 @@ class UserFactory extends Factory
             'avatar' => $this->faker->imageUrl(200, 200),
             'phone_number' => $this->faker->phoneNumber,
             'birthday' => $this->faker->date,
-            'is_driver' => $this->faker->boolean,
             'home_address' => $this->faker->address,
             'work_address' => $this->faker->address,
             'email' => $this->faker->unique()->safeEmail,
