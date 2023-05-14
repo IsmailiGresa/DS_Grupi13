@@ -125,7 +125,7 @@ export default function Rides() {
                     >
                         All
                     </button>
-                    <button
+                    {/* <button
                         className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
                         onClick={() => toggleTab(2)}
                     >
@@ -136,7 +136,7 @@ export default function Rides() {
                         onClick={() => toggleTab(3)}
                     >
                         Business
-                    </button>
+                    </button> */}
                 </div>
 
                 <div className="content-tabs">
@@ -150,7 +150,7 @@ export default function Rides() {
                         </p>
                     </div>
 
-                    <div
+                    {/* <div
                         className={toggleState === 2 ? "rides-content  active-rides-content" : "rides-content"}
                     >
                         <h2>No personal rides yet</h2>
@@ -168,7 +168,7 @@ export default function Rides() {
                         <p>
                             You haven't completed any rides yet. Take your first ride today!
                         </p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </>
