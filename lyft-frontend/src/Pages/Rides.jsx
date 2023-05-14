@@ -125,18 +125,6 @@ export default function Rides() {
                     >
                         All
                     </button>
-                    {/* <button
-                        className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
-                        onClick={() => toggleTab(2)}
-                    >
-                        Personal
-                    </button>
-                    <button
-                        className={toggleState === 3 ? "tabs active-tabs" : "tabs"}
-                        onClick={() => toggleTab(3)}
-                    >
-                        Business
-                    </button> */}
                 </div>
 
                 <div className="content-tabs">
@@ -149,26 +137,6 @@ export default function Rides() {
                             You haven't completed any rides yet. Take your first ride today!
                         </p>
                     </div>
-
-                    {/* <div
-                        className={toggleState === 2 ? "rides-content  active-rides-content" : "rides-content"}
-                    >
-                        <h2>No personal rides yet</h2>
-
-                        <p>
-                            You haven't completed any rides yet. Take your first ride today!
-                        </p>
-                    </div>
-
-                    <div
-                        className={toggleState === 3 ? "rides-content  active-rides-content" : "rides-content"}
-                    >
-                        <h2>No business rides yet</h2>
-
-                        <p>
-                            You haven't completed any rides yet. Take your first ride today!
-                        </p>
-                    </div> */}
                 </div>
             </div>
         </>
