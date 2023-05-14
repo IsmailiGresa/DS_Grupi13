@@ -21,7 +21,7 @@ class DonationFactory extends Factory
         return [
             'user_id' => User::all()->random()->id,
             'charity_id' => Charity::all()->random()->id,
-            'amount' => $this->faker->randomDigit()
+            'amount' => $this->faker->randomDigit(),
         ];
     }
 }
