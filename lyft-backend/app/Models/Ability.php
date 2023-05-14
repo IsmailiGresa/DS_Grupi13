@@ -12,7 +12,7 @@ class Ability extends Model
 
     protected $guarded = [];
 
-    public function roles() : BelongsToMany
+    public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class);
     }

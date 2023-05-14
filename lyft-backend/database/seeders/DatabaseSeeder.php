@@ -22,12 +22,12 @@ class DatabaseSeeder extends Seeder
 
         $role = Role::create([
             'name' => 'admin',
-            'description' => 'some description'
+            'description' => 'some description',
         ]);
 
         $ability = Ability::create([
             'action' => 'create-driver',
-            'model_name' => User::class
+            'model_name' => User::class,
         ]);
 
         $role->abilities()->attach($ability);
