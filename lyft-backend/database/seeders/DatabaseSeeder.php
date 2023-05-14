@@ -7,6 +7,7 @@ namespace Database\Seeders;
 use App\Models\Ability;
 use App\Models\Car;
 use App\Models\Charity;
+use App\Models\Donation;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -58,5 +59,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $role->abilities()->attach($ability);
+
+        Donation::factory(10)->create();
     }
 }
