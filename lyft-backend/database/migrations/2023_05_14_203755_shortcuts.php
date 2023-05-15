@@ -10,17 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-{
-    Schema::create('shortcuts', function (Blueprint $table) {
-        $table->id();
-        $table->string('home_location');
-        $table->string('work_location');
-        $table->timestamps();
-    });
-}
+    {
+        Schema::create('shortcuts', function (Blueprint $table) {
+            $table->id();
+            $table->string('home_location');
+            $table->string('work_location');
+            $table->timestamps();
+        });
+    }
+
     /**
-     * Reverse the migrations.
-     */
+         * Reverse the migrations.
+         */
     public function down(): void
     {
         //
