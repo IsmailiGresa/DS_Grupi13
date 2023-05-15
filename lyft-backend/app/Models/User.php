@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+
+    public function donation(): HasOne
+    {
+        return $this->hasOne(Donation::class);
+    }
 }
