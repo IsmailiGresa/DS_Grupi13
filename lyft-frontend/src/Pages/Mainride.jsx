@@ -19,7 +19,10 @@ function Mainride() {
     const [showRedeemWindow, setShowRedeemWindow] = useState(false);
     const navigate = useNavigate();
     const lastScrollTop =myUseRef(0);
-    const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+    const [mapCenter, setMapCenter] = useState({ lat: 42.6620, lng: 21.1655 });
+
+
+
 
     const onMapLoad = (map) => {
         // Get the current map center
@@ -33,14 +36,16 @@ function Mainride() {
 
     return (
         <>
-            <GoogleMap
-                mapContainerStyle={{ height: '400px', width: '100%' }}
-                zoom={8}
-                center={mapCenter}
-                onLoad={onMapLoad}
-            >
-                <Marker position={mapCenter} />
-            </GoogleMap>
+            <div className="map-container">
+                <GoogleMap
+                    mapContainerStyle={{ height: '100vh', width: '100%' }}
+                    zoom={8}
+                    center={mapCenter}
+                    onLoad={onMapLoad}
+                >
+                    <Marker position={mapCenter} />
+                </GoogleMap>
+            </div>
         <div>
             <nav className={`${isNavbarVisible ? "visible" : ""}`}>
                 <div className="nav-items">
