@@ -140,7 +140,7 @@ export default function Donate() {
                 <span><strong>Millions lack access to transportation and basic needs.</strong></span>
                 <p>Your small change matters. Round up the cost of your ride to the nearest euro and donate the difference.</p>
                 <hr />
-                <h3>Choose an organization</h3>
+                <h3 className="h3_donate">Choose an organization</h3>
             </div>
 
             {isDonate &&
