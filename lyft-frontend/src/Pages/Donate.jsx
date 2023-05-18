@@ -159,7 +159,7 @@ export default function Donate() {
             {/* make an API call with that charity id and get a response with data */}
             {/* display that data in the donations deets */}
             {/* make a button stop donating, if clicked, hide the deets section */}
-            <div className="container">
+            <div className="container_donate">
 
 
                 {charities.map((charity) => (
