@@ -17,7 +17,6 @@ class DonationController extends ApiController
         $data = $request->validated();
 
         $donation = Donation::where('user_id', auth()->id())->where('charity_id', $data['charity_id'])->first();
-
         if ($donation !== null) {
             return $this->showError('You can only donate to one charity at a time', 422);
         }
