@@ -9,7 +9,7 @@ hr{
     background: 1px solid white;
 }
 
-.container {
+.container_donate {
 display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -58,7 +58,7 @@ h4{
             align-content: flex-start;
             flex-direction: column;
             align-items: flex-start;
-            margin-left: 235px;
+            margin-left: 245px;
 }
 
 .charity-list {
