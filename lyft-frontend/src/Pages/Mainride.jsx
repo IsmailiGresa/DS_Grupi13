@@ -3,6 +3,7 @@ import './mainride.css';
 import { useNavigate } from 'react-router-dom';
 import './sidebarBtn.css';
 import { useRef as myUseRef } from 'react';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 // import Rides from './Rides';
 // import Payment from "./Payment.jsx";
 // import Giftcards from "./Giftcards.jsx";
@@ -18,9 +19,28 @@ function Mainride() {
     const [showRedeemWindow, setShowRedeemWindow] = useState(false);
     const navigate = useNavigate();
     const lastScrollTop =myUseRef(0);
+    const [mapCenter, setMapCenter] = useState({ lat: 0, lng: 0 });
+
+    const onMapLoad = (map) => {
+        // Get the current map center
+        const center = map.getCenter();
+
+        // Update the state with the new map center
+        setMapCenter({ lat: center.lat(), lng: center.lng() });
+    };
+
 
 
     return (
+        <>
+            <GoogleMap
+                mapContainerStyle={{ height: '400px', width: '100%' }}
+                zoom={8}
+                center={mapCenter}
+                onLoad={onMapLoad}
+            >
+                <Marker position={mapCenter} />
+            </GoogleMap>
         <div>
             <nav className={`${isNavbarVisible ? "visible" : ""}`}>
                 <div className="nav-items">
@@ -73,7 +93,7 @@ function Mainride() {
                                     <button className="dropdown-btn" onClick={() => {
                                         navigate("/promos");
                                     }}>
-                                        <img src="/icons/gift_card.png" alt=""/>
+                                        <img src="/icons/promos.png" alt=""/>
                                         <a>Promos</a>
                                     </button>
                                 </li>
@@ -153,6 +173,7 @@ function Mainride() {
                 </div>
             </div>
         </div>
+            </>
     );
 }
 
