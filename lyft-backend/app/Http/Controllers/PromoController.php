@@ -2,28 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Promo;
 use Illuminate\Http\Request;
+use App\Models\Promo;
 
 class PromoController extends Controller
 {
-    public function index()
+    public function create(Request $request)
     {
-        $promos = Promo::all();
+        $promo = new Promo;
+        $promo->code = $request->input('code');
+        $promo->discount = $request->input('discount');
+        $promo->validity = $request->input('validity');
+        $promo->save();
 
-        return response()->json($promos);
+        return response()->json(['message' => 'Promo created successfully'], 201);
     }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'title' => 'required|string',
-            'description' => 'required|string',
-        ]);
-
-        $promo = Promo::create($validatedData);
-
-        return response()->json($promo, 201);
-    }
-
 }
