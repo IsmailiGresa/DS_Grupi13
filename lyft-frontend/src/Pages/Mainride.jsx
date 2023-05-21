@@ -60,21 +60,14 @@ function Mainride() {
 
                          <img src="/icons/profile.png" alt=""></img>
                                       <a>Gresa Ismaili </a>
-                            <ul>
-                                {/*<li>*/}
-                                {/*    <button className="dropdown-btn" onClick={() => {*/}
-                                {/*        navigate("/mainride");*/}
-                                {/*    }}>*/}
-                                {/*        <img src="/icons/ride.png" alt=""/>*/}
-                                {/*        <a>Get a ride</a>*/}
-                                {/*    </button>*/}
-                                {/*</li>*/}
+                            <ul className="dropdown-menu-list5">
+
                                 <li>
                                     <button className="dropdown-btn" onClick={() => {
                                         navigate("/rides");
                                     }}>
                                         <img src="/icons/clock.png" alt=""/>
-                                        <a>Rides</a>
+                                        <a>Rides     </a>
                                     </button>
                                 </li>
                                 <li>
