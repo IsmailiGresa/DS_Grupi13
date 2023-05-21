@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\PromoController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', LoginController::class);
@@ -13,4 +14,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('donations', [DonationController::class, 'store']);
     Route::put('donations', [DonationController::class, 'update']);
     Route::delete('donations', [DonationController::class, 'destroy']);
+    Route::get('promos', [PromoController::class, 'index']);
+    Route::post('promos', [PromoController::class, 'store']);
 });
