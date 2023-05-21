@@ -140,7 +140,7 @@ export default function Donate() {
                 <span><strong>Millions lack access to transportation and basic needs.</strong></span>
                 <p>Your small change matters. Round up the cost of your ride to the nearest euro and donate the difference.</p>
                 <hr />
-                <h3>Choose an organization</h3>
+                <h3 className="h3_donate">Choose an organization</h3>
             </div>
 
             {isDonate &&
@@ -159,7 +159,7 @@ export default function Donate() {
             {/* make an API call with that charity id and get a response with data */}
             {/* display that data in the donations deets */}
             {/* make a button stop donating, if clicked, hide the deets section */}
-            <div className="container">
+            <div className="container_donate">
 
 
                 {charities.map((charity) => (
