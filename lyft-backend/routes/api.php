@@ -3,8 +3,8 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Donation\DonationController;
-use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', LoginController::class);
@@ -17,4 +17,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/promos', [PromoController::class, 'store']);
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
+    Route::get('rides', [RideController::class, 'index']);
 });
