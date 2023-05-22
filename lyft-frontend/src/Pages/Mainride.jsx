@@ -19,19 +19,18 @@ function Mainride() {
     const [showRedeemWindow, setShowRedeemWindow] = useState(false);
     const navigate = useNavigate();
     const lastScrollTop =myUseRef(0);
-    const [mapCenter, setMapCenter] = useState({ lat: 42.6620, lng: 21.1655 });
-
-
-
+    const [mapCenter, setMapCenter] = useState({ lat: 42.6431, lng: 20.6922 });
+    // const [mapZoom, setMapZoom] = useState(250);
 
     const onMapLoad = (map) => {
-        // Get the current map center
+
         const center = map.getCenter();
 
-        // Update the state with the new map center
-        setMapCenter({ lat: center.lat(), lng: center.lng() });
-    };
+        const newMapCenter = { lat: 42.6431, lng: 20.6922 };
 
+        setMapCenter(newMapCenter);
+        // setMapZoom(250);
+    };
 
 
     return (
