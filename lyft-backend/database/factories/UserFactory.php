@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -24,6 +25,7 @@ class UserFactory extends Factory
             'phone_number' => $this->faker->phoneNumber,
             'birthday' => $this->faker->date,
             'home_address' => $this->faker->address,
+            'role_id' => Role::all()->random()->id,
             'work_address' => $this->faker->address,
             'email' => $this->faker->unique()->safeEmail,
             'rides' => 0,

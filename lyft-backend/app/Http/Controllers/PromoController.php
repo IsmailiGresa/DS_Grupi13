@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Promo;
+use Illuminate\Http\Request;
 
 class PromoController extends ApiController
 {
@@ -31,9 +31,10 @@ class PromoController extends ApiController
         return $this->showOne($promo);
     }
 
-    public function destroy(Promo $promo){
+    public function destroy(Promo $promo)
+    {
         $promo->delete();
 
-        return $this->showMessage("Promo deleted successfully!");
+        return $this->showMessage('Promo deleted successfully!');
     }
 }
