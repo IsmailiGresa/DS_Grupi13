@@ -6,6 +6,9 @@ use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\GiftCardHistoryController;
+
+
 Route::post('/login', LoginController::class);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -14,3 +17,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('donations', [DonationController::class, 'update']);
     Route::delete('donations', [DonationController::class, 'destroy']);
 });
+Route::get('/gift-card-history', [GiftCardHistoryController::class, 'index']);
+Route::post('/gift-card-history', [GiftCardHistoryController::class, 'store']);
+

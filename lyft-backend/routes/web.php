@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\GiftCardHistoryController;
 Route::get('/', function () {
     return view('welcome');
+});
+Route::group(['middleware' => ['web']], function () {
+    Route::get('/gift-card-history', [GiftCardHistoryController::class, 'index']);
+    Route::post('/gift-card-history', [GiftCardHistoryController::class, 'store']);
 });
