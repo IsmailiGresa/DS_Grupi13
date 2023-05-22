@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +21,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name', 'last_name', 'avatar', 'phone_number', 'birthday', 'home_address', 'work_address', 'rides', 'email', 'password'];
+        'first_name', 'last_name', 'avatar', 'phone_number', 'birthday', 'home_address', 'work_address', 'rides', 'email', 'password',
+    ];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -54,5 +56,10 @@ class User extends Authenticatable
     public function donation(): HasOne
     {
         return $this->hasOne(Donation::class);
+    }
+
+    public function user_rides(): HasMany
+    {
+        return $this->hasMany(Ride::class);
     }
 }
