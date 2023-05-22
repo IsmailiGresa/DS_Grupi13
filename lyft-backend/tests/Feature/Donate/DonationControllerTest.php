@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\Donation\DonationController;
+use App\Models\Role;
+use App\Models\User;
 use App\Models\Charity;
 use App\Models\Donation;
-use App\Models\User;
+use App\Http\Controllers\Donation\DonationController;
 
 it('creates a successful donation', function () {
     // Create a user and charity
-    $user = User::factory()->create();
-    $charity = Charity::factory()->create();
+    $role = Role::factory()->create();
+    $user = User::factory()->create(['role_id' =>$role->id]);
 
+    $charity = Charity::factory()->create();
     login($user);
     // Act as the user and send a POST request with the required data
     $response = $this->postJson(action([DonationController::class, 'store']), [
@@ -23,7 +25,8 @@ it('creates a successful donation', function () {
 });
 it('updates a donation', function () {
     // Create a user and charity
-    $user = User::factory()->create();
+    $role = Role::factory()->create();
+    $user = User::factory()->create(['role_id' => $role->id]);
     $charity = Charity::factory()->create();
     Donation::factory()->create([
         'charity_id' => $charity->id,
