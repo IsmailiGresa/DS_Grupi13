@@ -14,5 +14,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('donations', [DonationController::class, 'store']);
     Route::put('donations', [DonationController::class, 'update']);
     Route::delete('donations', [DonationController::class, 'destroy']);
-    Route::post('/promos', [PromoController::class, 'create']);
+    Route::post('/promos', [PromoController::class, 'store']);
+    Route::put('/promos/{promo}', [PromoController::class, 'update']);
+    Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
 });

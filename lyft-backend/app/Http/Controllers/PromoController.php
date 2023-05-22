@@ -5,16 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Promo;
 
-class PromoController extends Controller
+class PromoController extends ApiController
 {
-    public function create(Request $request)
+    public function store(Request $request)
     {
-        $promo = new Promo;
-        $promo->code = $request->input('code');
-        $promo->discount = $request->input('discount');
-        $promo->validity = $request->input('validity');
+        $validated_data = $request->validate(
+            ['code' => 'required|string|max:255', 'discount' => 'required|numeric', 'validity' => 'required|date'],
+            $request->all()
+        );
+        $promo = Promo::create($validated_data);
+
+        return $this->showOne($promo);
+    }
+
+    public function update(Request $request, Promo $promo)
+    {
+        $validated_data = $request->validate(
+            ['code' => 'string|max:255', 'discount' => 'numeric', 'validity' => 'date'],
+            $request->all()
+        );
+        $promo->update($validated_data);
+
         $promo->save();
 
-        return response()->json(['message' => 'Promo created successfully'], 201);
+        return $this->showOne($promo);
+    }
+
+    public function destroy(Promo $promo){
+        $promo->delete();
+
+        return $this->showMessage("Promo deleted successfully!");
     }
 }
