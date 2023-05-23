@@ -9,9 +9,37 @@ import ModalHome from "./ModalHome.jsx";
 import ModalWork from "./ModalWork.jsx";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 
 export default function Profile () {
+
+// Fetch user data from the API
+    axios.get('/api/users')
+    .then(response => {
+        const { created_at } = response.data;
+        const accountCreationDate = new Date(created_at);
+        const today = new Date();
+        const diffInDays = Math.floor((today - accountCreationDate) / (1000 * 60 * 60 * 24));
+
+    // Now you can use the `diffInDays` variable to display the number of days since account creation
+        console.log(`Days since account creation: ${diffInDays}`);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
+    useEffect(() => {
+        axios.get('/api/users')
+          .then(response => {
+            const { rides } = response.data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }, []);
+    const [daysSinceCreation, setDaysSinceCreation] = useState(0);
+    const [rides, setRidesCount] = useState(0);
 
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen1, setModalOpen1] = useState(false);
@@ -141,12 +169,11 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen(true);}}>
                                 <img src="/icons/photo-camera.png"></img>
                             </button>
-                            
                         <div>Gresa Ismaili</div>
                     </div>
                     <div className="history">
                     <div className="history1">
-                    <span> 0</span>
+                    <span>{ridesCount}</span>
                     <span>Rides</span>
                     </div>
                     <div className="history2">
@@ -157,7 +184,7 @@ export default function Profile () {
                     <span>Rating</span>
                     </div>
                     <div className="history3">
-                    <span> 24</span>
+                    <span>{daysSinceCreation}</span>
                     <span>Days</span>
                     </div>
                 </div>

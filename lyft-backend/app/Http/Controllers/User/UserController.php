@@ -37,10 +37,15 @@ class UserController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    public function update(Request $request)
+{
+    $user = Auth::user();
+    $user->name = $request->input('name');
+    $user->email = $request->input('email');
+    $user->save();
+
+    return response()->json(['message' => 'User information updated successfully']);
+}
 
     /**
      * Remove the specified resource from storage.
