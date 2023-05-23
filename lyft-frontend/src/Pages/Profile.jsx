@@ -9,6 +9,8 @@ import ModalHome from "./ModalHome.jsx";
 import ModalWork from "./ModalWork.jsx";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import Axios from "axios";
+
 
 
 export default function Profile () {

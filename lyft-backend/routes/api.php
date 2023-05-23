@@ -18,4 +18,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
+    Route::post('upload-image', [ImageController::class, 'uploadImage']);
 });
