@@ -20,6 +20,20 @@ function InviteFriendsPage() {
         setShowLastWeekContent(false);
         setShowLast30DaysContent(true);
     };
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("invite-code11");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        // Alert the copied text
+        alert("Copied the text: " + copyText.value);
+    }
 
     return (
         <div className="invite-friends-page1">
@@ -28,9 +42,12 @@ function InviteFriendsPage() {
             <div className="invite-code1">
                 <label id="invite-code11" htmlFor="invite-code1">Your invite code</label>
                 <input type="text" id="invite-code1" value={inviteCode} readOnly />
-                <button className="button1" onClick={() => navigator.clipboard.writeText(inviteCode)}>
+                <button className="button1" onClick={() => {
+                    navigator.clipboard.writeText(inviteCode);
+                }}>
                     Copy invite
                 </button>
+
             </div>
 
                 <h1 className="invite-historyy">Your invite history</h1>
