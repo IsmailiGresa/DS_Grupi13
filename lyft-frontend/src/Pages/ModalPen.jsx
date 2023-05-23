@@ -3,26 +3,32 @@ import { useState } from 'react';
 import "./ModalPen.css";
 import axios from "axios";
 
-function ModalPen({ setOpenModal4 }) {
-  const [name, setName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [email, setEmail] = useState('');
+function ModalPen({ setOpenModal4 }){
+  
+    const [name, setName] = useState('');
+const [email, setEmail] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Prepare the data object to be sent to the server
-    const data = {
-      name, lastname, email
-    };
-    // Make a PUT request to update user information
-    axios.put('/api/users', data)
-      .then(response => {
-        console.log('User information updated successfully');
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    };   
+const handleChange = (e) => {
+  setName(e.target.value);
+};
+
+const submitData = (e) => {
+  e.preventDefault();
+  
+  const data = {
+    name: name,
+    email: email
+  };
+
+  axios.put('http://127.0.0.1:8000/api/update-user', data)
+    .then(res => {
+      console.log('Response', res);
+    })
+    .catch(error => {
+      console.error('Failed', error);
+    });
+};
+
   return (
     <div className="backgro">
       <div className="modalContain">
@@ -38,19 +44,19 @@ function ModalPen({ setOpenModal4 }) {
         <div className="title">
           Edit account information
         </div>
-        <div className="accinfo" onSubmit={handleSubmit}>
+        <div className="accinfo" onSubmit={submitData}>
         <div className="information">
           <div className="info">
             <div className="inf">
             <input type="text" id="name" placeholder="Enter your name..." 
-            value={name} onChange={e => setName(e.target.value)} ></input>
+            value={name} onChange={handleChange} ></input>
             </div>
             <input type="text" id="surname" placeholder="Enter your lastname..." 
             value={lastname} onChange={e => setLastName(e.target.value)} ></input>
           </div>
           <div className="info1">
             <input type="email" id="email" placeholder="Enter your email address..." 
-            value={email} onChange={e => setEmail(e.target.value)} ></input>
+            value={email} onChange={(e) => setEmail(e.target.value)} ></input>
             </div>
         </div>
         <div className="pronoun">
@@ -89,7 +95,7 @@ function ModalPen({ setOpenModal4 }) {
           >
             Cancel
           </button>
-          <button>Update</button>
+          <button type="submit" onClick={submitData}>Update</button>
         </div>
       </div>
     </div>

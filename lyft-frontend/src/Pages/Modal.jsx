@@ -13,7 +13,7 @@ function Modal({ setOpenModal }) {
     const fData = new FormData();
     fData.append('image', imagedata);
 
-    Axios.post('http://127.0.0.1:8000/api/upload-image', fData)
+    Axios.post('http://127.0.0.1:8000/api/users', fData)
     .then(res => {
       console.log('response', res);
     }).catch(e => {

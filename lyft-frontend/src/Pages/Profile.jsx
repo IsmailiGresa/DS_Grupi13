@@ -15,7 +15,7 @@ import axios from "axios";
 export default function Profile () {
 
 // Fetch user data from the API
-    axios.get('/api/users')
+axios.get('http://127.0.0.1:8000/api/users')
     .then(response => {
         const { created_at } = response.data;
         const accountCreationDate = new Date(created_at);
@@ -30,7 +30,7 @@ export default function Profile () {
     });
 
     useEffect(() => {
-        axios.get('/api/users')
+        axios.get('http://127.0.0.1:8000/api/users')
           .then(response => {
             const { rides } = response.data;
           })
