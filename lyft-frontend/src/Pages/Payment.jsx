@@ -1,3 +1,4 @@
+import './Payment.css';
 import "./styles.css";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
@@ -5,6 +6,18 @@ export default function Payment () {
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+    const [info, setInfo] = useState({
+        cardNumber: '',
+        fullName: '',
+        month: '',
+        year: ''
+    });
+
+    const handleChange = (e) => {
+        setInfo({
+            ...info, [e.target.name]: e.target.value})
+    }
     const handleScroll = () => {
         const {pageOffset} = window;
         if(
@@ -21,7 +34,7 @@ export default function Payment () {
     useEffect(() => {
         window.addEventListener("scroll", handleScroll, {passive:true});
         return window.removeEventListener("scroll", handleScroll)
-        }, []);
+    }, []);
     return(
         <>
             <nav className={`${ isNavbarVisible ? "visible" : ""}`}>
@@ -30,10 +43,10 @@ export default function Payment () {
                 </div>
                 <div className = "nav-items1">
                     <button onClick={() => {
-                    navigate("/mainride");
-                }}>
-                    <a>Gresa</a>
-                    <img src="/icons/profile.png" alt=""/>
+                        navigate("/mainride");
+                    }}>
+                        <a>Gresa</a>
+                        <img src="/icons/profile.png" alt=""/>
                     </button>
                 </div>
             </nav>
@@ -43,6 +56,7 @@ export default function Payment () {
                     <a>Gresa Ismaili</a>
                 </div>
                 <div className="buttons">
+
                 <button onClick={() => {
                     navigate("/mainride");
                 }}>
@@ -91,10 +105,109 @@ export default function Payment () {
                     <img src="/icons/profile.png" alt=""/>
                     <a>Log out</a>
                 </button>
+
+                    <button onClick={() => {
+                        navigate("/mainride");
+                    }}>
+                        <img src="/icons/ride.png" alt=""/>
+                        <a>Get a ride</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/rides");
+                    }}>
+                        <img src="/icons/clock.png" alt=""/>
+                        <a>Rides</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/payment");
+                    }}>
+                        <img src="/icons/payment.png" alt=""/>
+                        <a>Payment</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/giftcards");
+                    }}>
+                        <img src="/icons/gift_card.png" alt=""/>
+                        <a>Gift cards</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/promos");
+                    }}>
+                        <img src="/icons/promos.png" alt=""/>
+                        <a>Promos</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/invite");
+                    }}>
+                        <img src="/icons/invite.png" alt=""/>
+                        <a>Invite friends</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/donate");
+                    }}>
+                        <img src="/icons/donation.png" alt=""/>
+                        <a>Donate</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/profile");
+                    }}>
+                        <img src="/icons/settings.png" alt=""/>
+                        <a>Settings</a>
+                    </button>
+                    <button onClick={() => {
+                        navigate("/logout");
+                    }}>
+                        <img src="/icons/profile.png" alt=""/>
+                        <a>Log out</a>
+                    </button>
+
                 </div>
             </aside>
             <div className="body">
-                Main
+
+                <div className="container-card">
+                    <h2 className="h-card">Card</h2>
+                    <form className="card-form">
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="cardNumber"
+                            placeholder="cardNumber"
+                            maxlength="16"
+                            onChange={handleChange} />
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="fullName"
+                            placeholder="fullName"
+                            onChange={handleChange} />
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="month"
+                            placeholder="month"
+                            maxlength="2"
+                            onChange={handleChange} />
+                        <input
+                            className="card-input"
+                            type="text"
+                            name="year"
+                            placeholder="year"
+                            maxlength="4"
+                            onChange={handleChange} />
+                        <button className="card-button">Confirm</button>
+                    </form>
+
+
+                    <div className="cardCredit">
+                        <div className="elements-card">
+                            <h1 className="h-card">{info.fullName}</h1>
+                            <p className="card-all">{info.cardNumber}</p>
+                            <span className="span-card">{info.year}/{info.month}</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     );
