@@ -7,6 +7,9 @@ use App\Http\Controllers\PromoController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\GiftCardHistoryController;
+
+
 Route::post('/login', LoginController::class);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -19,3 +22,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
 });
+Route::get('/gift-card-history', [GiftCardHistoryController::class, 'index']);
+Route::post('/gift-card-history', [GiftCardHistoryController::class, 'store']);
+
