@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\InviteHistory;
 use Illuminate\Http\Request;
 
@@ -68,8 +67,6 @@ class InviteHistoryController extends Controller
             return response()->json(['message' => 'Invite history not found'], 404);
         }
 
-        $inviteHistory->delete();
 
-        return response()->json(['message' => 'Invite history deleted'], 200);
-    }
+}
 }
