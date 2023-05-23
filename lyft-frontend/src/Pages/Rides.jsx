@@ -1,16 +1,31 @@
 import "./styles.css";
-//import "./rides.css";
+// import "./rides.css";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
 
 export default function Rides() {
 
+    const [data, setData] = useState([]);
 
     const [toggleState, setToggleState] = useState(1);
 
     const toggleTab = (index) => {
         setToggleState(index);
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/rides');
+                setData(response.data.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
 
 
@@ -34,6 +49,8 @@ export default function Rides() {
         window.addEventListener("scroll", handleScroll, { passive: true });
         return window.removeEventListener("scroll", handleScroll)
     }, []);
+
+
     return (
         <>
             <nav className={`${isNavbarVisible ? "visible" : ""}`}>
@@ -131,13 +148,43 @@ export default function Rides() {
                     <div
                         className={toggleState === 1 ? "rides-content  active-rides-content" : "rides-content"}
                     >
-                        <h2>No rides yet</h2>
 
-                        <p>
-                            You haven't completed any rides yet. Take your first ride today!
-                        </p>
+                        {data.length > 0 ? (
+                            <div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Ride Length (km)</th>
+                                            <th>Amount</th>
+                                            <th>Pickup Location</th>
+                                            <th>Dropoff Location</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data.map((row, index) => (
+                                            <tr key={index}>
+                                                <td className="ride-length">{row.ride_length_km}</td>
+                                                <td className="amount">{row.amount}</td>
+                                                <td className="pickup-location">{row.pickup_location}</td>
+                                                <td className="dropoff-location">{row.dropoff_location}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
+                        ) : (
+                           <> <h2>No rides yet</h2>
+                            <p>
+                                You haven't completed any rides yet. Take your first ride today!
+                            </p>
+                           
+                           </>
+                            
+                        )}
                     </div>
                 </div>
+
+
             </div>
         </>
     );
