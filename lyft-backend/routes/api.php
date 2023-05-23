@@ -1,13 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PromoController;
+use App\Http\Controllers\Ride\RideController;
+use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Donation\DonationController;
-use App\Http\Controllers\PromoController;
-use App\Http\Controllers\User\UserController;
-use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\GiftCardHistoryController;
+use App\Http\Controllers\Donation\DonationController;
 
 
 Route::post('/login', LoginController::class);

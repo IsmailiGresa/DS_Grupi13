@@ -20,10 +20,8 @@ class RideFactory extends Factory
         return [
             'ride_length_km' => $this->faker->randomDigit(),
             'amount' => $this->faker->randomDigit(),
-            'pickup_location_latitude' => $this->faker->latitude,
-            'pickup_location_longitude' => $this->faker->longitude,
-            'drop_off_location_latitude' => $this->faker->latitude,
-            'drop_off_location_longitude' => $this->faker->longitude,
+            'pickup_location' => $this->faker->city(),
+            'dropoff_location' => $this->faker->city(),
             'user_id' => User::all()->random()->id,
             'driver_id' => User::all()->where('role_id', 3)->random()->id,
         ];
