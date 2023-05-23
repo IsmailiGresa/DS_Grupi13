@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from 'react';
 import "./ModalPen.css";
 import axios from "axios";
 
@@ -6,13 +7,12 @@ function ModalPen({ setOpenModal4 }) {
   const [name, setName] = useState('');
   const [lastname, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Prepare the data object to be sent to the server
     const data = {
-      name, lastname, email, phone
+      name, lastname, email
     };
     // Make a PUT request to update user information
     axios.put('/api/users', data)
@@ -22,7 +22,7 @@ function ModalPen({ setOpenModal4 }) {
       .catch(error => {
         console.error(error);
       });
-      
+    };   
   return (
     <div className="backgro">
       <div className="modalContain">

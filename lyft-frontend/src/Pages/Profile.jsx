@@ -39,7 +39,7 @@ export default function Profile () {
           });
       }, []);
     const [daysSinceCreation, setDaysSinceCreation] = useState(0);
-    const [rides, setRidesCount] = useState(0);
+    const [ridesCount, setRidesCount] = useState(0);
 
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen1, setModalOpen1] = useState(false);
