@@ -429,7 +429,7 @@ input[value="dark"] {
     cursor: pointer;
 
   }
-  .modalContainer .upload {
+  .modalContainer .upl {
     flex: 40%;
     display: flex;
     justify-content: center;
@@ -438,16 +438,18 @@ input[value="dark"] {
     text-align: center;
     margin-bottom: 5px;
   }
-  .upload button{
+  .upl button{
     border-style: dashed;
     color:rgb(145, 142, 142);
     height: 170px;
     margin-bottom: 15px;
   }
-  .upload button img{
+  .upl img{
     width: 50px;
     height: 50px;
     margin-bottom: 2px;
+    margin-left: 90px;
+    margin-right: 20px;
   }
   
   .modalContainer .footer {
