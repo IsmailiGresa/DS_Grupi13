@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shortcuts extends Model
 {
-    use HasFactory;
+    protected $fillable = ['home_location', 'work_location'];
 }
