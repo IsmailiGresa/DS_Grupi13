@@ -15,7 +15,11 @@ class CreateInviteHistoriesTable extends Migration
             $table->integer('applications');
             $table->integer('activations');
             $table->decimal('earnings', 8, 2);
+            $table->unsignedBigInteger('user_id'); // Foreign key column
             $table->timestamps();
+
+            // Define foreign key constraint
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
