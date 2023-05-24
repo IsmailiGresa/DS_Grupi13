@@ -43,7 +43,7 @@ const Login = () => {
             } else {
                 setErrMsg('Login Failed');
             }
-            // errRef.current.focus();
+
         }
     }
 
@@ -60,7 +60,7 @@ const Login = () => {
             ) : (
 
                 <section className="section-info ">
-                    {/* <p ref={errRef} className={errMsg ? "error-message" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
+                    
                     <h1 className="hone-h1">Log In</h1>
                     <form className="form-ls" onSubmit={handleSubmit}>
                         <label className="inp-label" htmlFor="username">Email:</label>
