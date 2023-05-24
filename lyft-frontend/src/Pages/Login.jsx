@@ -60,7 +60,7 @@ const Login = () => {
             ) : (
 
                 <section className="section-info ">
-                    
+
                     <h1 className="hone-h1">Log In</h1>
                     <form className="form-ls" onSubmit={handleSubmit}>
                         <label className="inp-label" htmlFor="username">Email:</label>
