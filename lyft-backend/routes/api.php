@@ -6,8 +6,6 @@ use App\Http\Controllers\Ride\RideController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-
-use App\Http\Controllers\GiftCardHistoryController;
 use App\Http\Controllers\Donation\DonationController;
 
 
@@ -22,7 +20,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
+
 });
-Route::get('/gift-card-history', [GiftCardHistoryController::class, 'index']);
-Route::post('/gift-card-history', [GiftCardHistoryController::class, 'store']);
 
