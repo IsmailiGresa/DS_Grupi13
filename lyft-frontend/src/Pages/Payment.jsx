@@ -115,8 +115,9 @@ export default function Payment () {
             <div className="body">
 
                 <div className="container-card">
-                    <h2 className="h-card">Card</h2>
+                    {/*<h2 className="card-form">Payment</h2>*/}
                     <form className="card-form">
+                        Card
                         <input
                             className="card-input"
                             type="text"
