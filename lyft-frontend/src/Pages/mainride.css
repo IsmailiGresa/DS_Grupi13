@@ -167,7 +167,6 @@
     margin-top:68px;
 }
 
-
 .modal-title {
     font-size: 24px;
     font-weight: bold;
@@ -177,7 +176,7 @@
 
 .modal-close-button {
     margin-top: 10px;
-    padding: 8px 16px;
+    padding: 5px 5px;
     background-color: #ccc;
     border: none;
     border-radius: 4px;
@@ -212,10 +211,21 @@
 }
 
 .car-list li {
+    margin-bottom: 5px;
+}
+
+.car-button {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    background-color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 5px;
+    border-radius: 25px;
+
 }
 
 .car-info {
@@ -224,8 +234,8 @@
 }
 
 .car-info img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin-right: 10px;
 }
 
@@ -243,4 +253,21 @@
 .price {
     font-size: 16px;
     font-weight: bold;
+}
+
+.close-button {
+    background-color: #ff4081;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.close-button:hover {
+    background-color: deeppink;
 }
