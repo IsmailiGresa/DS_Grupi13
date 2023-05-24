@@ -15,6 +15,7 @@ function Mainride() {
     const [pickupLocation, setPickupLocation] = useState('');
     const [destination, setDestination] = useState('');
     const [directions, setDirections] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const onMapLoad = (map) => {
         const center = map.getCenter();
@@ -48,11 +49,16 @@ function Mainride() {
             (result, status) => {
                 if (status === 'OK') {
                     setDirections(result);
+                    setShowModal(true);
                 } else {
                     console.error('Directions request failed:', status);
                 }
             }
         );
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     return (
@@ -197,6 +203,53 @@ function Mainride() {
                     </div>
                 </div>
             </div>
+
+            {showModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h2>Estimate Details</h2>
+                            <div className="person-icon">
+                                <img src="/icons/person-icon.png" alt="Person Icon" />
+                                <span>3</span>
+                            </div>
+                        </div>
+                        <ul className="car-list">
+                            <li>
+                                <div className="car-info">
+                                    <img src="/icons/car-icon.png" alt="Car Icon" />
+                                    <div>
+                                        <h3>Car Model 1</h3>
+                                        <div className="passenger-info">
+                                            <img src="/icons/person-icon.png" alt="Person Icon" />
+                                            <span>4 passengers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p className="price">$20</p>
+                            </li>
+                            <li>
+                                <div className="car-info">
+                                    <img src="/icons/car-icon.png" alt="Car Icon" />
+                                    <div>
+                                        <h3>Car Model 2</h3>
+                                        <div className="passenger-info">
+                                            <img src="/icons/person-icon.png" alt="Person Icon" />
+                                            <span>6 passengers</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p className="price">$30</p>
+                            </li>
+
+                        </ul>
+                        <button className="close-button" onClick={closeModal}>
+                            Close
+                        </button>
+                    </div>
+
+                </div>
+            )}
         </>
     );
 }
