@@ -5,7 +5,6 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\User\UserController;
-use App\Http\Controllers\InviteHistoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', LoginController::class);
@@ -19,11 +18,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
-    Route::get('/invite-history', [InviteHistoryController::class, 'index']);
-    Route::post('/invite-history', [InviteHistoryController::class, 'store']);
-    Route::get('/invite-history/{id}', [InviteHistoryController::class, 'show']);
-    Route::put('/invite-history/{id}', [InviteHistoryController::class, 'update']);
-    Route::delete('/invite-history/{id}', [InviteHistoryController::class, 'destroy']);
+
 });
 
 

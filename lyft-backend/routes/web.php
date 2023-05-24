@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InviteHistoryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,11 +12,6 @@ use App\Http\Controllers\InviteHistoryController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/invite-history', [InviteHistoryController::class, 'index']);
-Route::post('/invite-history', [InviteHistoryController::class, 'store']);
-Route::get('/invite-history/{id}', [InviteHistoryController::class, 'show']);
-Route::put('/invite-history/{id}', [InviteHistoryController::class, 'update']);
-Route::delete('/invite-history/{id}', [InviteHistoryController::class, 'destroy']);
 
 Route::get('/', function () {
     return view('welcome');
