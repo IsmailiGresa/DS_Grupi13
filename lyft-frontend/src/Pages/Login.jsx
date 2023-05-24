@@ -3,6 +3,7 @@ import { useRef, useState, useEffect, useContext } from 'react';
 import axios from '../api/axios';
 const LOGIN_URL = 'localhost:8000/api/auth';
 import "./signuplogin.css";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     //const { setAuth } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const Login = () => {
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,6 +32,7 @@ const Login = () => {
             setUsername('');
             setPwd('');
             setSuccess(true);
+            navigate("/mainride");
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -81,13 +84,21 @@ const Login = () => {
                             value={pwd}
                             required
                         />
-                        <button className="validbtn">Log In</button>
+                        <button className="validbtn"onClick={() => {
+                        navigate("/mainride");
+                        }}>
+                        <a>Login</a>
+                        </button>
                     </form>
                     <p className="html-tags">
                         Need an Account?<br />
                         <span className="inline-element">
                             {/*put router link here*/}
-                            <a className="sign-link" href="#">Sign Up</a>
+                            <button className="sign-link" onClick={() => {
+                            navigate("/signup");
+                            }}>
+                            <a>Sign Up</a>
+                            </button>
                         </span>
                     </p>
                 </section>

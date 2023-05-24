@@ -3,6 +3,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import axios from './api/axios';
 import "./signuplogin.css";
+import { useNavigate } from 'react-router-dom';
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -12,6 +13,7 @@ const REGISTER_URL = '/register';
 const Signup = () => {
     const userRef = useRef();
     const errRef = useRef();
+    const navigate = useNavigate();
 
     const [user, setUser] = useState('');
     const [validName, setValidName] = useState(false);
@@ -170,13 +172,20 @@ const Signup = () => {
                             Must match the first password input field.
                         </p>
 
-                        <button className="validbtn" disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <button className="validbtn" disabled={!validName || !validPwd || !validMatch ? true : false}onClick={() => {
+                            navigate("/mainride");
+                            }}><a>Sign Up</a></button>
+                            
                     </form>
                     <p className="html-tags">
                         Already registered?<br />
                         <span className="inline-element">
                             {/*put router link here*/}
-                            <a className="sign-link" href="#">Sign In</a>
+                            <button className="sign-link" onClick={() => {
+                            navigate("/login");
+                            }}>
+                            <a>Sign In</a>
+                            </button>
                         </span>
                     </p>
                 </section>
