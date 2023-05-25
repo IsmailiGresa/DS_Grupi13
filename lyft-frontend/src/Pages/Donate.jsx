@@ -3,45 +3,46 @@ import "./donate.css";
 
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import axios from '../api/axios';
+
 export default function Donate() {
 
     const [selectedCharity, setSelectedCharity] = useState(null);
+    const [charities, setCharities] = useState([]);
     const [isDonate, setDonate] = useState(false);
 
-    const startDonating = (charityId) => {
-        // api call to donations to save the data in database that this user is donating
-        // 
+    const startDonating = async (charityId) => {
         if(!isDonate){
+            try {
+                const response = await axios.post('/api/donations', {
+                    charity_id: charityId
+                });
+    
+                console.log(response)
+            } catch (error) {
+                console.log(error);
+            }
             setSelectedCharity(charityId);
             setDonate(true);
-            console.log(charityId);
-
         }
     };
 
     // when stop donating, reset the charity selection
-    const stopDonating = () => {
+    const stopDonating = async() => {
         setSelectedCharity(null);
         setDonate(false);
+
+        try {
+            const response = await axios.delete('/api/donations', {
+                charity_id: selectedCharity
+            });
+
+            console.log(response)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
-    const handleDonationSubmit = (charityId, amount) => {
-        
-        console.log(`Donating to Charity ${charityId} with amount $${amount}`);
-    };
-
-    const charities = [
-        { id: 1, name: 'Komuniteti Mbështetës i Kancerit në Kosovë', image: "../public/icons/CSCkosovo.png" },
-        { id: 2, name: 'Kryqi i Kuq i Kosovës', image: "../public/icons/kryqi.png" },
-        { id: 3, name: 'Shoqata e të Verbërve të Kosovës', image: "../public/icons/blindfederate.png" },
-        { id: 4, name: 'YMCA Kosovo', image: "../public/icons/ymca.jpg" },
-        { id: 5, name: 'Save the Children Kosovo', image: "../public/icons/savethechildren.jpg" },
-        { id: 6, name: 'UNICEF Kosovo', image: "../public/icons/unicef.png" },
-        { id: 7, name: 'Fondacioni për të Drejtat e Kafshëve', image: "../public/icons/kafshet.jpg" },
-        { id: 8, name: 'Qendra për Promovimin e Drejtave të Grave', image: "../public/icons/women.png" },
-        { id: 9, name: 'HANDIKOS', image: "../public/icons/handikos.png" },
-
-    ];
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -59,6 +60,20 @@ export default function Donate() {
         lastScrollTop.current = pageOffset;
     }
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('/api/is_donating');
+                const charities = await axios.get('/api/charities');
+                setCharities(charities.data.data);
+
+                setDonate(response.data.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+
         window.addEventListener("scroll", handleScroll, { passive: true });
         return window.removeEventListener("scroll", handleScroll)
     }, []);
@@ -159,18 +174,13 @@ export default function Donate() {
                 </>
             }
 
-            {/* here goes chairity donation deets section*/}
-            {/* when you select a charity, you get the id */}
-            {/* make an API call with that charity id and get a response with data */}
-            {/* display that data in the donations deets */}
-            {/* make a button stop donating, if clicked, hide the deets section */}
             <div className="container_donate">
 
 
                 {charities.map((charity) => (
 
                     <div key={charity.id} className="organizations">
-                        <div className="avatar"><img style={{ borderRadius: '50%', width: '100%', height: '100%' }} src={charity.image} />
+                        <div className="avatar"><img style={{ borderRadius: '50%', width: '100%', height: '100%' }} src={charity.image_url} />
                             <div className="charityName">
                                 <h4>{charity.name}</h4>
 
