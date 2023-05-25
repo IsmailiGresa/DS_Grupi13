@@ -1,23 +1,16 @@
-import './Payment.css';
 import "./styles.css";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
+import ModalPayment from "./ModalPayment.jsx";
+import "./Payment.css";
+
 export default function Payment () {
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
 
-    const [info, setInfo] = useState({
-        cardNumber: '',
-        fullName: '',
-        month: '',
-        year: ''
-    });
+    const [OpenModalPayment, setOpenModalPayment] = useState(false);
 
-    const handleChange = (e) => {
-        setInfo({
-            ...info, [e.target.name]: e.target.value})
-    }
     const handleScroll = () => {
         const {pageOffset} = window;
         if(
@@ -37,6 +30,7 @@ export default function Payment () {
     }, []);
     return(
         <>
+            {OpenModalPayment && <ModalPayment setOpenModalPayment={setOpenModalPayment}></ModalPayment>}
             <nav className={`${ isNavbarVisible ? "visible" : ""}`}>
                 <div className = "nav-items">
                     <a>Ulyft</a>
@@ -112,51 +106,11 @@ export default function Payment () {
                     </button>
                 </div>
             </aside>
-            <div className="body">
 
-                <div className="container-card">
-                    {/*<h2 className="card-form">Payment</h2>*/}
-                    <form className="card-form">
-                        Card
-                        <input
-                            className="card-input"
-                            type="text"
-                            name="cardNumber"
-                            placeholder="cardNumber"
-                            maxlength="16"
-                            onChange={handleChange} />
-                        <input
-                            className="card-input"
-                            type="text"
-                            name="fullName"
-                            placeholder="fullName"
-                            onChange={handleChange} />
-                        <input
-                            className="card-input"
-                            type="text"
-                            name="month"
-                            placeholder="month"
-                            maxlength="2"
-                            onChange={handleChange} />
-                        <input
-                            className="card-input"
-                            type="text"
-                            name="year"
-                            placeholder="year"
-                            maxlength="4"
-                            onChange={handleChange} />
-                        <button className="card-button">Confirm</button>
-                    </form>
-
-
-                    <div className="cardCredit">
-                        <div className="elements-card">
-                            <h1 className="h-card">{info.fullName}</h1>
-                            <p className="card-all">{info.cardNumber}</p>
-                            <span className="span-card">{info.year}/{info.month}</span>
-                        </div>
-                    </div>
-                </div>
+            <div className="main">
+                <button className="cardPay-button" onClick={() => {setOpenModalPayment(true);}}>
+                   Pay Here
+                </button>
 
             </div>
         </>
