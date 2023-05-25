@@ -161,7 +161,7 @@ export default function Profile () {
                     </div>
                     <div className="history">
                     <div className="history1">
-                    <span>{ridesCount}</span>
+                    <span></span>
                     <span>Rides</span>
                     </div>
                     <div className="history2">
@@ -172,7 +172,7 @@ export default function Profile () {
                     <span>Rating</span>
                     </div>
                     <div className="history3">
-                    <span>{daysSinceCreation}</span>
+                    <span></span>
                     <span>Days</span>
                     </div>
                 </div>
