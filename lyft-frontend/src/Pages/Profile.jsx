@@ -28,6 +28,11 @@ export default function Profile () {
         });
     }, []);
 
+    const createdDate = new Date(users.created_at);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - createdDate.getTime();
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen1, setModalOpen1] = useState(false);
     const [modalOpen2, setModalOpen2] = useState(false);
@@ -160,8 +165,8 @@ export default function Profile () {
                         <div>{users.first_name} {users.last_name}</div>
                     </div>
                     <div className="history">
-                    <div className="history1">
-                    <span></span>
+                    <div className="history1">                  
+                    <span>{users.rides}</span>
                     <span>Rides</span>
                     </div>
                     <div className="history2">
@@ -172,7 +177,7 @@ export default function Profile () {
                     <span>Rating</span>
                     </div>
                     <div className="history3">
-                    <span></span>
+                    <span>{daysDifference}</span>
                     <span>Days</span>
                     </div>
                 </div>

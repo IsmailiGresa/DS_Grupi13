@@ -29,6 +29,9 @@ class LoginController extends ApiController
                 'last_name' => $user->last_name,
                 'avatar' => $user->avatar,
                 'phone_number' => $user->phone_number,
+                'created_at' => $user->created_at,
+                'rides' => $user->rides,
+
                 // Add other necessary fields from the user table
             ],
             'token' => $token,
