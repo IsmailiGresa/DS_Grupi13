@@ -5,9 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./signuplogin.css";
 import { useNavigate } from 'react-router-dom';
 
-
-//const FIRSTNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
 
@@ -19,7 +16,6 @@ const Signup = () => {
     const [firstName, setFirstName] = useState('');
     const [validFirstName, setValidFirstName] = useState(false);
 
-
     const [lastName, setLastName] = useState('');
     const [validLastName, setValidLastName] = useState(false);
 
@@ -28,7 +24,6 @@ const Signup = () => {
     const [user] = useState('');
     const [validName] = useState(false);
     const [userFocus] = useState(false);
-
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
@@ -42,13 +37,9 @@ const Signup = () => {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-      //  userRef.current.focus();
-        firstNameRef.current.focus();
+          firstNameRef.current.focus();
     }, [])
 
-    // useEffect(() => {
-    //     setValidName(FIRSTNAME_REGEX.test(firstName));
-    // }, [firstName])
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(pwd));
