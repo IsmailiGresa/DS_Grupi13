@@ -1,6 +1,6 @@
 .paymentModal{
     position: fixed;
-    top: 10px;
+    top: 5px;
     bottom: 0;
     left: 0px;
     width: 100%;
@@ -23,7 +23,7 @@
     margin-top: 50px;
     margin-left: 430px;
 }
-  .closePay{
+.closePay{
     margin-right: 0;
     margin-top: 20px;
     margin-left: 300px;
@@ -38,9 +38,7 @@
     font-family: sans-serif;
 
 }
-/*body{*/
-/*    background-color: #073d77;*/
-/*}*/
+
 /* FORM DESIGN */
 .card-form{
     width: 10px;

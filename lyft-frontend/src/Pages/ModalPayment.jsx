@@ -23,15 +23,14 @@ const ModalPayment = ({ setOpenModalPayment }) => {
     return (
         <div className="paymentModal">
             <div className="paymentModal-content">
-                <div  >
+                <div>
                     <button className="closePay" onClick={handleCloseModalPayment}>
                         X
                     </button>
                 </div>
 
         <div className="container-card">
-        {/*<h2 className="card-form">Payment</h2>*/}
-        <form className="card-form">
+           <form className="card-form">
             Card
             <input
                 className="card-input"
@@ -60,9 +59,8 @@ const ModalPayment = ({ setOpenModalPayment }) => {
                 placeholder="year"
                 maxlength="4"
                 onChange={handleChange} />
-            <button className="card-button"  >Confirm</button>
+            <button className="card-button">Confirm</button>
         </form>
-
 
         <div className="cardCredit">
             <div className="elements-card">
