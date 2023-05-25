@@ -27,9 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('uploadavatar', 'UserController@uploadAvatar');
     Route::post('shortcuts', [ShortcutsController::class, 'store']);
     Route::get('shortcuts', [ShortcutsController::class, 'index']);
-
-
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);
     Route::get('/invite-history', [InviteHistoryController::class, 'index']);
+    Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'profile']);
 });
-

@@ -5,19 +5,36 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\ApiController;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
+    // public function index()
+    // {
+    //     $users = User::all();
+    //     return response()->json([
+    //         'data' => $users,
+    //     ]);
+    // }
     public function index()
     {
-        $users = User::all();
+        $users = User::all(['first_name', 'last_name', 'avatar', 'phone_number', 'email']);
 
-        return $this->showAll($users);
+        return response()->json([
+            'data' => $users,
+        ]);
     }
+    public function profile(Request $request)
+    {
+        $user = $request->user();
 
+        return response()->json([
+            'user' => $user,
+        ]);
+    }
     /**
      * Store a newly created resource in storage.
      */

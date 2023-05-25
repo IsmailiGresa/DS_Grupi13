@@ -9,9 +9,24 @@ import ModalHome from "./ModalHome.jsx";
 import ModalWork from "./ModalWork.jsx";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
-
+import axios from "../api/axios";
 
 export default function Profile () {
+
+    const [users, setUser] = useState([]);
+    useEffect(() => {
+        axios.get('/api/users', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
+        .then(response => {
+            setUser(response.data.user);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, []);
 
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen1, setModalOpen1] = useState(false);
@@ -65,7 +80,7 @@ export default function Profile () {
                     <button onClick={() => {
                     navigate("/mainride");
                 }}>
-                    <a>Gresa</a>
+                    <a>{users.first_name}</a>
                     <img src="/icons/profile.png" alt=""/>
                     </button>
                 </div>
@@ -73,7 +88,7 @@ export default function Profile () {
             <aside className="sidebar">
                 <div className="prf">
                     <img src="/icons/profile.png" alt=""/>
-                    <a>Gresa Ismaili</a>
+                    <a>{users.first_name} {users.last_name}</a>
                 </div>
                 <div className="buttons">
                 <button onClick={() => {
@@ -141,12 +156,12 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen(true);}}>
                                 <img src="/icons/photo-camera.png"></img>
                             </button>
-                            
-                        <div>Gresa Ismaili</div>
+
+                        <div>{users.first_name} {users.last_name}</div>
                     </div>
                     <div className="history">
                     <div className="history1">
-                    <span> 0</span>
+                    <span>{ridesCount}</span>
                     <span>Rides</span>
                     </div>
                     <div className="history2">
@@ -157,7 +172,7 @@ export default function Profile () {
                     <span>Rating</span>
                     </div>
                     <div className="history3">
-                    <span> 24</span>
+                    <span>{daysSinceCreation}</span>
                     <span>Days</span>
                     </div>
                 </div>
@@ -200,12 +215,13 @@ export default function Profile () {
                 </div>
                 </div>
                 <div className="info"></div>
+                
                     <div className="ident">
                         <div className="ident1">
                             <img src="/icons/profile.png"></img>
                             <div className="idn">
                                 <div className="ident11">
-                                    <span> Gresa Ismaili</span>
+                                    <span>{users.first_name} {users.last_name}</span>
                                 </div>
                                 <div className="ident12">
                                     <div>Pronouns not selected</div>
@@ -214,13 +230,15 @@ export default function Profile () {
                         </div>
                         <div className="email">
                             <img src="/icons/email.png"></img>
-                            <span>gi@gmail.com</span>
+                            <span>{users.email}</span>
                         </div>
                         <div className="phone">
                             <img src="/icons/phone.png"></img>
-                            <span>+1 (202) 000-0000</span>
+                            <span>{users.phone_number}</span>
                         </div>
                     </div>
+                </div>
+                
                     <div className="shortcut">
                         <div className="home">
                             <h2>Shortcuts</h2>
@@ -255,8 +273,6 @@ export default function Profile () {
                     </div>
                 </div>
             </div>
-           
-        </div>
         </>
     );
 };
