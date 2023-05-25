@@ -10,23 +10,20 @@ const ModalPayment = ({ setOpenModalPayment }) => {
         month: '',
         year: ''
     });
-
     const handleChange = (e) => {
         setInfo({
             ...info, [e.target.name]: e.target.value
         });
     };
 
-
     const handleCloseModalPayment = () => {
         setOpenModalPayment(false);
     };
 
-
     return (
         <div className="paymentModal">
             <div className="paymentModal-content">
-                <div className="" >
+                <div  >
                     <button className="closePay" onClick={handleCloseModalPayment}>
                         X
                     </button>

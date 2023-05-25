@@ -8,7 +8,6 @@ export default function Payment () {
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-
     const [OpenModalPayment, setOpenModalPayment] = useState(false);
 
     const handleScroll = () => {
@@ -106,8 +105,8 @@ export default function Payment () {
                     </button>
                 </div>
             </aside>
-
             <div className="main">
+
                 <button className="cardPay-button" onClick={() => {setOpenModalPayment(true);}}>
                    Pay Here
                 </button>
