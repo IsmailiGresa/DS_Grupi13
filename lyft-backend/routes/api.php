@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\ShortcutsController;
+use App\Http\Controllers\InviteHistoryController;
 
 Route::post('/login', LoginController::class);
 Route::post('/register', [RegisterController::class, 'register']);
@@ -24,5 +25,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('shortcuts', [ShortcutsController::class, 'store']);
     Route::get('shortcuts', [ShortcutsController::class, 'index']);
 
+
+    Route::post('/invite-history', [InviteHistoryController::class, 'store']);
+    Route::get('/invite-history', [InviteHistoryController::class, 'index']);
 });
 
