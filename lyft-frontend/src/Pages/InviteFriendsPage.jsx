@@ -1,40 +1,37 @@
 import React, { useState } from 'react';
 import './inviteFriends.css';
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import './inviteFriends.css';
 function InviteFriendsPage() {
     const [selectedTimeRange, setSelectedTimeRange] = useState("lastWeek1");
     const [showLastWeekContent, setShowLastWeekContent] = useState(false);
     const [showLast30DaysContent, setShowLast30DaysContent] = useState(false);
     const [inviteCodeValue, setInviteCodeValue] = useState(generateInviteCode()); // Generate random invite code
 
-    function generateInviteCode() {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        let code = '';
-        for (let i = 0; i < 6; i++) {
-            code += characters.charAt(Math.floor(Math.random() * characters.length));
-        }
-        return code;
-    }
-
-    const handleTimeRangeChange = (timeRange) => {
-        setSelectedTimeRange(timeRange);
-    };
-
-    const handleLastWeekClick = () => {
-        setShowLastWeekContent(true);
-        setShowLast30DaysContent(false);
-    };
-
-    const handleLast30DaysClick = () => {
-        setShowLastWeekContent(false);
-        setShowLast30DaysContent(true);
-    };
-
     const handleCopyInviteCode = () => {
         const copyText = document.getElementById("invite-code1");
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
+
+        // Dërgoni të dhënat në backend
+        axios.post('/api/invite-history', {
+            code: copyText.value,
+            date: new Date(),
+            applications: 0,
+            activations: 0,
+            earnings: 0,
+        })
+            .then(response => {
+                // Sukses
+                console.log(response.data);
+            })
+            .catch(error => {
+                // Gabim gjatë dërgimit të të dhënave
+                console.error(error);
+            });
+
         alert("Copied the text: " + copyText.value);
     };
 
@@ -42,12 +39,16 @@ function InviteFriendsPage() {
         <div className="invite-friends-page1">
             <h1 className="HE11">Refer a friend to Lyft and get ride credit</h1>
             <h3 className="HE33">Earn Lyft ride credit when you refer a friend in your area.</h3>
-            <div className="invite-code1">
+            <form className="invite-code1">
                 <label htmlFor="invite-code1">Your invite code</label>
                 <input type="text" id="invite-code1" value={inviteCodeValue} readOnly />
-                <button className="button1" onClick={handleCopyInviteCode}>
+
+                <form method="POST" action="/your-endpoint">
+                    @csrf
+                </form><button className="button1" onClick={handleCopyInviteCode}>
                     Copy invite
                 </button>
+                </form>
             </div>
 
             <h1 className="invite-historyy">Your invite history</h1>
