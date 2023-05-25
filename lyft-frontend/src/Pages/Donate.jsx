@@ -8,10 +8,15 @@ export default function Donate() {
     const [selectedCharity, setSelectedCharity] = useState(null);
     const [isDonate, setDonate] = useState(false);
 
-    const handleCharitySelect = (charityId) => {
-        setSelectedCharity(charityId);
-        setDonate(true);
-        console.log(charityId);
+    const startDonating = (charityId) => {
+        // api call to donations to save the data in database that this user is donating
+        // 
+        if(!isDonate){
+            setSelectedCharity(charityId);
+            setDonate(true);
+            console.log(charityId);
+
+        }
     };
 
     // when stop donating, reset the charity selection
@@ -21,7 +26,7 @@ export default function Donate() {
     }
 
     const handleDonationSubmit = (charityId, amount) => {
-        // Implement your donation submission logic here
+        
         console.log(`Donating to Charity ${charityId} with amount $${amount}`);
     };
 
@@ -172,7 +177,7 @@ export default function Donate() {
                             </div>
                             <button className="donatebuttons"
                                 checked={selectedCharity === charity.id}
-                                onClick={() => handleCharitySelect(charity.id)}
+                                onClick={() => startDonating(charity.id)}
                             >Donate</button>
                         </div>
 
