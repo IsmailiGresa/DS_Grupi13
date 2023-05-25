@@ -15,10 +15,8 @@ return new class extends Migration
             $table->id();
             $table->float('ride_length_km')->default(0);
             $table->decimal('amount')->default(0);
-            $table->string('pickup_location_latitude');
-            $table->string('pickup_location_longitude');
-            $table->string('drop_off_location_latitude');
-            $table->string('drop_off_location_longitude');
+            $table->string('pickup_location');
+            $table->string('dropoff_location');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('driver_id')->constrained('users');
             $table->timestamps();

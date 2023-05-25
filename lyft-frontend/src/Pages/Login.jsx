@@ -3,22 +3,24 @@ import { useRef, useState, useEffect, useContext } from 'react';
 import axios from '../api/axios';
 const LOGIN_URL = 'localhost:8000/api/auth';
 import "./signuplogin.css";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     //const { setAuth } = useContext(AuthContext);
-    const userRef = useRef();
+    const emailRef = useRef();
     const errRef = useRef();
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post('/api/login', {
-                email: username,
+                email: email,
                 password: pwd
             });
 
@@ -26,10 +28,11 @@ const Login = () => {
             
             const accessToken = response?.data?.accessToken;
             const roles = response?.data?.roles;
-            setAuth({ username, pwd, roles, accessToken });
-            setUsername('');
+            setAuth({ email, pwd, roles, accessToken });
+            setEmail('');
             setPwd('');
             setSuccess(true);
+            navigate("/mainride");
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
@@ -40,7 +43,7 @@ const Login = () => {
             } else {
                 setErrMsg('Login Failed');
             }
-            // errRef.current.focus();
+
         }
     }
 
@@ -57,18 +60,18 @@ const Login = () => {
             ) : (
 
                 <section className="section-info ">
-                    {/* <p ref={errRef} className={errMsg ? "error-message" : "offscreen"} aria-live="assertive">{errMsg}</p> */}
+
                     <h1 className="hone-h1">Log In</h1>
                     <form className="form-ls" onSubmit={handleSubmit}>
-                        <label className="inp-label" htmlFor="username">Username:</label>
+                        <label className="inp-label" htmlFor="username">Email:</label>
                         <input
                             className="textarea-text"
-                            type="text"
-                            id="username"
-                            ref={userRef}
+                            type="email"
+                            id="email"
+                            ref={emailRef}
                             autoComplete="off"
-                            onChange={(e) => setUsername(e.target.value)}
-                            value={username}
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
                             required
                         />
 
@@ -81,13 +84,19 @@ const Login = () => {
                             value={pwd}
                             required
                         />
-                        <button className="validbtn">Log In</button>
+                        <button className="validbtn" onClick={handleSubmit}>
+                        <a>Login</a>
+                        </button>
                     </form>
                     <p className="html-tags">
                         Need an Account?<br />
                         <span className="inline-element">
                             {/*put router link here*/}
-                            <a className="sign-link" href="#">Sign Up</a>
+                            <button className="sign-link" onClick={() => {
+                            navigate("/signup");
+                            }}>
+                            <a>Sign Up</a>
+                            </button>
                         </span>
                     </p>
                 </section>
