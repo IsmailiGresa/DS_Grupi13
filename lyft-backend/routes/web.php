@@ -27,7 +27,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/gift-card-history', [GiftCardHistoryController::class, 'store']);
     Route::get('/invite-history', [InviteHistoryController::class, 'index']);
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);
-    Route::get('/invite-history/{id}', [InviteHistoryController::class, 'show']);
+    Route::get('/invite-history', [InviteHistoryController::class, 'index']);
     Route::put('/invite-history/{id}', [InviteHistoryController::class, 'update']);
     Route::delete('/invite-history/{id}', [InviteHistoryController::class, 'destroy']);
+
 });

@@ -1,78 +1,54 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\InviteHistory;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class InviteHistoryController extends Controller
 {
+    public function store(Request $request)
+    {
+        $inviteHistory = new InviteHistory;
+        $inviteHistory->code = $request->input('code');
+        $inviteHistory->date = $request->input('date');
+        $inviteHistory->applications = $request->input('applications');
+        $inviteHistory->activations = $request->input('activations');
+        $inviteHistory->earnings = $request->input('earnings');
+        $inviteHistory->save();
+
+        return response()->json([
+            'message' => 'Invite history saved successfully.',
+        ]);
+    }
     public function index()
     {
         $inviteHistories = InviteHistory::all();
-        return response()->json($inviteHistories, 200);
+        return response()->json($inviteHistories);
     }
-
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'date' => 'required',
-            'code' => 'required',
-            'applications' => 'required|integer',
-            'activations' => 'required|integer',
-            'earnings' => 'required|numeric',
-            'user_id' => 'required|exists:users,id', // Validoni që user_id ekziston në tabelën users
-        ]);
-
-        $inviteHistory = InviteHistory::create($data);
-
-        return response()->json($inviteHistory, 201);
-    }
-
-    public function show($id)
-    {
-        $inviteHistory = InviteHistory::find($id);
-
-        if (!$inviteHistory) {
-            return response()->json(['message' => 'Invite history not found'], Response::HTTP_NOT_FOUND);
-        }
-
-        return response()->json($inviteHistory, Response::HTTP_OK);
-    }
-
     public function update(Request $request, $id)
     {
-        $inviteHistory = InviteHistory::find($id);
+        $inviteHistory = InviteHistory::findOrFail($id);
+        $inviteHistory->code = $request->input('code');
+        $inviteHistory->date = $request->input('date');
+        $inviteHistory->applications = $request->input('applications');
+        $inviteHistory->activations = $request->input('activations');
+        $inviteHistory->earnings = $request->input('earnings');
+        $inviteHistory->save();
 
-        if (!$inviteHistory) {
-            return response()->json(['message' => 'Invite history not found'], Response::HTTP_NOT_FOUND);
-        }
-
-        $data = $request->validate([
-            'date' => 'required',
-            'code' => 'required',
-            'applications' => 'required|integer',
-            'activations' => 'required|integer',
-            'earnings' => 'required|numeric',
-            'user_id' => 'required|exists:users,id', // Validoni që user_id ekziston në tabelën users
+        return response()->json([
+            'message' => 'Invite history updated successfully.',
         ]);
-
-        $inviteHistory->update($data);
-
-        return response()->json($inviteHistory, Response::HTTP_OK);
     }
-
     public function destroy($id)
     {
-        $inviteHistory = InviteHistory::find($id);
-
-        if (!$inviteHistory) {
-            return response()->json(['message' => 'Invite history not found'], Response::HTTP_NOT_FOUND);
-        }
-
+        $inviteHistory = InviteHistory::findOrFail($id);
         $inviteHistory->delete();
 
-        return response()->json(['message' => 'Invite history deleted'], Response::HTTP_OK);
+        return response()->json([
+            'message' => 'Invite history deleted successfully.',
+        ]);
     }
+
+
 }
+
