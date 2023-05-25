@@ -32,7 +32,7 @@ export default function Profile () {
     const currentDate = new Date();
     const timeDifference = currentDate.getTime() - createdDate.getTime();
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
+  
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen1, setModalOpen1] = useState(false);
     const [modalOpen2, setModalOpen2] = useState(false);
@@ -165,8 +165,7 @@ export default function Profile () {
                         <div>{users.first_name} {users.last_name}</div>
                     </div>
                     <div className="history">
-                    <div className="history1">
-                        
+                    <div className="history1">                  
                     <span>{users.rides}</span>
                     <span>Rides</span>
                     </div>

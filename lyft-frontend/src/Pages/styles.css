@@ -267,6 +267,22 @@ button {
 
 }
 
+.ride-length {
+    width: 150px;
+}
+
+.amount {
+    width: 100px;
+}
+
+.pickup-location {
+    width: 200px;
+}
+
+.dropoff-location {
+    width: 200px;
+}
+
 /* button:focus,
 button:focus-visible {
     outline: none
