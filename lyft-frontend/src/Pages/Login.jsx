@@ -84,9 +84,7 @@ const Login = () => {
                             value={pwd}
                             required
                         />
-                        <button className="validbtn"onClick={() => {
-                        navigate("/mainride");
-                        }}>
+                        <button className="validbtn" onClick={handleSubmit}>
                         <a>Login</a>
                         </button>
                     </form>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Ride\RideController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Charity\CharityController;
 use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\ShortcutsController;
 use App\Http\Controllers\InviteHistoryController;
@@ -14,7 +15,9 @@ Route::post('/login', LoginController::class);
 Route::post('/register', [RegisterController::class, 'register']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('users', [UserController::class, 'index']);
+    Route::get('charities', [CharityController::class, 'index']);
     Route::post('donations', [DonationController::class, 'store']);
+    Route::get('is_donating', [DonationController::class, 'is_donating']);
     Route::put('donations', [DonationController::class, 'update']);
     Route::delete('donations', [DonationController::class, 'destroy']);
     Route::post('/promos', [PromoController::class, 'store']);
