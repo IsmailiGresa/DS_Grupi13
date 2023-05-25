@@ -6,18 +6,29 @@ import "./signuplogin.css";
 import { useNavigate } from 'react-router-dom';
 
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+//const FIRSTNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = '/register';
 
 const Signup = () => {
-    const userRef = useRef();
+    const firstNameRef = useRef();
     const errRef = useRef();
     const navigate = useNavigate();
 
-    const [user, setUser] = useState('');
-    const [validName, setValidName] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
+    const [firstName, setFirstName] = useState('');
+    const [validFirstName, setValidFirstName] = useState(false);
+
+
+    const [lastName, setLastName] = useState('');
+    const [validLastName, setValidLastName] = useState(false);
+
+    const [email, setEmail] = useState('');
+
+    const [user] = useState('');
+    const [validName] = useState(false);
+    const [userFocus] = useState(false);
+
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
@@ -31,34 +42,41 @@ const Signup = () => {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-        userRef.current.focus();
+      //  userRef.current.focus();
+        firstNameRef.current.focus();
     }, [])
 
-    useEffect(() => {
-        setValidName(USER_REGEX.test(user));
-    }, [user])
+    // useEffect(() => {
+    //     setValidName(FIRSTNAME_REGEX.test(firstName));
+    // }, [firstName])
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(pwd));
         setValidMatch(pwd === matchPwd);
-    }, [pwd, matchPwd])
+        setValidFirstName(firstName.trim().length > 0);
+        setValidLastName(lastName.trim().length > 0);
+    }, [pwd, matchPwd, firstName, lastName]);
 
     useEffect(() => {
         setErrMsg('');
-    }, [user, pwd, matchPwd])
+    }, [firstName, lastName, email, pwd, matchPwd])
+
+    const isValidEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // if button enabled with JS hack
-        const v1 = USER_REGEX.test(user);
-        const v2 = PWD_REGEX.test(pwd);
-        if (!v1 || !v2) {
+        // Validate inputs
+        const isEmailValid = isValidEmail(email);
+        if (!validFirstName || !validLastName || !isEmailValid || !validPwd || !validMatch) {
             setErrMsg("Invalid Entry");
             return;
         }
         try {
             const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
+                JSON.stringify({ firstName, lastName, email, pwd }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -69,7 +87,9 @@ const Signup = () => {
             //console.log(JSON.stringify(response))
             setSuccess(true);
             //clear state and controlled inputs
-            setUser('');
+            setFirstName('');
+            setLastName('');
+            setEmail('');
             setPwd('');
             setMatchPwd('');
         } catch (err) {
@@ -98,25 +118,53 @@ const Signup = () => {
                     <p ref={errRef} className={errMsg ? "error-message" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1 className="hone-h1">Signup</h1>
                     <form className="form-ls" onSubmit={handleSubmit}>
-                        <label className="inp-label" htmlFor="username">
-                            Username:
-                            <FontAwesomeIcon icon={faCheck} className={validName ? "valid-input" : "hide"} />
-                            <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid-input"} />
+                        <label className="inp-label" htmlFor="first_name">
+                            First Name:
+                            <FontAwesomeIcon icon={faCheck} className={validFirstName ? "valid-input" : "hide"} />
+                            <FontAwesomeIcon icon={faTimes} className={validFirstName || !firstName ? "hide" : "invalid-input"} />
                         </label>
                         <input
-                            type="username"
-                            className="textarea-text"
-                            id="username"
-                            ref={userRef}
+                            type="text"
+                            className={`textarea-text ${validFirstName ? "" : " "}`}
+                            id="first_name"
+                            ref={firstNameRef}
                             autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
-                            required=""
-                            aria-invalid={validName ? "false" : "true"}
-                            aria-describedby="uidnote"
-                            onFocus={() => setUserFocus(true)}
-                            onBlur={() => setUserFocus(false)}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            value={firstName}
+                            required
+                            aria-invalid={validFirstName ? "false" : "true"}
                         />
+                        <label className="inp-label" htmlFor="last_name">
+                            Last Name:
+                            <FontAwesomeIcon icon={faCheck} className={validLastName ? "valid-input" : "hide"} />
+                            <FontAwesomeIcon icon={faTimes} className={validLastName || !lastName ? "hide" : "invalid-input"} />
+                        </label>
+                        <input
+                            type="text"
+                            className={`textarea-text ${validLastName ? "" : ""}`}
+                            id="last_name"
+                            autoComplete="off"
+                            onChange={(e) => setLastName(e.target.value)}
+                            value={lastName}
+                            required
+                            aria-invalid={validLastName ? "false" : "true"}
+                        />
+
+                        <label className="inp-label" htmlFor="email">
+                            Email:
+                        </label>
+                        <input
+                            type="email"
+                            className={`textarea-text ${isValidEmail(email) ? "" : "invalid-input"}`}
+                            id="email"
+                            autoComplete="off"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            placeholder="email@gmail.com"
+                            required
+                            aria-invalid={isValidEmail(email) ? "false" : "true"}
+                        />
+
                         <p id="uidnote" className={userFocus && user && !validName ? "input-instructions" : "offscreen"}>
                             <FontAwesomeIcon icon={faInfoCircle} />
                             4 to 24 characters.<br />

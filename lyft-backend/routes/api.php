@@ -7,6 +7,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Donation\DonationController;
+use App\Http\Controllers\ShortcutsController;
 use App\Http\Controllers\InviteHistoryController;
 
 Route::post('/login', LoginController::class);
@@ -20,6 +21,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
+    Route::post('uploadavatar', 'UserController@uploadAvatar');
+    Route::post('shortcuts', [ShortcutsController::class, 'store']);
+    Route::get('shortcuts', [ShortcutsController::class, 'index']);
 
 
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);
