@@ -46,3 +46,28 @@ it('updates a donation', function () {
         'amount' => $new_amount,
     ]);
 });
+
+
+
+it('stops donation', function () {
+    // Create a user and charity
+    $role = Role::factory()->create();
+    $user = User::factory()->create(['role_id' => $role->id]);
+    $charity = Charity::factory()->create();
+    $donation = Donation::factory()->create([
+        'charity_id' => $charity->id,
+        'user_id' => $user->id,
+    ]);
+    login($user);
+
+    // Act as the user and send a DELETE request 
+       $response = $this->deleteJson(action([DonationController::class, 'update']));
+    // Assert that the donation was created successfully
+    $response->assertStatus(200);
+
+    $this->assertDatabaseMissing(Donation::class, ['user_id' => $user->id, 'id' => $donation->id]);
+
+});
+
+
+
