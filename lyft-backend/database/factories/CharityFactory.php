@@ -18,6 +18,7 @@ class CharityFactory extends Factory
     {
         return [
             'name' => $this->faker->company,
+            'image_url' => $this->faker->imageUrl,
         ];
 
     }
