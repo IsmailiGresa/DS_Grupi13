@@ -12,6 +12,7 @@ class GiftCardHistoryController extends Controller
     public function index()
     {
         $giftCardHistory = GiftCardHistory::with('purchases', 'redemptions')->get();
+
         return response()->json($giftCardHistory);
     }
 

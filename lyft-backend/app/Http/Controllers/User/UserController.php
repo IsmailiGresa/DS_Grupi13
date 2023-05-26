@@ -27,6 +27,7 @@ class UserController extends ApiController
             'data' => $users,
         ]);
     }
+
     public function profile(Request $request)
     {
         $user = $request->user();
@@ -35,6 +36,7 @@ class UserController extends ApiController
             'user' => $user,
         ]);
     }
+
     /**
      * Store a newly created resource in storage.
      */

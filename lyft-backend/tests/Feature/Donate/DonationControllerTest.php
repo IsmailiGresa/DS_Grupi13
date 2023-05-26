@@ -1,15 +1,15 @@
 <?php
 
-use App\Models\Role;
-use App\Models\User;
+use App\Http\Controllers\Donation\DonationController;
 use App\Models\Charity;
 use App\Models\Donation;
-use App\Http\Controllers\Donation\DonationController;
+use App\Models\Role;
+use App\Models\User;
 
 it('creates a successful donation', function () {
     // Create a user and charity
     $role = Role::factory()->create();
-    $user = User::factory()->create(['role_id' =>$role->id]);
+    $user = User::factory()->create(['role_id' => $role->id]);
 
     $charity = Charity::factory()->create();
     login($user);

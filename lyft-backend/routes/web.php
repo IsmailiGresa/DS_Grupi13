@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GiftCardHistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +15,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-use App\Http\Controllers\GiftCardHistoryController;
 use App\Http\Controllers\InviteHistoryController;
-
-
-
-
+use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/gift-card-history', [GiftCardHistoryController::class, 'index']);

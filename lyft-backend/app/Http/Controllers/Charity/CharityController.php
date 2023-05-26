@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Charity;
 
 use App\Http\Controllers\ApiController;
-use App\Http\Controllers\Controller;
 use App\Models\Charity;
 use Illuminate\Http\Request;
 
