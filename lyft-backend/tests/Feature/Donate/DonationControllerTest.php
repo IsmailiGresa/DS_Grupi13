@@ -71,3 +71,42 @@ it('stops donation', function () {
 
 
 
+
+it('shows true if user is donating', function () {
+    $role = Role::factory()->create();
+    $user = User::factory()->create(['role_id' => $role->id]);
+    $charity = Charity::factory()->create();
+    Donation::factory()->create([
+        'charity_id' => $charity->id,
+        'user_id' => $user->id,
+    ]);
+    login($user);
+
+
+    $response = $this->getJson(action([DonationController::class, 'is_donating']));
+    // Assert that the donation was created successfully
+    $response->assertStatus(200);
+
+    expect($response->json('data'))->toBe(true);
+    
+});
+
+
+it('shows false if user is not donating', function () {
+    $role = Role::factory()->create();
+    $userDonates = User::factory()->create(['role_id' => $role->id]);
+    $userDoesNotDonate = User::factory()->create(['role_id' => $role->id]);
+    $charity = Charity::factory()->create();
+    Donation::factory()->create([
+        'charity_id' => $charity->id,
+        'user_id' => $userDonates->id,
+    ]);
+    login($userDoesNotDonate);
+
+
+    $response = $this->getJson(action([DonationController::class, 'is_donating']));
+    // Assert that the donation was created successfully
+    $response->assertStatus(200);
+
+    expect($response->json('data'))->toBe(false);
+});
