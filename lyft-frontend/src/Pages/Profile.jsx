@@ -243,7 +243,7 @@ export default function Profile () {
                         </div>
                     </div>
                 </div>
-                
+                <div className="shortmode">
                     <div className="shortcut">
                         <div className="home">
                             <h2>Shortcuts</h2>
@@ -276,6 +276,7 @@ export default function Profile () {
                     </div>
                     <div>
                     </div>
+                </div>
                 </div>
             </div>
         </>

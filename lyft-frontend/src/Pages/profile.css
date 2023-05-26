@@ -191,6 +191,7 @@ h5{
     top: 75px;
     margin-top: 80px;
     font-size: 22px;
+    font-weight: bold;
 }
 .acc{
     display: flex;
@@ -379,7 +380,9 @@ input[value="dark"] {
     background-color: #230b4d;
     color: #FFFFFF;
 }
-
+.shortmode{
+    padding-left: 160px;
+}
   .modalBackground{
     position: fixed;
     top: 0px;
