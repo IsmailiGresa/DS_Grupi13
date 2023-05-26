@@ -47,8 +47,6 @@ it('updates a donation', function () {
     ]);
 });
 
-
-
 it('stops donation', function () {
     // Create a user and charity
     $role = Role::factory()->create();
@@ -60,17 +58,14 @@ it('stops donation', function () {
     ]);
     login($user);
 
-    // Act as the user and send a DELETE request 
-       $response = $this->deleteJson(action([DonationController::class, 'update']));
+    // Act as the user and send a DELETE request
+    $response = $this->deleteJson(action([DonationController::class, 'update']));
     // Assert that the donation was created successfully
     $response->assertStatus(200);
 
     $this->assertDatabaseMissing(Donation::class, ['user_id' => $user->id, 'id' => $donation->id]);
 
 });
-
-
-
 
 it('shows true if user is donating', function () {
     $role = Role::factory()->create();
@@ -82,15 +77,13 @@ it('shows true if user is donating', function () {
     ]);
     login($user);
 
-
     $response = $this->getJson(action([DonationController::class, 'is_donating']));
     // Assert that the donation was created successfully
     $response->assertStatus(200);
 
     expect($response->json('data'))->toBe(true);
-    
-});
 
+});
 
 it('shows false if user is not donating', function () {
     $role = Role::factory()->create();
@@ -102,7 +95,6 @@ it('shows false if user is not donating', function () {
         'user_id' => $userDonates->id,
     ]);
     login($userDoesNotDonate);
-
 
     $response = $this->getJson(action([DonationController::class, 'is_donating']));
     // Assert that the donation was created successfully
