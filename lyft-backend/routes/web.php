@@ -15,6 +15,12 @@ use App\Http\Controllers\GiftCardHistoryController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/mainride', function() {
+  return view('mainride');
+})->middleware(['auth', 'verified'])->name('mainride');
+
+
 use App\Http\Controllers\InviteHistoryController;
 use Illuminate\Support\Facades\Route;
 
