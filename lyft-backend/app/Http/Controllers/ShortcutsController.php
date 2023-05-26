@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Shortcuts;
+use Illuminate\Http\Request;
 
 class ShortcutsController extends Controller
 {
