@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/login', LoginController::class);
 Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/logout', 'AuthController@logout');
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('users', [UserController::class, 'index']);
     Route::get('charities', [CharityController::class, 'index']);
