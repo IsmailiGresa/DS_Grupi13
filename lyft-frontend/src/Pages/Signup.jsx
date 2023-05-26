@@ -1,12 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import axios from './api/axios';
+import axios from '../api/axios';
+
 import "./signuplogin.css";
 import { useNavigate } from 'react-router-dom';
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = '/api/register';
 
 const Signup = () => {
     const firstNameRef = useRef();
@@ -60,22 +61,30 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Validate inputs
+      
         const isEmailValid = isValidEmail(email);
+        
         if (!validFirstName || !validLastName || !isEmailValid || !validPwd || !validMatch) {
             setErrMsg("Invalid Entry");
             return;
         }
+        
         try {
-            const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ firstName, lastName, email, pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            // TODO: remove console.logs before deployment
-            console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response))
+
+            // const response = await axios.post('/api/login', {
+            //     email: email,
+            //     password: pwd
+            // });
+            const response = await axios.post(REGISTER_URL, {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                password: pwd,
+                password_confirmation : matchPwd
+            });
+
+            console.log(response);
+
             setSuccess(true);
             //clear state and controlled inputs
             setFirstName('');
@@ -211,9 +220,9 @@ const Signup = () => {
                             Must match the first password input field.
                         </p>
 
-                        <button className="validbtn" disabled={!validName || !validPwd || !validMatch ? true : false}onClick={() => {
-                            navigate("/mainride");
-                            }}><a>Sign Up</a></button>
+                            <button className="validbtn" onClick={handleSubmit}>
+                                <a>Sign Up</a>
+                            </button>
                             
                     </form>
                     <p className="html-tags">
