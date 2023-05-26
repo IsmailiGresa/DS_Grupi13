@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\Ride\RideController;
+use App\Models\Donation;
 use App\Models\Ride;
 use App\Models\Role;
 use App\Models\User;
-use App\Models\Charity;
-use App\Models\Donation;
-use App\Http\Controllers\Ride\RideController;
-use App\Http\Controllers\Donation\DonationController;
 
 it('shows users s rides', function () {
     Role::factory()->create([
