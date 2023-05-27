@@ -1,7 +1,29 @@
 import React from "react";
 import "./ModalPen.css";
+import axios from "../api/axios";
+import { useState } from "react";
 
 function ModalPen({ setOpenModal4 }) {
+
+
+  const [updatedUser, setUpdatedUser] = useState({});
+    
+    const updateUser = () => {
+      axios.put('/api/users', updatedUser, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        })
+        .then(response => {
+          // Handle the successful update
+          console.log('User updated:', response.data);
+        })
+        .catch(error => {
+          // Handle the error
+          console.log(error);
+        });
+    };
+
   return (
     <div className="backgro">
       <div className="modalContain">
@@ -21,12 +43,23 @@ function ModalPen({ setOpenModal4 }) {
         <div className="information">
           <div className="info">
             <div className="inf">
-            <input type="text" id="name" placeholder="Enter your name..."></input>
+            <input type="text" id="name" placeholder="Enter your name..." 
+            value={updatedUser.first_name || ''}
+            onChange={e => setUpdatedUser({ ...updatedUser, first_name: e.target.value })}z></input>
             </div>
-            <input type="text" id="surname" placeholder="Enter your lastname..."></input>
+            <input type="text" id="surname" placeholder="Enter your lastname..."
+            value={updatedUser.last_name || ''}
+            onChange={e => setUpdatedUser({ ...updatedUser, last_name: e.target.value })}></input>
           </div>
           <div className="info1">
-            <input type="email" id="email" placeholder="Enter your email address..."></input>
+            <input type="email" id="email" placeholder="Enter your email address..."
+            value={updatedUser.email || ''}
+            onChange={e => setUpdatedUser({ ...updatedUser, email: e.target.value })}></input>
+            </div>
+        <div className="info2">
+            <input type="text" id="phone" placeholder="Enter your phone number..."
+            value={updatedUser.phone_number || ''}
+            onChange={e => setUpdatedUser({ ...updatedUser, phone_number: e.target.value })}></input>
             </div>
         </div>
         <div className="pronoun">
@@ -65,7 +98,7 @@ function ModalPen({ setOpenModal4 }) {
           >
             Cancel
           </button>
-          <button>Update</button>
+          <button onClick={updateUser}>Update </button>
         </div>
       </div>
     </div>
