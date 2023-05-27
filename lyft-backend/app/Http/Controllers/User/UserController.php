@@ -46,6 +46,22 @@ class UserController extends ApiController
         ]);
     }
 
+    public function update(Request $request)
+    {
+        $user = auth()->user(); 
+        
+        $validatedData = $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email',
+            'phone_number' => 'required|string',
+        ]);
+
+        // Update the user's information
+        $user->update($validatedData);
+
+        return response()->json(['message' => 'User updated successfully']);
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -65,10 +81,6 @@ class UserController extends ApiController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
