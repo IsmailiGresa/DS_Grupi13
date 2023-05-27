@@ -3,9 +3,18 @@ import './inviteFriends.css';
 
 function InviteFriendsPage() {
     const [selectedTimeRange, setSelectedTimeRange] = useState("lastWeek1");
-    const inviteCode = "ABC123";
     const [showLastWeekContent, setShowLastWeekContent] = useState(false);
     const [showLast30DaysContent, setShowLast30DaysContent] = useState(false);
+    const [inviteCodeValue, setInviteCodeValue] = useState(generateInviteCode()); // Generate random invite code
+
+    function generateInviteCode() {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let code = '';
+        for (let i = 0; i < 6; i++) {
+            code += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return code;
+    }
 
     const handleTimeRangeChange = (timeRange) => {
         setSelectedTimeRange(timeRange);
@@ -20,37 +29,28 @@ function InviteFriendsPage() {
         setShowLastWeekContent(false);
         setShowLast30DaysContent(true);
     };
-    function myFunction() {
-        // Get the text field
-        var copyText = document.getElementById("invite-code11");
 
-        // Select the text field
+    const handleCopyInviteCode = () => {
+        const copyText = document.getElementById("invite-code1");
         copyText.select();
-        copyText.setSelectionRange(0, 99999); // For mobile devices
-
-        // Copy the text inside the text field
-        navigator.clipboard.writeText(copyText.value);
-
-        // Alert the copied text
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
         alert("Copied the text: " + copyText.value);
-    }
+    };
 
     return (
         <div className="invite-friends-page1">
             <h1 className="HE11">Refer a friend to Lyft and get ride credit</h1>
             <h3 className="HE33">Earn Lyft ride credit when you refer a friend in your area.</h3>
             <div className="invite-code1">
-                <label id="invite-code11" htmlFor="invite-code1">Your invite code</label>
-                <input type="text" id="invite-code1" value={inviteCode} readOnly />
-                <button className="button1" onClick={() => {
-                    navigator.clipboard.writeText(inviteCode);
-                }}>
+                <label htmlFor="invite-code1">Your invite code</label>
+                <input type="text" id="invite-code1" value={inviteCodeValue} readOnly />
+                <button className="button1" onClick={handleCopyInviteCode}>
                     Copy invite
                 </button>
-
             </div>
 
-                <h1 className="invite-historyy">Your invite history</h1>
+            <h1 className="invite-historyy">Your invite history</h1>
 
             <div className="time-range-switch1">
                 <button
@@ -74,9 +74,12 @@ function InviteFriendsPage() {
                     Last 30 days
                 </button>
             </div>
+
             {showLastWeekContent && (
                 <div>
-                    <div className="LastWeekContent1"> <h2>Last week content</h2></div>
+                    <div className="LastWeekContent1">
+                        <h2>Last week content</h2>
+                    </div>
                     <div className="data-row1">
                         <div className="data-cell1">Date</div>
                         <div className="data-cell1">Code</div>
@@ -84,13 +87,14 @@ function InviteFriendsPage() {
                         <div className="data-cell1">Activations<span className="registered-symbol11">&reg;</span></div>
                         <div className="data-cell1">Earnings</div>
                     </div>
-
                 </div>
-
             )}
+
             {showLast30DaysContent && (
                 <div>
-                    <div className="Last30Days1"><h2>Last 30 days content</h2></div>
+                    <div className="Last30Days1">
+                        <h2>Last 30 days content</h2>
+                    </div>
                     <div className="data-row1">
                         <div className="data-cell1">Date</div>
                         <div className="data-cell1">Code</div>
@@ -103,6 +107,5 @@ function InviteFriendsPage() {
         </div>
     );
 }
-
 
 export default InviteFriendsPage;

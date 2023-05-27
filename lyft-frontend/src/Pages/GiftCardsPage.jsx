@@ -28,7 +28,9 @@ function GiftCardsPage() {
             </h3>
             <div className="gift-card-buttons">
                 <div className="gift-card-buttons1">
+                    <a href="https://www.amazon.com/Lyft-Gift-Card-E-mail-Delivery/dp/B08MW92TWD/?maas=maas_adg_2E0DC5CF46430CD9134B774D3C827267_afap_abs&ref_=aa_maas&tag=maas&ref=sr_1_22&dchild=1&keywords=lyft&qid=1607618321&sr=8-22">
                     <button onClick={handleBuyGiftCardClick}>Buy a Gift Card</button>
+                    </a>
                 </div>
                 <div className="gift-card-buttons2">
                     <button onClick={

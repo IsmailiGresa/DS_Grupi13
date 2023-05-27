@@ -3,22 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class InviteHistory extends Model
 {
-    protected $table = 'invite_histories';
-    protected $fillable = [
-        'date',
-        'code',
-        'applications',
-        'activations',
-        'earnings',
-        'id_user',
-    ];
-
-    public function user(): BelongsTo
+    public function up()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        Schema::create('invite_histories', function (Blueprint $table) {
+            $table->id();
+            $table->string('code');
+            $table->date('date');
+            $table->integer('applications');
+            $table->integer('activations');
+            $table->integer('earnings');
+            $table->timestamps();
+        });
     }
 }

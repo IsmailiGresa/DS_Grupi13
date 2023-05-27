@@ -35,10 +35,11 @@ const ModalPayment = ({ setOpenModalPayment }) => {
                 console.log('Payment submission failed');
             }
         } catch (error) {
-            // Handle network or other errors
+            
             console.log('Error submitting payment:', error.message);
         }
     };
+
 
     const handleCloseModalPayment = () => {
         setOpenModalPayment(false);

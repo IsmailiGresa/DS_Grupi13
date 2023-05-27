@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
 class Redemption extends Model
 {
     protected $table = 'redemptions';
@@ -14,5 +13,4 @@ class Redemption extends Model
     {
         return $this->belongsTo(GiftCardHistory::class);
     }
-
 }

@@ -1,67 +1,5 @@
-.card-all{
-    margin: 0px;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
 
-}
-/*body{*/
-/*    background-color: #073d77;*/
-/*}*/
-/* FORM DESIGN */
-.card-form{
-    width: 45px;
-    height: 350px;
-    background-color: transparent;
-    display: block;
-
-}
-.card-input{
-    width: 275px;
-    height: 50px;
-    padding: 0 10px;
-    display: block;
-    outline: none;
-    margin: 10px 0 0 18px;
-    border-radius: 4px;
-    border: 1px solid #e0e2e2;
-
-}
-/* CARD DESIGN */
-.cardCredit{
-    position: relative;
-    width: 350px;
-    height: 200px;
-    background: #ff4081;
-    border-radius: 8px;
-}
-.elements-card .card-all, .elements-card .span-card, .elements-card .h-card{
-    color: #dadada;
-    position: absolute;
-    user-select: none;
-
-}
-.elements-card .card-all , .elements-card .span-card{
-    left: 0;
-    right: 0;
-    bottom: 70px;
-    display: block;
-    width: fit-content;
-    margin: auto;
-    font-size: 20px;
-}
-.elements-card > .span-card{
-    bottom: 40px;
-    margin: 0 auto;
-    font-size: 10px;
-}
-.elements-card > .h-card{
-    left: 25px;
-    bottom: 20px;
-    font-size: 15px;
-    text-transform: uppercase;
-}
-.card-button{
+.cardPay-button {
 
     font-family: Georgia, serif;
     margin: 10px 0 0 18px;
@@ -69,9 +7,5 @@
     background: #ff4081;
     padding: 0.5rem;
     width: 300px;
+}
 
-}
-/*CONTAINER */
-.container-card{
-    margin: 150px 0 0 500px;
-}

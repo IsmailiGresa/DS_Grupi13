@@ -216,35 +216,54 @@ function Mainride() {
                         </div>
                         <ul className="car-list">
                             <li>
-                                <div className="car-info">
-                                    <img src="/icons/car-icon.png" alt="Car Icon" />
-                                    <div>
-                                        <h3>Car Model 1</h3>
-                                        <div className="passenger-info">
-                                            <img src="/icons/person-icon.png" alt="Person Icon" />
-                                            <span>4 passengers</span>
+                                <button className="car-button" onClick={() => handleCarSelection('Car Model 1')}>
+                                    <div className="car-info">
+                                        <img src="/icons/car-icon.png" alt="Car Icon" />
+                                        <div>
+                                            <h3>Car Model 1</h3>
+                                            <div className="passenger-info">
+                                                <img src="/icons/person-icon.png" alt="Person Icon" />
+                                                <span>4 passengers</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p className="price">$20</p>
+                                    <p className="price">$20</p>
+                                </button>
                             </li>
                             <li>
-                                <div className="car-info">
-                                    <img src="/icons/car-icon.png" alt="Car Icon" />
-                                    <div>
-                                        <h3>Car Model 2</h3>
-                                        <div className="passenger-info">
-                                            <img src="/icons/person-icon.png" alt="Person Icon" />
-                                            <span>6 passengers</span>
+                                <button className="car-button" onClick={() => handleCarSelection('Car Model 2')}>
+                                    <div className="car-info">
+                                        <img src="/icons/car-icon.png" alt="Car Icon" />
+                                        <div>
+                                            <h3>Car Model 2</h3>
+                                            <div className="passenger-info">
+                                                <img src="/icons/person-icon.png" alt="Person Icon" />
+                                                <span>6 passengers</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <p className="price">$30</p>
+                                    <p className="price">$30</p>
+                                </button>
                             </li>
-
+                            <li>
+                                <button className="car-button" onClick={() => handleCarSelection('Car Model 3')}>
+                                    <div className="car-info">
+                                        <img src="/icons/car-icon.png" alt="Car Icon" />
+                                        <div>
+                                            <h3>Car Model 3</h3>
+                                            <div className="passenger-info">
+                                                <img src="/icons/person-icon.png" alt="Person Icon" />
+                                                <span>5 passengers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p className="price">$25</p>
+                                </button>
+                            </li>
                         </ul>
                         <button className="close-button" onClick={closeModal}>
-                            Close
+                            {/*me ndrru*/}
+                            Select the car
                         </button>
                     </div>
 
