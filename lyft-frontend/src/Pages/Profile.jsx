@@ -254,7 +254,8 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen5(true);}}>
                                 <img src="/icons/three-dots.png"></img>
                             </button>
-                            
+                            <br></br>
+                            {users.home_address}
                             </div>
                         </div>
                         <div className="work">
@@ -263,7 +264,7 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen6(true);}}>
                                 <img src="/icons/three-dots.png"></img>
                             </button>
-                            
+                            {users.work_address}
                         </div>
                     </div>
                     <div className="mode">

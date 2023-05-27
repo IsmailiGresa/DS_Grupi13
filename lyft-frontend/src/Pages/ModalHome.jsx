@@ -4,37 +4,29 @@ import { useState } from "react";
 import axios from "../api/axios";
 
 function ModalHome({ setOpenModal5 }) {
-  const [homeLocation, setHomeLocation] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const [updatedUser, setUpdatedUser] = useState({});
 
-        setError('');
-        setSuccess('');
-
-        axios.post('/api/shortcuts', {
-                home_location: homeLocation,
-            })
-            .then((response) => {
-                setSuccess(response.data.message);
-                setHomeLocation('');
-            })
-            .catch((error) => {
-                if (error.response && error.response.data && error.response.data.errors) {
-                    setError(error.response.data.errors);
-                } else {
-                    setError('Something went wrong. Please try again.');
-                }
-            });
-    };
+  
+  const updateUser = () => {
+    axios.put('/api/users', updatedUser, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then(response => {
+        // Handle the successful update
+        console.log('User updated:', response.data);
+      })
+      .catch(error => {
+        // Handle the error
+        console.log(error);
+      });
+  };
 
   return (
     <div className="modalBackgr">
-      {error && <div className="error">{error}</div>}
-      {success && <div className="success">{success}</div>}
-      <div className="modalCont" onSubmit={handleSubmit}>
+      <div className="modalCont">
         <div className="titleBtn">
           <button className="close"
             onClick={() => {
@@ -48,7 +40,9 @@ function ModalHome({ setOpenModal5 }) {
           Adding home address
         </div>
         <div className="upload">
-            <input type="text" placeholder="    Enter the address*" required value={homeLocation} onChange={(e) => setHomeLocation(e.target.value)}></input>
+            <input type="text" placeholder="    Enter the address*" 
+            value={updatedUser.home_address || ''}
+            onChange={e => setUpdatedUser({ ...updatedUser, home_address: e.target.value })}></input>
         </div>
         <div className="footer">
           <button type="submit"
@@ -59,7 +53,7 @@ function ModalHome({ setOpenModal5 }) {
           >
             Cancel
           </button>
-          <button onClick={handleSubmit}>Save</button>
+          <button onClick={updateUser}>Save</button>
         </div>
       </div>
     </div>

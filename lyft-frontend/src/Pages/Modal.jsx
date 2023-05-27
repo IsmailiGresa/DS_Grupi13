@@ -5,15 +5,11 @@ import axios from "../api/axios";
 function Modal({ setOpenModal }) {
 
   const [selectedImage, setSelectedImage] = useState(null);
-
-
   const handleImageChange = (e) => {
     setSelectedImage(e.target.files[0]);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
     try {
       const formData = new FormData();
       formData.append('image', selectedImage);
@@ -24,7 +20,6 @@ function Modal({ setOpenModal }) {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-  
       // Handle the response as needed
       console.log(response.data);
   

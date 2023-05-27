@@ -51,10 +51,12 @@ class UserController extends ApiController
         $user = auth()->user(); 
         
         $validatedData = $request->validate([
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email',
-            'phone_number' => 'required|string',
+            'first_name' => 'string',
+            'last_name' => 'string',
+            'email' => 'email',
+            'phone_number' => 'string',
+            'home_address' => 'string',
+            'work_address' => 'string',
         ]);
 
         // Update the user's information

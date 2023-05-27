@@ -45,7 +45,7 @@ function ModalPen({ setOpenModal4 }) {
             <div className="inf">
             <input type="text" id="name" placeholder="Enter your name..." 
             value={updatedUser.first_name || ''}
-            onChange={e => setUpdatedUser({ ...updatedUser, first_name: e.target.value })}z></input>
+            onChange={e => setUpdatedUser({ ...updatedUser, first_name: e.target.value })}></input>
             </div>
             <input type="text" id="surname" placeholder="Enter your lastname..."
             value={updatedUser.last_name || ''}
