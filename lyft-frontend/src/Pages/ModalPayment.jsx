@@ -15,6 +15,31 @@ const ModalPayment = ({ setOpenModalPayment }) => {
             ...info, [e.target.name]: e.target.value
         });
     };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('/api/payments', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ payment_data: info }),
+            });
+
+            if (response.ok) {
+                // Payment submitted successfully
+                console.log('Payment submitted successfully');
+            } else {
+                // Handle error
+                console.log('Payment submission failed');
+            }
+        } catch (error) {
+            
+            console.log('Error submitting payment:', error.message);
+        }
+    };
+
 
     const handleCloseModalPayment = () => {
         setOpenModalPayment(false);
@@ -30,14 +55,14 @@ const ModalPayment = ({ setOpenModalPayment }) => {
                 </div>
 
         <div className="container-card">
-           <form className="card-form">
+           <form className="card-form" onSubmit={handleSubmit}>
             Card
             <input
                 className="card-input"
                 type="text"
                 name="cardNumber"
                 placeholder="cardNumber"
-                maxlength="16"
+                maxLength="16"
                 onChange={handleChange} />
             <input
                 className="card-input"
@@ -50,16 +75,16 @@ const ModalPayment = ({ setOpenModalPayment }) => {
                 type="text"
                 name="month"
                 placeholder="month"
-                maxlength="2"
+                maxLength="2"
                 onChange={handleChange} />
             <input
                 className="card-input"
                 type="text"
                 name="year"
                 placeholder="year"
-                maxlength="4"
+                maxLength="4"
                 onChange={handleChange} />
-            <button className="card-button">Confirm</button>
+            <button className="card-button" type="submit">Confirm</button>
         </form>
 
         <div className="cardCredit">
