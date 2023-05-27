@@ -38,9 +38,9 @@ const Login = () => {
         const roles = response?.data?.roles;
         //   setAuth({ email, pwd, roles, accessToken });
         setEmail("");
-        setPwd("");
-        setSuccess(true);
+        setPwd("");      
         navigate("/mainride");
+        setSuccess(true);
       } else {
         // console.log(response.data)
       }
