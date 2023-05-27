@@ -4,32 +4,37 @@ import axios from "../api/axios";
 
 function Modal({ setOpenModal }) {
 
-  const [avatar, setAvatar] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setAvatar(file);
+
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
     try {
       const formData = new FormData();
-      formData.append('avatar', avatar);
-
-      await axios.post('/api/uploadavatar', formData, {
+      formData.append('image', selectedImage);
+  
+      const response = await axios.post('/api/uploadavatar', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      console.log('Avatar uploaded successfully');
+  
+      // Handle the response as needed
+      console.log(response.data);
+  
+      // Reset the selectedImage state
+      setSelectedImage(null);
     } catch (error) {
-      console.error('Error uploading avatar', error);
+      // Handle errors
+      console.log(error);
     }
   };
-
-
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -47,7 +52,7 @@ function Modal({ setOpenModal }) {
         </div>
         <div className="upl">
               <img src="/icons/image-.png"></img>
-              <input id="image" type="file" name="avatar" onChange={handleFileChange}></input>
+              <input type="file" accept="image/*" onChange={handleImageChange} />
         </div>
         <div className="footer">
           <button

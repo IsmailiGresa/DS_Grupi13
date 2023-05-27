@@ -32,4 +32,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);
     Route::get('/invite-history', [InviteHistoryController::class, 'index']);
     Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'profile']);
+    Route::post('uploadavatar', [UserController::class, 'uploadAvatar']);
 });
