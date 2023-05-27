@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('work_address')->nullable();
             $table->integer('rides')->default(0);
             $table->string('email')->unique();
+            $table->string('pronoun')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

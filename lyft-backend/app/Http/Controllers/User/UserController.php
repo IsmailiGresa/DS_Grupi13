@@ -57,6 +57,7 @@ class UserController extends ApiController
             'phone_number' => 'string',
             'home_address' => 'string',
             'work_address' => 'string',
+            'pronoun' => 'string',
         ]);
 
         // Update the user's information

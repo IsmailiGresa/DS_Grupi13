@@ -230,7 +230,7 @@ export default function Profile () {
                                     <span>{users.first_name} {users.last_name}</span>
                                 </div>
                                 <div className="ident12">
-                                    <div>Pronouns not selected</div>
+                                    <div>{users.pronoun}</div>
                                 </div>
                             </div>
                         </div>

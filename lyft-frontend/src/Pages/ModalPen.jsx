@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function ModalPen({ setOpenModal4 }) {
 
-
   const [updatedUser, setUpdatedUser] = useState({});
     
     const updateUser = () => {
@@ -67,23 +66,28 @@ function ModalPen({ setOpenModal4 }) {
           <a>Select your pronouns - we'll do our best using them when adressing you!</a>
           <div className="pronouns">
             <div className="hepro">
-            <input type="radio" name="pronoun" value="he" id="he" /> 
+            <input type="radio" name="pronoun" value="They/Them" checked={updatedUser.pronoun === "They/Them"}
+            onChange={e => setUpdatedUser({ ...updatedUser, pronoun: e.target.value })}></input>
             <label htmlFor="he">They/Them</label><br />
             </div>
             <div className="shepro">
-            <input type="radio" name="pronoun" value="she" id="she" /> 
+            <input type="radio" name="pronoun" value="She/Her" checked={updatedUser.pronoun === "She/Her"}
+            onChange={e => setUpdatedUser({ ...updatedUser, pronoun: e.target.value })} /> 
             <label htmlFor="she">She/Her</label><br />
             </div>
             <div className="theypro">
-            <input type="radio" name="pronoun" value="they" id="they" /> 
+            <input type="radio" name="pronoun" value="He/Him" checked={updatedUser.pronoun === "He/Him"}
+            onChange={e => setUpdatedUser({ ...updatedUser, pronoun: e.target.value })} /> 
             <label htmlFor="they">He/Him</label><br />
             </div>
             <div className="otherpro">
-            <input type="radio" name="pronoun" value="other" id="other" /> 
+            <input type="radio" name="pronoun" value="My pronouns aren't listed" checked={updatedUser.pronoun === "My pronouns aren't listed"}
+            onChange={e => setUpdatedUser({ ...updatedUser, pronoun: e.target.value })} /> 
             <label htmlFor="other">My pronouns aren't listed</label>
             </div>
             <div className="introv">
-            <input type="radio" name="pronoun" value="other" id="other" /> 
+            <input type="radio" name="pronoun" value="Prefer not to say" checked={updatedUser.pronoun === "Prefer not to say"}
+            onChange={e => setUpdatedUser({ ...updatedUser, pronoun: e.target.value })} /> 
             <label htmlFor="other">Prefer not to say</label>
             </div>
           </div>
