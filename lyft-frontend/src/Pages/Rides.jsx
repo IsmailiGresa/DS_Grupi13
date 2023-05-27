@@ -7,12 +7,24 @@ import axios from '../api/axios';
 export default function Rides() {
 
     const [data, setData] = useState([]);
-
     const [toggleState, setToggleState] = useState(1);
-
     const toggleTab = (index) => {
         setToggleState(index);
     };
+    const [users, setUser] = useState([]);
+    useEffect(() => {
+        axios.get('/api/users', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
+        .then(response => {
+            setUser(response.data.user);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, []);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,11 +35,8 @@ export default function Rides() {
                 console.error('Error fetching data:', error);
             }
         };
-
         fetchData();
     }, []);
-
-
 
     const navigate = useNavigate();
     const lastScrollTop = useRef(0);
@@ -61,7 +70,7 @@ export default function Rides() {
                     <button onClick={() => {
                         navigate("/mainride");
                     }}>
-                        <a>Gresa</a>
+                        <a>{users.first_name}</a>
                         <img src="/icons/profile.png" alt="" />
                     </button>
                 </div>
@@ -69,7 +78,7 @@ export default function Rides() {
             <aside className="sidebar">
                 <div className="prf">
                     <img src="/icons/profile.png" alt="" />
-                    <a>Gresa Ismaili</a>
+                    <a>{users.first_name} {users.last_name}</a>
                 </div>
                 <div className="buttons">
                     <button onClick={() => {

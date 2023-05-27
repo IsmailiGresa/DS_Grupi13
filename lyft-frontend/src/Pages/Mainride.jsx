@@ -3,6 +3,7 @@ import "./mainride.css";
 import { useNavigate } from "react-router-dom";
 import "./sidebarBtn.css";
 import { useRef as myUseRef } from "react";
+import axios from "../api/axios";
 import {
   GoogleMap,
   Marker,
@@ -66,6 +67,21 @@ function Mainride() {
     setShowModal(false);
   };
 
+  const [users, setUser] = useState([]);
+    useEffect(() => {
+        axios.get('/api/users', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
+        .then(response => {
+            setUser(response.data.user);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, []);
+
   return (
     <>
       <div className="map-container">
@@ -96,7 +112,7 @@ function Mainride() {
               </div>
               <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
                 <img src="/icons/profile.png" alt=""></img>
-                <a>Gresa Ismaili </a>
+                <a>{users.first_name} {users.last_name}</a>
                 <ul className="dropdown-menu-list5">
                   <li>
                     <button
