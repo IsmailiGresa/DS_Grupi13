@@ -34,7 +34,7 @@ class PaymentsController extends Controller
     {
         $cardDetails = PaymentMethods::create([
             'card_number' => $request->cardNumber,
-            'name' => $request->name,
+            'name' => $request->fullName,
             'month' => $request->month,
             'year' => $request->year,
             'user_id' => Auth::id() ?? '',
@@ -48,7 +48,9 @@ class PaymentsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $p = PaymentMethods::firstWhere('id', $id);
+
+        return response()->json($p);
     }
 
     /**
@@ -64,7 +66,17 @@ class PaymentsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $p = PaymentMethods::firstWhere('id', $id);
+
+        $selectedPayment = PaymentMethods::where('id', $id)->update([
+            'card_number' => $request->cardNumber ?: $p->card_number,
+            'name' => $request->fullName ?: $p->name,
+            'month' => $request->month ?: $p->month,
+            'year' => $request->year ?: $p->year,
+            'user_id' => Auth::id() ?? '',
+        ]);
+
+        return response()->json($selectedPayment, 200);
     }
 
     /**
@@ -72,6 +84,7 @@ class PaymentsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $selectedPayment = PaymentMethods::where('id', $id)->delete();
+        return response()->json(null, 204);
     }
 }

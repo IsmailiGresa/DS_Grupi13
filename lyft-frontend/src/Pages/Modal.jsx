@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import "./styles.css"
+import "./styles.css";
 import axios from "../api/axios";
 
 function Modal({ setOpenModal }) {
-
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageChange = (e) => {
     setSelectedImage(e.target.files[0]);
@@ -12,17 +11,17 @@ function Modal({ setOpenModal }) {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append('image', selectedImage);
-  
-      const response = await axios.post('/api/uploadavatar', formData, {
+      formData.append("image", selectedImage);
+
+      const response = await axios.post("/api/uploadavatar", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
       // Handle the response as needed
       console.log(response.data);
-  
+
       // Reset the selectedImage state
       setSelectedImage(null);
     } catch (error) {
@@ -34,7 +33,8 @@ function Modal({ setOpenModal }) {
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
-          <button className="close"
+          <button
+            className="close"
             onClick={() => {
               setOpenModal(false);
             }}
@@ -42,12 +42,10 @@ function Modal({ setOpenModal }) {
             x
           </button>
         </div>
-        <div className="title">
-          Upload a photo
-        </div>
+        <div className="title">Upload a photo</div>
         <div className="upl">
-              <img src="/icons/image-.png"></img>
-              <input type="file" accept="image/*" onChange={handleImageChange} />
+          <img src="/icons/image-.png"></img>
+          <input type="file" accept="image/*" onChange={handleImageChange} />
         </div>
         <div className="footer">
           <button
@@ -58,7 +56,9 @@ function Modal({ setOpenModal }) {
           >
             Cancel
           </button>
-          <button type="submit" onClick={handleSubmit}>Confirm</button>
+          <button type="submit" onClick={handleSubmit}>
+            Confirm
+          </button>
         </div>
       </div>
     </div>
