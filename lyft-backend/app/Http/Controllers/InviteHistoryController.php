@@ -4,17 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\InviteHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InviteHistoryController extends Controller
 {
     public function store(Request $request)
     {
-        $inviteHistory = new InviteHistory;
+        $inviteHistory = new InviteHistory();
         $inviteHistory->code = $request->input('code');
-        $inviteHistory->date = $request->input('date');
-        $inviteHistory->applications = $request->input('applications');
-        $inviteHistory->activations = $request->input('activations');
-        $inviteHistory->earnings = $request->input('earnings');
+        $inviteHistory->user_id = Auth::id() ?? '';
         $inviteHistory->save();
 
         return response()->json([
@@ -24,7 +22,7 @@ class InviteHistoryController extends Controller
 
     public function index()
     {
-        $inviteHistories = InviteHistory::all();
+        $inviteHistories = InviteHistory::where('user_id', Auth::id())->get();
 
         return response()->json($inviteHistories);
     }
