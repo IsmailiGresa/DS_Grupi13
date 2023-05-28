@@ -26,6 +26,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
+    Route::get('ride-price', [RideController::class, 'calculateRidePrice']);
+    Route::post('uploadavatar', 'UserController@uploadAvatar');
     Route::post('shortcuts', [ShortcutsController::class, 'store']);
     Route::get('shortcuts', [ShortcutsController::class, 'index']);
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);

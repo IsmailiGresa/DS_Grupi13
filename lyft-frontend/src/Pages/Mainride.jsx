@@ -3,7 +3,7 @@ import "./mainride.css";
 import { useNavigate } from "react-router-dom";
 import "./sidebarBtn.css";
 import { useRef as myUseRef } from "react";
-import axios from "../api/axios";
+import axios from "axios";
 import {
   GoogleMap,
   Marker,
@@ -22,6 +22,7 @@ function Mainride() {
   const [destination, setDestination] = useState("");
   const [directions, setDirections] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [selectedCar, setSelectedCar] = useState("");
 
   const onMapLoad = (map) => {
     const center = map.getCenter();
@@ -37,11 +38,88 @@ function Mainride() {
     setDestination(event.target.value);
   };
 
+  let pickupLatLng = {};
+  let destinationLatLng = {};
+
   const handleEstimateClick = () => {
     if (pickupLocation && destination) {
+      handleGetCoordinates();
       calculateDirections();
     }
   };
+
+  const handleGetCoordinates = async () => {
+    // Replace 'YOUR_API_KEY' with your actual API key obtained from Google Cloud Console
+    const api_key = "AIzaSyBUxVAAtruvwp5xYFBXiIbYfBXNHd_ffmM";
+    const base_url = "https://maps.googleapis.com/maps/api/geocode/json";
+
+    // Format the location name for the API request
+    const formattedLocation = pickupLocation.replace(" ", "+");
+    const formattedLocationDestination = destination.replace(" ", "+");
+
+    // Create the API request URL
+    const request_url = `${base_url}?address=${formattedLocation}&key=${api_key}`;
+    const request_url_destination = `${base_url}?address=${formattedLocationDestination}&key=${api_key}`;
+
+    try {
+      // Pickup Location lat and long
+      const res = await axios.get(request_url);
+      pickupLatLng = res.data.results[0].geometry.location;
+
+      console.log(pickupLatLng);
+      // Drop off Location lat and long
+      const res2 = await axios.get(request_url_destination);
+      destinationLatLng = res2.data.results[0].geometry.location;
+
+      console.log(destinationLatLng);
+
+      manipulatePricingBuckets(
+        calculateDistance(
+          pickupLatLng.lat,
+          pickupLatLng.lng,
+          destinationLatLng.lat,
+          destinationLatLng.lng
+        )
+      );
+    } catch (error) {}
+  };
+
+  const [pricing, setPricing] = useState({});
+  const manipulatePricingBuckets = async (distance) => {
+    let response = await axios.get(
+      `http://localhost:8000/api/ride-price/?distance=${distance}`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(response.data);
+    setPricing(response.data);
+  };
+  function calculateDistance(lat1, lon1, lat2, lon2) {
+    console.log(lat1, lon1, lat2, lon2);
+    const earthRadius = 6371; // Radius of the Earth in kilometers
+
+    const toRadians = (degrees) => {
+      return degrees * (Math.PI / 180);
+    };
+
+    const deltaLat = toRadians(lat2 - lat1);
+    const deltaLon = toRadians(lon2 - lon1);
+
+    const a =
+      Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+      Math.cos(toRadians(lat1)) *
+        Math.cos(toRadians(lat2)) *
+        Math.sin(deltaLon / 2) *
+        Math.sin(deltaLon / 2);
+
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = earthRadius * c;
+    return distance;
+  }
 
   const calculateDirections = () => {
     const directionsService = new window.google.maps.DirectionsService();
@@ -63,24 +141,30 @@ function Mainride() {
     );
   };
 
+  const handleCarSelection = (carModel) => {
+    setSelectedCar(carModel);
+    setShowModal(false);
+    navigate("/payment"); // Replace '/payment' with the actual URL of your payment page
+  };
+
   const closeModal = () => {
     setShowModal(false);
   };
 
-  const [users, setUser] = useState([]);
-    useEffect(() => {
-        axios.get('/api/users', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-        })
-        .then(response => {
-            setUser(response.data.user);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }, []);
+  // const [users, setUser] = useState([]);
+  //   useEffect(() => {
+  //       axios.get('/api/users', {
+  //           headers: {
+  //               Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //           },
+  //       })
+  //       .then(response => {
+  //           setUser(response.data.user);
+  //       })
+  //       .catch(error => {
+  //           console.log(error);
+  //       });
+  //   }, []);
 
   return (
     <>
@@ -112,7 +196,11 @@ function Mainride() {
               </div>
               <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
                 <img src="/icons/profile.png" alt=""></img>
-                <a>{users.first_name} {users.last_name}</a>
+                <a>
+                  {JSON.parse(localStorage.getItem("user"))?.first_name ?? ""}
+                  &nbsp;
+                  {JSON.parse(localStorage.getItem("user"))?.last_name ?? ""}
+                </a>
                 <ul className="dropdown-menu-list5">
                   <li>
                     <button
@@ -196,8 +284,7 @@ function Mainride() {
                     <button
                       className="dropdown-btn"
                       onClick={() => {
-                        localStorage.clear();
-                        navigate('/login')
+                        navigate("/logout");
                       }}
                     >
                       <img src="/icons/profile.png" alt="" />
@@ -287,7 +374,7 @@ function Mainride() {
                       </div>
                     </div>
                   </div>
-                  <p className="price">$20</p>
+                  <p className="price">${pricing?.amount_l1 ?? ""}</p>
                 </button>
               </li>
               <li>
@@ -305,7 +392,7 @@ function Mainride() {
                       </div>
                     </div>
                   </div>
-                  <p className="price">$30</p>
+                  <p className="price">${pricing?.amount_l2 ?? ""}</p>
                 </button>
               </li>
               <li>
@@ -323,13 +410,13 @@ function Mainride() {
                       </div>
                     </div>
                   </div>
-                  <p className="price">$25</p>
+                  <p className="price">${pricing?.amount_l3 ?? ""}</p>
                 </button>
               </li>
             </ul>
             <button className="close-button" onClick={closeModal}>
               {/*me ndrru*/}
-              Select the car
+              Close
             </button>
           </div>
         </div>
