@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ride;
 
 use App\Http\Controllers\ApiController;
+use App\Models\PricingBuckets;
 use App\Models\Ride;
 use Illuminate\Http\Request;
 
@@ -33,5 +34,15 @@ class RideController extends ApiController
         $rides = Ride::all()->where('user_id', auth()->id());
 
         return $this->showAll($rides);
+    }
+
+    public function calculateRidePrice(Request $request)
+    {
+
+        $pricingBuckets = PricingBuckets::where('min_distance', '<=', ((int)$request->distance))
+                    ->where('max_distance', '>=', ((int)$request->distance))
+                    ->first();
+
+        return response()->json($pricingBuckets);
     }
 }
