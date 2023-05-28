@@ -151,6 +151,21 @@ function Mainride() {
     setShowModal(false);
   };
 
+  // const [users, setUser] = useState([]);
+  //   useEffect(() => {
+  //       axios.get('/api/users', {
+  //           headers: {
+  //               Authorization: `Bearer ${localStorage.getItem('token')}`,
+  //           },
+  //       })
+  //       .then(response => {
+  //           setUser(response.data.user);
+  //       })
+  //       .catch(error => {
+  //           console.log(error);
+  //       });
+  //   }, []);
+
   return (
     <>
       <div className="map-container">

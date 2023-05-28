@@ -110,7 +110,11 @@ const Signup = () => {
                 <section className="section-info">
                     <h1 className="hone-h1">Success!</h1>
                     <p className="html-tags">
-                        <a   className="sign-link" href="#">Sign In</a>
+                    <button className="sign-link" onClick={() => {
+                            navigate("/login");
+                            }}>
+                            <a>Sign In</a>
+                            </button>
                     </p>
                 </section>
             ) : (

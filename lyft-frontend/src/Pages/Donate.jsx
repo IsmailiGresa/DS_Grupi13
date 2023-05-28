@@ -11,6 +11,21 @@ export default function Donate() {
     const [charities, setCharities] = useState([]);
     const [isDonate, setDonate] = useState(false);
 
+    const [users, setUser] = useState([]);
+    useEffect(() => {
+        axios.get('/api/users', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+        })
+        .then(response => {
+            setUser(response.data.user);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }, []);
+
     const startDonating = async (charityId) => {
         if(!isDonate){
             try {
@@ -87,7 +102,7 @@ export default function Donate() {
                     <button onClick={() => {
                         navigate("/mainride");
                     }}>
-                        <a>Gresa</a>
+                        <a>{users.first_name}</a>
                         <img src="/icons/profile.png" alt="" />
                     </button>
                 </div>
@@ -95,7 +110,7 @@ export default function Donate() {
             <aside className="sidebar">
                 <div className="prf">
                     <img src="/icons/profile.png" alt="" />
-                    <a>Gresa Ismaili</a>
+                    <a>{users.first_name} {users.last_name}</a>
                 </div>
                 <div className="buttons">
                     <button onClick={() => {

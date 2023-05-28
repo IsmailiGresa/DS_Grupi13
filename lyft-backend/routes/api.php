@@ -26,14 +26,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
-<<<<<<< Updated upstream
-=======
     Route::get('ride-price', [RideController::class, 'calculateRidePrice']);
->>>>>>> Stashed changes
     Route::post('uploadavatar', 'UserController@uploadAvatar');
     Route::post('shortcuts', [ShortcutsController::class, 'store']);
     Route::get('shortcuts', [ShortcutsController::class, 'index']);
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);
     Route::get('/invite-history', [InviteHistoryController::class, 'index']);
     Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'profile']);
+    Route::post('uploadavatar', [UserController::class, 'uploadAvatar']);
+    Route::put('users', [UserController::class, 'update']);
+
 });

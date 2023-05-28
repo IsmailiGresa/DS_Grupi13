@@ -13,20 +13,21 @@ import axios from "../api/axios";
 
 export default function Profile () {
 
-    const [users, setUser] = useState([]);
-    useEffect(() => {
-        axios.get('/api/users', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`,
-            },
-        })
-        .then(response => {
-            setUser(response.data.user);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }, []);
+    const [users, setUser] = useState({});
+
+  useEffect(() => {
+    axios.get('/api/users', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    .then(response => {
+      setUser(response.data.user);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }, []);
 
     const createdDate = new Date(users.created_at);
     const currentDate = new Date();
@@ -177,7 +178,7 @@ export default function Profile () {
                     <span>Rating</span>
                     </div>
                     <div className="history3">
-                    <span>{daysDifference}</span>
+                    <span>{daysDifference.toString()}</span>
                     <span>Days</span>
                     </div>
                 </div>
@@ -229,7 +230,7 @@ export default function Profile () {
                                     <span>{users.first_name} {users.last_name}</span>
                                 </div>
                                 <div className="ident12">
-                                    <div>Pronouns not selected</div>
+                                    <div>{users.pronoun}</div>
                                 </div>
                             </div>
                         </div>
@@ -253,8 +254,8 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen5(true);}}>
                                 <img src="/icons/three-dots.png"></img>
                             </button>
-                            
                             </div>
+                            <p><img src="/icons/location.png"></img>{users.home_address}</p>
                         </div>
                         <div className="work">
                             <img src="/icons/briefcase.png"></img>
@@ -262,16 +263,16 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen6(true);}}>
                                 <img src="/icons/three-dots.png"></img>
                             </button>
-                            
                         </div>
+                        <p><img src="/icons/location.png"></img>{users.work_address}</p>
                     </div>
                     <div className="mode">
                         <h2>Dark Mode</h2>
                         <form>
                             <input type="radio"name="mode" value="light" checked={mode === 'light'} onChange={handleModeChange} />
-                            <label for="mode">Light</label><br></br>
+                            <label>Light</label><br></br>
                             <input type="radio" name="mode" value="dark" checked={mode === 'dark'} onChange={handleModeChange} />
-                            <label for="mode">Dark</label><br></br>
+                            <label>Dark</label><br></br>
                         </form>
                     </div>
                     <div>
