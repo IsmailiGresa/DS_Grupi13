@@ -1,26 +1,35 @@
 import React, { useState } from "react";
 import "./styles.css"
-import Axios from "axios";
+import axios from "../api/axios";
 
 function Modal({ setOpenModal }) {
 
-  const[imagedata, setImagedata] = useState('');
-  const handleChange = file => {
-    setImagedata(file[0]);
-  }
-  const sumbitData = e => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (e) => {
+    setSelectedImage(e.target.files[0]);
+  };
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const fData = new FormData();
-    fData.append('image', imagedata);
-
-    Axios.post('http://127.0.0.1:8000/api/upload-image', fData)
-    .then(res => {
-      console.log('response', res);
-    }).catch(e => {
-      console.error('Fail', e);
-    });
-  }
-
+    try {
+      const formData = new FormData();
+      formData.append('image', selectedImage);
+  
+      const response = await axios.post('/api/uploadavatar', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      // Handle the response as needed
+      console.log(response.data);
+  
+      // Reset the selectedImage state
+      setSelectedImage(null);
+    } catch (error) {
+      // Handle errors
+      console.log(error);
+    }
+  };
   return (
     <div className="modalBackground">
       <div className="modalContainer">
@@ -36,11 +45,9 @@ function Modal({ setOpenModal }) {
         <div className="title">
           Upload a photo
         </div>
-        <div className="upl" onSubmit={sumbitData}>
+        <div className="upl">
               <img src="/icons/image-.png"></img>
-              <input name="image" id="image" type="file" onChange={e => handleChange(e.target.files)}></input>
-                
-          
+              <input type="file" accept="image/*" onChange={handleImageChange} />
         </div>
         <div className="footer">
           <button
@@ -51,7 +58,7 @@ function Modal({ setOpenModal }) {
           >
             Cancel
           </button>
-          <button type="submit" onClick={sumbitData}>Confirm</button>
+          <button type="submit" onClick={handleSubmit}>Confirm</button>
         </div>
       </div>
     </div>

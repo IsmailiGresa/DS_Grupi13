@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\InviteHistory;
@@ -20,11 +21,14 @@ class InviteHistoryController extends Controller
             'message' => 'Invite history saved successfully.',
         ]);
     }
+
     public function index()
     {
         $inviteHistories = InviteHistory::all();
+
         return response()->json($inviteHistories);
     }
+
     public function update(Request $request, $id)
     {
         $inviteHistory = InviteHistory::findOrFail($id);
@@ -39,6 +43,7 @@ class InviteHistoryController extends Controller
             'message' => 'Invite history updated successfully.',
         ]);
     }
+
     public function destroy($id)
     {
         $inviteHistory = InviteHistory::findOrFail($id);
@@ -48,7 +53,4 @@ class InviteHistoryController extends Controller
             'message' => 'Invite history deleted successfully.',
         ]);
     }
-
-
 }
-

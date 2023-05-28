@@ -23,7 +23,7 @@ class StoreDonationRequest extends FormRequest
     {
         return [
             'charity_id' => 'required|exists:charities,id',
-            'amount' => 'required|numeric',
+            'amount' => 'sometimes|numeric',
         ];
     }
 }

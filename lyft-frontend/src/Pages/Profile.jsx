@@ -9,10 +9,31 @@ import ModalHome from "./ModalHome.jsx";
 import ModalWork from "./ModalWork.jsx";
 import {useEffect, useRef, useState} from "react";
 import { useNavigate } from 'react-router-dom';
-
+import axios from "../api/axios";
 
 export default function Profile () {
 
+    const [users, setUser] = useState({});
+
+  useEffect(() => {
+    axios.get('/api/users', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    })
+    .then(response => {
+      setUser(response.data.user);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }, []);
+
+    const createdDate = new Date(users.created_at);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - createdDate.getTime();
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  
     const [modalOpen, setModalOpen] = useState(false);
     const [modalOpen1, setModalOpen1] = useState(false);
     const [modalOpen2, setModalOpen2] = useState(false);
@@ -65,7 +86,7 @@ export default function Profile () {
                     <button onClick={() => {
                     navigate("/mainride");
                 }}>
-                    <a>Gresa</a>
+                    <a>{users.first_name}</a>
                     <img src="/icons/profile.png" alt=""/>
                     </button>
                 </div>
@@ -73,7 +94,7 @@ export default function Profile () {
             <aside className="sidebar">
                 <div className="prf">
                     <img src="/icons/profile.png" alt=""/>
-                    <a>Gresa Ismaili</a>
+                    <a>{users.first_name} {users.last_name}</a>
                 </div>
                 <div className="buttons">
                 <button onClick={() => {
@@ -141,12 +162,12 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen(true);}}>
                                 <img src="/icons/photo-camera.png"></img>
                             </button>
-                            
-                        <div>Gresa Ismaili</div>
+
+                        <div>{users.first_name} {users.last_name}</div>
                     </div>
                     <div className="history">
-                    <div className="history1">
-                    <span> 0</span>
+                    <div className="history1">                  
+                    <span>{users.rides}</span>
                     <span>Rides</span>
                     </div>
                     <div className="history2">
@@ -157,7 +178,7 @@ export default function Profile () {
                     <span>Rating</span>
                     </div>
                     <div className="history3">
-                    <span> 24</span>
+                    <span>{daysDifference.toString()}</span>
                     <span>Days</span>
                     </div>
                 </div>
@@ -200,27 +221,30 @@ export default function Profile () {
                 </div>
                 </div>
                 <div className="info"></div>
+                
                     <div className="ident">
                         <div className="ident1">
                             <img src="/icons/profile.png"></img>
                             <div className="idn">
                                 <div className="ident11">
-                                    <span> Gresa Ismaili</span>
+                                    <span>{users.first_name} {users.last_name}</span>
                                 </div>
                                 <div className="ident12">
-                                    <div>Pronouns not selected</div>
+                                    <div>{users.pronoun}</div>
                                 </div>
                             </div>
                         </div>
                         <div className="email">
                             <img src="/icons/email.png"></img>
-                            <span>gi@gmail.com</span>
+                            <span>{users.email}</span>
                         </div>
                         <div className="phone">
                             <img src="/icons/phone.png"></img>
-                            <span>+1 (202) 000-0000</span>
+                            <span>{users.phone_number}</span>
                         </div>
                     </div>
+                </div>
+                <div className="shortmode">
                     <div className="shortcut">
                         <div className="home">
                             <h2>Shortcuts</h2>
@@ -230,8 +254,8 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen5(true);}}>
                                 <img src="/icons/three-dots.png"></img>
                             </button>
-                            
                             </div>
+                            <p><img src="/icons/location.png"></img>{users.home_address}</p>
                         </div>
                         <div className="work">
                             <img src="/icons/briefcase.png"></img>
@@ -239,24 +263,23 @@ export default function Profile () {
                             <button onClick={() => {setModalOpen6(true);}}>
                                 <img src="/icons/three-dots.png"></img>
                             </button>
-                            
                         </div>
+                        <p><img src="/icons/location.png"></img>{users.work_address}</p>
                     </div>
                     <div className="mode">
                         <h2>Dark Mode</h2>
                         <form>
                             <input type="radio"name="mode" value="light" checked={mode === 'light'} onChange={handleModeChange} />
-                            <label for="mode">Light</label><br></br>
+                            <label>Light</label><br></br>
                             <input type="radio" name="mode" value="dark" checked={mode === 'dark'} onChange={handleModeChange} />
-                            <label for="mode">Dark</label><br></br>
+                            <label>Dark</label><br></br>
                         </form>
                     </div>
                     <div>
                     </div>
                 </div>
+                </div>
             </div>
-           
-        </div>
         </>
     );
 };

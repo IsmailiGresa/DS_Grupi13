@@ -1,15 +1,13 @@
 import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import axios from './api/axios';
+import axios from '../api/axios';
+
 import "./signuplogin.css";
 import { useNavigate } from 'react-router-dom';
 
-
-//const FIRSTNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = '/api/register';
 
 const Signup = () => {
     const firstNameRef = useRef();
@@ -19,7 +17,6 @@ const Signup = () => {
     const [firstName, setFirstName] = useState('');
     const [validFirstName, setValidFirstName] = useState(false);
 
-
     const [lastName, setLastName] = useState('');
     const [validLastName, setValidLastName] = useState(false);
 
@@ -28,7 +25,6 @@ const Signup = () => {
     const [user] = useState('');
     const [validName] = useState(false);
     const [userFocus] = useState(false);
-
 
     const [pwd, setPwd] = useState('');
     const [validPwd, setValidPwd] = useState(false);
@@ -42,13 +38,9 @@ const Signup = () => {
     const [success, setSuccess] = useState(false);
 
     useEffect(() => {
-      //  userRef.current.focus();
-        firstNameRef.current.focus();
+          firstNameRef.current.focus();
     }, [])
 
-    // useEffect(() => {
-    //     setValidName(FIRSTNAME_REGEX.test(firstName));
-    // }, [firstName])
 
     useEffect(() => {
         setValidPwd(PWD_REGEX.test(pwd));
@@ -69,22 +61,30 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // Validate inputs
+      
         const isEmailValid = isValidEmail(email);
+        
         if (!validFirstName || !validLastName || !isEmailValid || !validPwd || !validMatch) {
             setErrMsg("Invalid Entry");
             return;
         }
+        
         try {
-            const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ firstName, lastName, email, pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            // TODO: remove console.logs before deployment
-            console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response))
+
+            // const response = await axios.post('/api/login', {
+            //     email: email,
+            //     password: pwd
+            // });
+            const response = await axios.post(REGISTER_URL, {
+                first_name: firstName,
+                last_name: lastName,
+                email: email,
+                password: pwd,
+                password_confirmation : matchPwd
+            });
+
+            console.log(response);
+
             setSuccess(true);
             //clear state and controlled inputs
             setFirstName('');
@@ -110,7 +110,11 @@ const Signup = () => {
                 <section className="section-info">
                     <h1 className="hone-h1">Success!</h1>
                     <p className="html-tags">
-                        <a   className="sign-link" href="#">Sign In</a>
+                    <button className="sign-link" onClick={() => {
+                            navigate("/login");
+                            }}>
+                            <a>Sign In</a>
+                            </button>
                     </p>
                 </section>
             ) : (
@@ -220,9 +224,9 @@ const Signup = () => {
                             Must match the first password input field.
                         </p>
 
-                        <button className="validbtn" disabled={!validName || !validPwd || !validMatch ? true : false}onClick={() => {
-                            navigate("/mainride");
-                            }}><a>Sign Up</a></button>
+                            <button className="validbtn" onClick={handleSubmit}>
+                                <a>Sign Up</a>
+                            </button>
                             
                     </form>
                     <p className="html-tags">

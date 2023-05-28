@@ -4,36 +4,28 @@ import { useState } from "react";
 import axios from "../api/axios";
 
 function ModalWork({ setOpenModal6 }) {
-  const [workLocation, setWorkLocation] = useState('');
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  
+  const [updatedUser, setUpdatedUser] = useState({});
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const updateUser = () => {
+    axios.put('/api/users', updatedUser, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then(response => {
+        // Handle the successful update
+        console.log('User updated:', response.data);
+      })
+      .catch(error => {
+        // Handle the error
+        console.log(error);
+      });
+  };
 
-        setError('');
-        setSuccess('');
-
-        axios.post('/api/shortcuts', {
-                work_location: workLocation,
-            })
-            .then((response) => {
-                setSuccess(response.data.message);
-                setHomeLocation('');
-            })
-            .catch((error) => {
-                if (error.response && error.response.data && error.response.data.errors) {
-                    setError(error.response.data.errors);
-                } else {
-                    setError('Something went wrong. Please try again.');
-                }
-            });
-    };
   return (
     <div className="modalBackgr">
-      {error && <div className="error">{error}</div>}
-      {success && <div className="success">{success}</div>}
-      <div className="modalCont" onSubmit={handleSubmit}>
+      <div className="modalCont">
         <div className="titleBtn">
           <button className="close"
             onClick={() => {
@@ -48,7 +40,9 @@ function ModalWork({ setOpenModal6 }) {
         </div>
         <div className="upload">
 
-            <input type="text" placeholder="    Enter the address*" required value={workLocation} onChange={(e) => setWorkLocation(e.target.value)}></input>
+            <input type="text" placeholder="    Enter the address*" 
+            value={updatedUser.work_address || ''}
+            onChange={e => setUpdatedUser({ ...updatedUser, work_address: e.target.value })}></input>
         </div>
         <div className="footer">
           <button
@@ -59,7 +53,7 @@ function ModalWork({ setOpenModal6 }) {
           >
             Cancel
           </button>
-          <button onClick={handleSubmit}>Save</button>
+          <button onClick={updateUser}>Save</button>
         </div>
       </div>
     </div>
