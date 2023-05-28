@@ -284,7 +284,8 @@ function Mainride() {
                     <button
                       className="dropdown-btn"
                       onClick={() => {
-                        navigate("/logout");
+                        localStorage.clear();
+                        navigate("/login");
                       }}
                     >
                       <img src="/icons/profile.png" alt="" />

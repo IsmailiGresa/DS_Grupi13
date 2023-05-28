@@ -10,11 +10,8 @@ class CreateInviteHistoriesTable extends Migration
     {
         Schema::create('invite_histories', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
             $table->string('code');
-            $table->integer('applications');
-            $table->integer('activations');
-            $table->decimal('earnings', 8, 2);
+            $table->string('user_id');
             $table->timestamps();
         });
     }
