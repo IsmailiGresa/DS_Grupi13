@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import './GiftCards.css';
-import RedeemGiftCard from './RedeemGiftCard';
+//import RedeemGiftCard from './RedeemGiftCard';
 import { useNavigate } from 'react-router-dom';
 import { useRef as myUseRef } from 'react';
+import ModalPayment from './ModalPayment';
+
 
 function GiftCardsPage() {
     const [showRedeemWindow, setShowRedeemWindow] = useState(false);
     const navigate = useNavigate();
     const lastScrollTop = myUseRef(0);
     const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+    const [showPaymentModal, setShowPaymentModal] = useState(false);
+    const handleRedeemClick = () => {
+        setShowPaymentModal(true);
+    };
 
     const handleBuyGiftCardClick = () => {
         // handle buy gift card logic
@@ -64,7 +70,10 @@ function GiftCardsPage() {
                                 <h4 className="LA5">Enter gift card number</h4>
                             </label>
                             <input id="text5" type="text" placeholder="Gift card number" />
-                            <button className="redeem-button5">Redeem</button>
+                            <button className="redeem-button5" onClick={handleRedeemClick}>
+                                Redeem
+                            </button>
+
                         </div>
                         <div className="modal-footer5">
                             <div className="scrollbar5">
@@ -77,6 +86,11 @@ function GiftCardsPage() {
                             </div>
                         </div>
                     </div>
+                </div>
+            )}
+            {showPaymentModal && (
+                <div className="modal-overlay-payment">
+                    <ModalPayment setOpenModalPayment={setShowPaymentModal} />
                 </div>
             )}
 
