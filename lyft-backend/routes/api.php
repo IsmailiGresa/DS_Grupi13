@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Charity\CharityController;
 use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\InviteHistoryController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\Ride\RideController;
 use App\Http\Controllers\ShortcutsController;
@@ -26,6 +27,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/promos/{promo}', [PromoController::class, 'update']);
     Route::delete('/promos/{promo}', [PromoController::class, 'destroy']);
     Route::get('rides', [RideController::class, 'index']);
+    Route::get('ride-price', [RideController::class, 'calculateRidePrice']);
+    Route::post('uploadavatar', 'UserController@uploadAvatar');
     Route::post('shortcuts', [ShortcutsController::class, 'store']);
     Route::get('shortcuts', [ShortcutsController::class, 'index']);
     Route::post('/invite-history', [InviteHistoryController::class, 'store']);
@@ -33,5 +36,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'profile']);
     Route::post('uploadavatar', [UserController::class, 'uploadAvatar']);
     Route::put('users', [UserController::class, 'update']);
+    Route::middleware('auth:sanctum')->apiResource('payment-methods', PaymentsController::class);
 
 });

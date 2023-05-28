@@ -25,7 +25,7 @@ const Login = () => {
       x.className = x.className.replace("show", "");
     }, 3000);
     try {
-      setErrMsg('')
+      setErrMsg("");
       const response = await axios.post("/api/login", {
         email: email,
         password: pwd,
@@ -34,11 +34,12 @@ const Login = () => {
       console.log(response.status == 200);
       if (response.status === 200) {
         localStorage.setItem("token", response.data.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.data.user));
         const accessToken = response?.data?.accessToken;
         const roles = response?.data?.roles;
         //   setAuth({ email, pwd, roles, accessToken });
         setEmail("");
-        setPwd("");      
+        setPwd("");
         navigate("/mainride");
         setSuccess(true);
       } else {
