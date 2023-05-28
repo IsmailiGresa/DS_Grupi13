@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Charity\CharityController;
 use App\Http\Controllers\Donation\DonationController;
 use App\Http\Controllers\InviteHistoryController;
+use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\Ride\RideController;
 use App\Http\Controllers\ShortcutsController;
@@ -35,5 +36,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::middleware('auth:sanctum')->get('/users', [UserController::class, 'profile']);
     Route::post('uploadavatar', [UserController::class, 'uploadAvatar']);
     Route::put('users', [UserController::class, 'update']);
+    Route::middleware('auth:sanctum')->apiResource('payment-methods', PaymentsController::class);
 
 });
