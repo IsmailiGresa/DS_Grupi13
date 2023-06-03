@@ -1,12 +1,13 @@
 import { useRef, useState, useEffect, useContext } from "react";
-//import AuthContext from "./context/AuthProvider";
+// import AuthContext from "./context/AuthProvider";
 import axios from "../api/axios";
 const LOGIN_URL = "localhost:8000/api/auth";
 import "./signuplogin.css";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/auth-context";
 
 const Login = () => {
-  //   const { setAuth } = useContext(AuthContext);
+  let authCtx = useContext(AuthContext);
   const emailRef = useRef();
   const errRef = useRef();
   const [email, setEmail] = useState("");
@@ -33,6 +34,10 @@ const Login = () => {
       console.log(response.status);
       console.log(response.status == 200);
       if (response.status === 200) {
+        authCtx.login(
+          response.data.data.token,
+          JSON.stringify(response.data.data.user)
+        );
         localStorage.setItem("token", response.data.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.data.user));
         const accessToken = response?.data?.accessToken;
