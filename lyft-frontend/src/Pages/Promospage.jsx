@@ -15,16 +15,19 @@ function Promospage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // console.log(event.target[0].value)
-    // debugger
     setSubmitted(true);
+    let d = new Date();
+    d.setMonth(d.getMonth() + 1);
+
     let response = await axios.post("/api/promos", {
       code: event.target[0].value,
       discount: 10,
-      validity: "2024-04-30",
+      validity: d.toLocaleDateString().split("/").reverse().join("-"),
     });
     setDiscount("10");
-    setValidity("April 30, 2023");
+    let date = new Date();
+    date.setMonth(date.getMonth() + 1);
+    setValidity(date.toLocaleDateString());
   };
 
   return (
