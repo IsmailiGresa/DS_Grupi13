@@ -85,6 +85,7 @@ function Mainride() {
   };
 
   const [pricing, setPricing] = useState({});
+  const [distance, setDistance] = useState(0);
   const manipulatePricingBuckets = async (distance) => {
     let response = await axios.get(
       `http://localhost:8000/api/ride-price/?distance=${distance}`,
@@ -118,6 +119,7 @@ function Mainride() {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const distance = earthRadius * c;
+    setDistance(distance);
     return distance;
   }
 
@@ -141,10 +143,31 @@ function Mainride() {
     );
   };
 
-  const handleCarSelection = (carModel) => {
+  const handleCarSelection = async (carModel) => {
+    let price = 0;
+    if (carModel === "Car Model 3") price = pricing.amount_l3;
+    if (carModel === "Car Model 2") price = pricing.amount_l2;
+    if (carModel === "Car Model 1") price = pricing.amount_l1;
+
     setSelectedCar(carModel);
-    setShowModal(false);
-    navigate("/payment"); // Replace '/payment' with the actual URL of your payment page
+    let response = await axios.post(
+      "http://localhost:8000/api/rides",
+      {
+        distance: distance,
+        amount: price,
+        pickup: pickupLocation,
+        destination: destination,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    if (response.status == 201) {
+      setShowModal(false);
+      navigate("/payment"); // Replace '/payment' with the actual URL of your payment page
+    }
   };
 
   const closeModal = () => {
