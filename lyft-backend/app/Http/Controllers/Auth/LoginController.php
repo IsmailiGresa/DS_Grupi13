@@ -78,7 +78,6 @@ class LoginController extends ApiController
                 // Add other necessary fields from the user table
             ],
             'token' => $token,
-            'role' => $user->role
         ];
 
         return $this->showMessage($response);
