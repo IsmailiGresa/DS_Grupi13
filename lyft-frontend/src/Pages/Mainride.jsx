@@ -259,20 +259,17 @@ function Mainride() {
                       <a>Gift cards</a>
                     </button>
                   </li>
-                  {(JSON.parse(localStorage.getItem("role"))?.name ?? null) ==
-                    "admin" && (
-                    <li>
-                      <button
-                        className="dropdown-btn"
-                        onClick={() => {
-                          navigate("/promos");
-                        }}
-                      >
-                        <img src="/icons/promos.png" alt="" />
-                        <a>Promos</a>
-                      </button>
-                    </li>
-                  )}
+                  <li>
+                    <button
+                      className="dropdown-btn"
+                      onClick={() => {
+                        navigate("/promos");
+                      }}
+                    >
+                      <img src="/icons/promos.png" alt="" />
+                      <a>Promos</a>
+                    </button>
+                  </li>
                   <li>
                     <button
                       className="dropdown-btn"
