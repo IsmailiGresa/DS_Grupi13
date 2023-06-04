@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('pickup_location');
             $table->string('dropoff_location');
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('driver_id')->constrained('users');
+            $table->foreignId('driver_id')->constrained('users')->nullable();
             $table->timestamps();
         });
     }
